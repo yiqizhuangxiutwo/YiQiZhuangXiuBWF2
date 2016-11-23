@@ -21,26 +21,29 @@ public class Http {
      * @param url
      * @return
      */
-    public Response_home_viewpager getHttp(String url) {
+    public void getHttp(String url) {
 
-        Log.d("msgnn", "方法开始运行");
         OkHttpUtils.get().url(url).build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
-                Log.d("msgnn", "网络访问错误");
+
             }
 
             @Override
             public void onResponse(String response, int id) {
                 strresponse = response;
-                Log.d("msgnn", strresponse);
+                Response_home_viewpager response_home_viewpager = JSON.parseObject(strresponse,Response_home_viewpager.class);
+                callback.ViewPagerCallback(response_home_viewpager);
             }
         });
-        Response_home_viewpager response_home_viewpager = JSON.parseObject(strresponse,Response_home_viewpager.class);
-
-        Log.d("msgnn", strresponse);
-        Log.d("msgnn", "111response_home_viewpager:" + response_home_viewpager);
-
-        return response_home_viewpager;
     }
+
+    private Callback callback;
+    public void setCallback(Callback callback){
+        this.callback = callback;
+    }
+    public interface Callback{
+        void ViewPagerCallback(Response_home_viewpager response_home_viewpager);
+    }
+
 }

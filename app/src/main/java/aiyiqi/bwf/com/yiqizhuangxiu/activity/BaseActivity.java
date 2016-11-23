@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+
 import butterknife.ButterKnife;
 
 /**
@@ -26,6 +28,7 @@ public abstract class BaseActivity extends FragmentActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 //        setStatusBarTransparent();
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        Fresco.initialize(this);
         setContentView(getContentViewResID());
         ButterKnife.bind(this);
         initViews();

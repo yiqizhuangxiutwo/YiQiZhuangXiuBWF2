@@ -15,6 +15,7 @@ import aiyiqi.bwf.com.yiqizhuangxiu.R;
 import aiyiqi.bwf.com.yiqizhuangxiu.adapter.MainViewPagerAdapter;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_home_viewpager;
 import aiyiqi.bwf.com.yiqizhuangxiu.http.Http;
+import aiyiqi.bwf.com.yiqizhuangxiu.widget.PagerDotIndicator;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -54,7 +55,9 @@ public class HomeFragment extends BaseFragment {
     @BindView(R.id.shejiliangfang)
     LinearLayout shejiliangfang;
 
-    private Response_home_viewpager home_viewpager;
+    /**管理指示器的对象**/
+    private PagerDotIndicator pagerDotIndicator;
+
 
     @Override
     protected int getContentViewResID() {
@@ -64,13 +67,17 @@ public class HomeFragment extends BaseFragment {
     @Override
     protected void initViews() {
         Http http = new Http();
-        home_viewpager = new Response_home_viewpager();
-
-        Log.d("msgnn", "222home_viewpager:" + home_viewpager);
-
-        home_viewpager = http.getHttp("http://118.178.142.34/YiQiHouse/HomeAD");
-        MainViewPagerAdapter mainViewPagerAdapter = new MainViewPagerAdapter(getActivity(),home_viewpager);
-        viewPagerMainListSlide.setAdapter(mainViewPagerAdapter);
+        http.getHttp("http://118.178.142.34/YiQiHouse/HomeAD");
+        http.setCallback(new Http.Callback() {
+            @Override
+            public void ViewPagerCallback(Response_home_viewpager response_home_viewpager) {
+                MainViewPagerAdapter mainViewPagerAdapter = new MainViewPagerAdapter(getActivity(), response_home_viewpager);
+                pagerDotIndicator = new PagerDotIndicator(getActivity(),linearLayoutPagerIndicator,viewPagerMainListSlide);
+                viewPagerMainListSlide.setAdapter(mainViewPagerAdapter);
+                viewPagerMainListSlide.setCurrentItem(response_home_viewpager.getData().size()*10);
+                pagerDotIndicator.setDotNums(response_home_viewpager.getData().size());
+            }
+        });
     }
 
     @Override

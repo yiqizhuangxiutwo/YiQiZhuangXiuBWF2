@@ -11,13 +11,12 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_home_viewpager;
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by Yishi on 2016/11/23.
  */
 public class MainViewPagerAdapter extends PagerAdapter {
-    @BindView(R.id.home_viewpager_simpledrawee)
-    SimpleDraweeView homeViewpagerSimpledrawee;
 
     private Response_home_viewpager home_viewpager;
     private LayoutInflater inflater;
@@ -29,7 +28,7 @@ public class MainViewPagerAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return home_viewpager.getData().size();
+        return Integer.MAX_VALUE;
     }
 
     @Override
@@ -40,14 +39,24 @@ public class MainViewPagerAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         View view = inflater.inflate(R.layout.subview_viewpager_item, null);
-        homeViewpagerSimpledrawee.setImageURI(home_viewpager.getData().get(position).getImagesrc());
+        ViewHolder holder = new ViewHolder(view);
+        holder.homeViewpagerSimpledrawee.setImageURI(home_viewpager.getData().get(position%home_viewpager.getData().size()).getImagesrc2());
         container.addView(view);
-        return super.instantiateItem(container, position);
+        return view;
     }
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
         View view = inflater.inflate(R.layout.subview_viewpager_item, null);
         container.removeView(view);
+    }
+
+    static class ViewHolder {
+        @BindView(R.id.home_viewpager_simpledrawee)
+        SimpleDraweeView homeViewpagerSimpledrawee;
+
+        ViewHolder(View view) {
+            ButterKnife.bind(this, view);
+        }
     }
 }
