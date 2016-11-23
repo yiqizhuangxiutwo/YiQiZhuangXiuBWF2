@@ -18,6 +18,7 @@ public class WelcomeActivity extends BaseActivity {
             super.handleMessage(msg);
             if (msg.what == 1000) {
                 startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
+                finish();
             }
         }
     };
