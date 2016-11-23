@@ -19,6 +19,12 @@ public abstract class BaseFragment extends Fragment{
         contentView = inflater.inflate(getContentViewResID(),null);
         return contentView;
     }
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        initViews();
+        initDatas();
+    }
 
     protected abstract int getContentViewResID();
     protected abstract void initViews();

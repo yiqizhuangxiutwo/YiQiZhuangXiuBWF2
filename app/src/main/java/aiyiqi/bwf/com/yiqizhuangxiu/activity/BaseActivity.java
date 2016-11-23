@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 
+import butterknife.ButterKnife;
+
 /**
  * Created by Yishi on 2016/11/23.
  */
@@ -25,6 +27,7 @@ public abstract class BaseActivity extends FragmentActivity {
 //        setStatusBarTransparent();
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(getContentViewResID());
+        ButterKnife.bind(this);
         initViews();
         initDatas();
 

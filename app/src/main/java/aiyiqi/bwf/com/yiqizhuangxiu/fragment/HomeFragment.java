@@ -1,5 +1,7 @@
 package aiyiqi.bwf.com.yiqizhuangxiu.fragment;
 
+import aiyiqi.bwf.com.yiqizhuangxiu.R;
+
 /**
  * Created by Yishi on 2016/11/23.
  */
@@ -7,7 +9,7 @@ package aiyiqi.bwf.com.yiqizhuangxiu.fragment;
 public class HomeFragment extends BaseFragment{
     @Override
     protected int getContentViewResID() {
-        return 0;
+        return R.layout.fragment_home;
     }
 
     @Override

@@ -5,8 +5,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <fragment
-        android:id="@+id/main_viewpager"
+    <FrameLayout
+        android:id="@+id/main_fragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -22,7 +22,7 @@
         android:layout_height="@dimen/main_navigation_bar_height"
         android:orientation="horizontal"
         android:background="@color/white"
-        >
+        android:padding="5dp">
         <LinearLayout
             android:id="@+id/tab_home"
             android:layout_width="0.0dip"
@@ -37,7 +37,14 @@
                 android:layout_height="@dimen/main_tab_height"
                 android:background="@drawable/toggle_button_home_home"
                 android:focusable="false"
-                android:gravity="center" />
+                android:gravity="center"/>
+            <TextView
+                android:id="@+id/text_home_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="首页"
+                style="@style/main_toggle_text"
+                android:layout_marginTop="5dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -55,6 +62,13 @@
                 android:background="@drawable/toggle_button_home_speak"
                 android:focusable="false"
                 android:gravity="center"/>
+            <TextView
+                android:id="@+id/text_home_speak"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="就业说"
+                style="@style/main_toggle_text"
+                android:layout_marginTop="5dp"/>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/tab_message"
@@ -72,6 +86,13 @@
                 android:background="@drawable/toggle_button_home_message"
                 android:focusable="false"
                 android:gravity="center"/>
+            <TextView
+                android:id="@+id/text_home_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="消息"
+                style="@style/main_toggle_text"
+                android:layout_marginTop="5dp"/>
 
         </LinearLayout>
 
@@ -91,6 +112,13 @@
                 android:background="@drawable/toggle_button_home_mine"
                 android:focusable="false"
                 android:gravity="center"/>
+            <TextView
+                android:id="@+id/text_home_mine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我的"
+                style="@style/main_toggle_text"
+                android:layout_marginTop="5dp"/>
 
         </LinearLayout>
     </LinearLayout>
