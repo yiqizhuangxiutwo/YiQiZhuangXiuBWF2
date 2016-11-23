@@ -13,7 +13,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/main_recycleview_tie_touxiang"
-            android:background="@mipmap/ic_launcher"
+            fresco:placeholderImage="@drawable/loading_placeholder"
+            fresco:placeholderImageScaleType="fitCenter"
+            fresco:fadeDuration="1000"
             />
         <LinearLayout
             android:layout_width="wrap_content"
@@ -53,9 +55,13 @@
         </LinearLayout>
     </LinearLayout>
     <com.facebook.drawee.view.SimpleDraweeView
+        xmlns:fresco="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:id="@+id/main_tie_image"/>
+        android:id="@+id/main_tie_image"
+        fresco:placeholderImage="@drawable/loading_placeholder"
+        fresco:placeholderImageScaleType="fitCenter"
+        fresco:fadeDuration="1000" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="20dp"
