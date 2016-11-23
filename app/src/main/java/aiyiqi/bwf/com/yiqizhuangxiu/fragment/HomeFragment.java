@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,8 @@ import android.widget.LinearLayout;
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
 import aiyiqi.bwf.com.yiqizhuangxiu.adapter.MainViewPagerAdapter;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_home_viewpager;
-import aiyiqi.bwf.com.yiqizhuangxiu.http.Http;
+import aiyiqi.bwf.com.yiqizhuangxiu.http.Http_Home_Viewpager;
+import aiyiqi.bwf.com.yiqizhuangxiu.utlis.Apis;
 import aiyiqi.bwf.com.yiqizhuangxiu.widget.PagerDotIndicator;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -66,9 +66,9 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void initViews() {
-        Http http = new Http();
-        http.getHttp("http://118.178.142.34/YiQiHouse/HomeAD");
-        http.setCallback(new Http.Callback() {
+        Http_Home_Viewpager http = new Http_Home_Viewpager();
+        http.getHttp(Apis.HTTP_HOME_VIEWPAGER);
+        http.setCallback(new Http_Home_Viewpager.Callback() {
             @Override
             public void ViewPagerCallback(Response_home_viewpager response_home_viewpager) {
                 MainViewPagerAdapter mainViewPagerAdapter = new MainViewPagerAdapter(getActivity(), response_home_viewpager);
