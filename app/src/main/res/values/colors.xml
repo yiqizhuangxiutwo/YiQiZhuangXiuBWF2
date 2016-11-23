@@ -6,4 +6,13 @@
     <color name="white">#ffffff</color>
     <color name="green">#00a051</color>
     <color name="gray">#9b9b9b</color>
+    <color name="windowBackground">#ffffffff</color>
+    <color name="tabIndicatorColor">#ff000000</color>
+    <color name="tabSelectedTextColor">#ff000000</color>
+    <color name="tabTextColor">#ff848484</color>
+    <color name="main_title_search_color">#cde6e3e3</color>
+    <color name="title_color">#080505</color>
+    <color name="auther">#131212</color>
+    <color name="jiaguanzhu">#1e9e3e</color>
+    <color name="tie_lianjie">#477ccc</color>
 </resources>

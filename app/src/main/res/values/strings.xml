@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">YiQiZhuangXiu</string>
+    <string name="main_title_text">搜索用户/帖子</string>
+    <string name="main_title_place_text">成都</string>
+    <string name="zhuangxiugongsi">装修公司</string>
+    <string name="zhjiancaijiaju">建材家具</string>
+    <string name="xiaoguotu">效果图</string>
+    <string name="zizhuxiadan">自助下单</string>
+    <string name="shejiliangfang">设计/量房</string>
+    <string name="main_list_artilce">装修学堂</string>
+    <string name="artcle_item_time">5小时前</string>
+    <string name="scan">172</string>
+    <string name="comments">17</string>
+    <string name="auther">作者</string>
+    <string name="auther_time">16小时前</string>
+    <string name="jiaguanzhu" >加关注</string>>
 </resources>
