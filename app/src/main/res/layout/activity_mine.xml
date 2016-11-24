@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/greens">
+
+            <ImageView
+                android:id="@+id/mine_tab_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/main_tab_my_selected"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="点击登录"
+                android:textColor="@color/white"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/mine_tab_login"
+                android:layout_marginLeft="16dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="积分规则"
+                android:layout_marginRight="20dp"
+                android:textColor="@color/white"
+                android:layout_below="@id/mine_tab_login"
+                android:layout_alignParentRight="true"
+                />
+    </RelativeLayout>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.100000024dip"
+        android:background="#ff898989"/>
+    <include
+        layout="@layout/mine_middle_detail">
+    </include>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#ff898989"></View>
+    <include
+        layout="@layout/mine_bottom_detail"></include>
+
+</LinearLayout>
