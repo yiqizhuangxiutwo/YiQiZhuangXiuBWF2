@@ -1,6 +1,5 @@
 package aiyiqi.bwf.com.yiqizhuangxiu.activity;
 
-<<<<<<< HEAD
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -36,20 +35,10 @@ public class JianCaiJiaJuActivity extends BaseActivity implements BuildingHomeVi
     @Override
     public int getContentViewResID() {
         return R.layout.building_home;
-=======
-/**
- * Created by Yishi on 2016/11/24.
- */
-public class JianCaiJiaJuActivity extends BaseActivity{
-    @Override
-    public int getContentViewResID() {
-        return 0;
->>>>>>> 9fd1f83b492c31079e70a229f0d02586f8c5d012
     }
 
     @Override
     protected void initViews() {
-<<<<<<< HEAD
         presenter = new BuildingHomePresenterImpl(this);
         loadDatas();
     }
@@ -92,13 +81,6 @@ public class JianCaiJiaJuActivity extends BaseActivity{
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
-=======
 
-    }
-
-    @Override
-    protected void initDatas() {
-
->>>>>>> 9fd1f83b492c31079e70a229f0d02586f8c5d012
     }
 }

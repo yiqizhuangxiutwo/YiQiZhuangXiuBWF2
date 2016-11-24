@@ -25,6 +25,8 @@
         <activity android:name=".activity.XiaoGuoTuActivity"/>
         <activity android:name=".activity.ZiZhuXiaDanActivity"/>
         <activity android:name=".activity.SheJiLiangFangActivity"/>
+        <activity android:name=".activity.NewHouseBuild"/>
+        <activity android:name=".activity.OldHouseBuild"/>
     </application>
 
 </manifest>
