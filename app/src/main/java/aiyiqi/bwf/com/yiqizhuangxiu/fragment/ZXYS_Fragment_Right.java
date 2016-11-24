@@ -1,14 +1,15 @@
-package aiyiqi.bwf.com.yiqizhuangxiu.activity;
+package aiyiqi.bwf.com.yiqizhuangxiu.fragment;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
 
 /**
  * Created by Yishi on 2016/11/24.
  */
-public class ZhuangXiuGongSiActivity extends BaseActivity{
+
+public class ZXYS_Fragment_Right extends BaseFragment{
     @Override
-    public int getContentViewResID() {
-        return R.layout.decoration_company;
+    protected int getContentViewResID() {
+        return R.layout.zxys_fragment_right;
     }
 
     @Override

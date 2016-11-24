@@ -10,8 +10,10 @@
         android:orientation="horizontal">
         <com.facebook.drawee.view.SimpleDraweeView
             xmlns:fresco="http://schemas.android.com/apk/res-auto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
             android:id="@+id/main_recycleview_tie_touxiang"
             fresco:placeholderImage="@drawable/loading_placeholder"
             fresco:placeholderImageScaleType="fitCenter"
@@ -53,6 +55,18 @@
                 android:text="@string/jiaguanzhu"
                 android:textColor="@color/jiaguanzhu"/>
         </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp">
+        <TextView
+            android:id="@+id/main_tie_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我是大标题"
+            android:textSize="20dp"
+            android:padding="5dp"/>
     </LinearLayout>
     <com.facebook.drawee.view.SimpleDraweeView
         xmlns:fresco="http://schemas.android.com/apk/res-auto"

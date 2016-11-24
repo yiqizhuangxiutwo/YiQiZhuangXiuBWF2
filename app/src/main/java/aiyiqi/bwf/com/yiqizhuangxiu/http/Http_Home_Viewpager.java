@@ -13,7 +13,6 @@ import okhttp3.Call;
  */
 
 public class Http_Home_Viewpager {
-    public String strresponse = null;
 
     /**
      * Home界面头部Viewpager的网络访问数据
@@ -25,13 +24,14 @@ public class Http_Home_Viewpager {
         OkHttpUtils.get().url(Apis.HTTP_HOME_VIEWPAGER).build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
-
+                if (e!=null){
+                    callback.HttpFailded(e);
+                }
             }
 
             @Override
             public void onResponse(String response, int id) {
-                strresponse = response;
-                Response_home_viewpager response_home_viewpager = JSON.parseObject(strresponse,Response_home_viewpager.class);
+                Response_home_viewpager response_home_viewpager = JSON.parseObject(response,Response_home_viewpager.class);
                 callback.ViewPagerCallback(response_home_viewpager);
             }
         });
@@ -43,6 +43,7 @@ public class Http_Home_Viewpager {
     }
     public interface Callback{
         void ViewPagerCallback(Response_home_viewpager response_home_viewpager);
+        void HttpFailded(Exception e);
     }
 
 }

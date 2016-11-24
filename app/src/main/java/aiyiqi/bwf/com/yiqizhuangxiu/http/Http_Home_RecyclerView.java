@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
-import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_home_viewpager;
+import aiyiqi.bwf.com.yiqizhuangxiu.entity.ResponseRecycleViewList;
 import aiyiqi.bwf.com.yiqizhuangxiu.utlis.Apis;
 import okhttp3.Call;
 
@@ -21,8 +21,6 @@ public class Http_Home_RecyclerView {
      * @return
      */
 
-    //TODO  还未完成
-
 
     public void getHttp() {
 
@@ -35,17 +33,17 @@ public class Http_Home_RecyclerView {
             @Override
             public void onResponse(String response, int id) {
                 strresponse = response;
-                Response_home_viewpager response_home_viewpager = JSON.parseObject(strresponse,Response_home_viewpager.class);
-                callback.ViewPagerCallback(response_home_viewpager);
+                ResponseRecycleViewList responseRecycleViewList = JSON.parseObject(strresponse,ResponseRecycleViewList.class);
+                callback.RecyclerViewCallback(responseRecycleViewList);
             }
         });
     }
 
-    private Http_Home_Viewpager.Callback callback;
-    public void setCallback(Http_Home_Viewpager.Callback callback){
+    private Http_Home_RecyclerView.Callback callback;
+    public void setCallback(Http_Home_RecyclerView.Callback callback){
         this.callback = callback;
     }
     public interface Callback{
-        void ViewPagerCallback(Response_home_viewpager response_home_viewpager);
+        void RecyclerViewCallback(ResponseRecycleViewList responseRecycleViewList);
     }
 }
