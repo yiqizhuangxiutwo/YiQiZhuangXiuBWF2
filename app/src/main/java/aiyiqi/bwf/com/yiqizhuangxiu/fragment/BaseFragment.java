@@ -7,6 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+
+import butterknife.ButterKnife;
+
 /**
  * Created by Yishi on 2016/11/23.
  */
@@ -21,6 +25,7 @@ public abstract class BaseFragment extends Fragment{
     }
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
+        Fresco.initialize(getActivity());
         super.onActivityCreated(savedInstanceState);
         initViews();
         initDatas();

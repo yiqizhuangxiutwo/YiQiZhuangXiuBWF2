@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,9 @@ import android.widget.LinearLayout;
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
 import aiyiqi.bwf.com.yiqizhuangxiu.adapter.MainViewPagerAdapter;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_home_viewpager;
-import aiyiqi.bwf.com.yiqizhuangxiu.http.Http;
+import aiyiqi.bwf.com.yiqizhuangxiu.http.Http_Home_Viewpager;
+import aiyiqi.bwf.com.yiqizhuangxiu.utlis.Apis;
+import aiyiqi.bwf.com.yiqizhuangxiu.widget.PagerDotIndicator;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -54,7 +55,9 @@ public class HomeFragment extends BaseFragment {
     @BindView(R.id.shejiliangfang)
     LinearLayout shejiliangfang;
 
-    private Response_home_viewpager home_viewpager;
+    /**管理指示器的对象**/
+    private PagerDotIndicator pagerDotIndicator;
+
 
     @Override
     protected int getContentViewResID() {
@@ -63,14 +66,18 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void initViews() {
-        Http http = new Http();
-        home_viewpager = new Response_home_viewpager();
-
-        Log.d("msgnn", "222home_viewpager:" + home_viewpager);
-
-        home_viewpager = http.getHttp("http://118.178.142.34/YiQiHouse/HomeAD");
-        MainViewPagerAdapter mainViewPagerAdapter = new MainViewPagerAdapter(getActivity(),home_viewpager);
-        viewPagerMainListSlide.setAdapter(mainViewPagerAdapter);
+        Http_Home_Viewpager http = new Http_Home_Viewpager();
+        http.getHttp(Apis.HTTP_HOME_VIEWPAGER);
+        http.setCallback(new Http_Home_Viewpager.Callback() {
+            @Override
+            public void ViewPagerCallback(Response_home_viewpager response_home_viewpager) {
+                MainViewPagerAdapter mainViewPagerAdapter = new MainViewPagerAdapter(getActivity(), response_home_viewpager);
+                pagerDotIndicator = new PagerDotIndicator(getActivity(),linearLayoutPagerIndicator,viewPagerMainListSlide);
+                viewPagerMainListSlide.setAdapter(mainViewPagerAdapter);
+                viewPagerMainListSlide.setCurrentItem(response_home_viewpager.getData().size()*10);
+                pagerDotIndicator.setDotNums(response_home_viewpager.getData().size());
+            }
+        });
     }
 
     @Override

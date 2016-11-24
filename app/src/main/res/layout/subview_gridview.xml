@@ -40,7 +40,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/zhuangxiugongsi"
+                android:text="同城活动"
                 android:layout_marginTop="5dp"
                 android:textSize="15dp"/>
         </LinearLayout>
@@ -58,7 +58,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/zhuangxiugongsi"
+                android:text="装修学堂"
                 android:layout_marginTop="5dp"
                 android:textSize="15dp"/>
         </LinearLayout>
@@ -76,7 +76,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/zhuangxiugongsi"
+                android:text="装修预算"
                 android:layout_marginTop="5dp"
                 android:textSize="15dp"/>
         </LinearLayout>

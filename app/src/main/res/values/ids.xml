@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="layout_subview_recycleview_loadfooter" type="id" />
+    <item name="progressbar_subview_recycleview_loadfooter" type="id" />
+    <item name="textview_subview_recycleview_loadfooter" type="id" />
+</resources>
