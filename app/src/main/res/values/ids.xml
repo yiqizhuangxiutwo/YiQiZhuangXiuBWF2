@@ -3,4 +3,22 @@
     <item name="layout_subview_recycleview_loadfooter" type="id" />
     <item name="progressbar_subview_recycleview_loadfooter" type="id" />
     <item name="textview_subview_recycleview_loadfooter" type="id" />
+    <item name="viewPager_main_fragment" type="id" />
+    <item name="tabLayout_main" type="id" />
+    <item name="search_new" type="id" />
+    <item name="imgbnt" type="id" />
+    <item name="recycleView" type="id" />
+    <item name="imageView_author" type="id" />
+    <item name="textView_front_main_title" type="id" />
+    <item name="imageView_front_top_image" type="id" />
+    <item name="linear_temp" type="id" />
+    <item name="textView_front_subtitle" type="id" />
+    <item name="linear_bottom_count" type="id" />
+    <item name="liked_count" type="id" />
+    <item name="artcle_share" type="id" />
+    <item name="article_comment" type="id" />
+    <item name="time_artticle" type="id" />
+    <item name="comment_count" type="id" />
+    <item name="author_name" type="id" />
+    <item name="subject_name" type="id" />
 </resources>

@@ -1,4 +1,4 @@
-package aiyiqi.bwf.com.yiqizhuangxiu.eneity;
+package aiyiqi.bwf.com.yiqizhuangxiu.entity;
 
 import java.util.List;
 

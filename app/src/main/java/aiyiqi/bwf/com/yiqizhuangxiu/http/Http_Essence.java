@@ -1,27 +1,26 @@
 package aiyiqi.bwf.com.yiqizhuangxiu.http;
 
+import android.util.Log;
+
 import com.alibaba.fastjson.JSON;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
+import java.util.List;
+
+import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_Essence;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_home_viewpager;
 import aiyiqi.bwf.com.yiqizhuangxiu.utlis.Apis;
 import okhttp3.Call;
 
 /**
- * Created by Yishi on 2016/11/23.
+ * Created by Administrator on 2016/11/24.
  */
 
-public class Http_Home_Viewpager {
-
-    /**
-     * Home界面头部Viewpager的网络访问数据
-     * @param
-     * @return
-     */
+public class Http_Essence {
     public void getHttp() {
 
-        OkHttpUtils.get().url(Apis.HTTP_HOME_VIEWPAGER).build().execute(new StringCallback() {
+        OkHttpUtils.get().url(Apis.ESSENCE_RECYCLERVIEW).build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
 
@@ -29,8 +28,9 @@ public class Http_Home_Viewpager {
 
             @Override
             public void onResponse(String response, int id) {
-                Response_home_viewpager response_home_viewpager = JSON.parseObject(response,Response_home_viewpager.class);
-                callback.ViewPagerCallback(response_home_viewpager);
+                Log.d("Http_Essence", response);
+                Response_Essence response_essence = JSON.parseObject(response,Response_Essence.class);
+                callback.ViewPagerCallback(response_essence.getData());
             }
         });
     }
@@ -40,7 +40,6 @@ public class Http_Home_Viewpager {
         this.callback = callback;
     }
     public interface Callback{
-        void ViewPagerCallback(Response_home_viewpager response_home_viewpager);
+        void ViewPagerCallback(List<Response_Essence.DataBean> dataBeen);
     }
-
 }
