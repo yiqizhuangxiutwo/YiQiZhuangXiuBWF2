@@ -15,6 +15,10 @@
     <color name="auther">#131212</color>
     <color name="jiaguanzhu">#1e9e3e</color>
     <color name="tie_lianjie">#477ccc</color>
+<<<<<<< HEAD
     <color name="dark">#dd0a0909</color>
     <color name="effect_topic_text">#1a1919</color>
+=======
+    <color name="greens">#006400</color>
+>>>>>>> 9fd1f83b492c31079e70a229f0d02586f8c5d012
 </resources>
