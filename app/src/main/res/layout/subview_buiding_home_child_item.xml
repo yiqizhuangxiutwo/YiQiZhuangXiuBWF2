@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingRight="16.0dip"
+        android:paddingLeft="16.0dip">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id = "@+id/buid_home_item_image"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="5dp"
+                xmlns:fresco="http://schemas.android.com/apk/res-auto"
+                fresco:placeholderImage="@drawable/loading_placeholder"
+                fresco:placeholderImageScaleType="fitCenter"
+                fresco:fadeDuration="1000"/>
+            <TextView
+                android:id="@+id/jiancaijiaju_title1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="@string/text_great_category"
+                android:textColor="#ff9099a7"
+                android:textSize="20.0sp" />
+        </LinearLayout>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.5dip"
+            android:background="@drawable/comment_dash_line"
+            android:layerType="software"/>
+
+        <aiyiqi.bwf.com.yiqizhuangxiu.widget.NestingGridView
+            android:id="@+id/jiancaijiaju_child1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:horizontalSpacing="14.0dip"
+            android:numColumns="3"
+            android:scrollbars="none"
+            android:verticalSpacing="10.0dip"/>
+
+    </LinearLayout>
+</LinearLayout>

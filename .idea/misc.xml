@@ -43,6 +43,8 @@
   <component name="ProjectType">
     <option name="id" value="Android" />
   </component>
+<<<<<<< HEAD
+=======
   <component name="SvnConfiguration">
     <configuration>C:\Users\Administrator\AppData\Roaming\Subversion</configuration>
   </component>
@@ -73,4 +75,5 @@
       </state>
     </states>
   </component>
+>>>>>>> c4cde4f249c868032a05d9a94e75e984f03cfac8
 </project>

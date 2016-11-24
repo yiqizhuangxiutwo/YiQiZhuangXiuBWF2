@@ -17,7 +17,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.MainActivity"/>
-<<<<<<< HEAD
         <activity android:name=".activity.ZhuangXiuGongSiActivity"/>
         <activity android:name=".activity.TongChengHuoDongActivity"/>
         <activity android:name=".activity.ZhuangXiuXueTangActivity"/>
@@ -26,9 +25,6 @@
         <activity android:name=".activity.XiaoGuoTuActivity"/>
         <activity android:name=".activity.ZiZhuXiaDanActivity"/>
         <activity android:name=".activity.SheJiLiangFangActivity"/>
-=======
-
->>>>>>> c4cde4f249c868032a05d9a94e75e984f03cfac8
     </application>
 
 </manifest>
