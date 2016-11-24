@@ -14,7 +14,6 @@ import okhttp3.Call;
  */
 
 public class Http_Home_Viewpager {
-    public String strresponse = null;
 
     /**
      * Home界面头部Viewpager的网络访问数据
@@ -31,8 +30,7 @@ public class Http_Home_Viewpager {
 
             @Override
             public void onResponse(String response, int id) {
-                strresponse = response;
-                Response_home_viewpager response_home_viewpager = JSON.parseObject(strresponse,Response_home_viewpager.class);
+                Response_home_viewpager response_home_viewpager = JSON.parseObject(response,Response_home_viewpager.class);
                 callback.ViewPagerCallback(response_home_viewpager);
             }
         });
