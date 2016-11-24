@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_title"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/actionBarSize">
+
+    <TextView
+        android:id="@id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/zhjiancaijiaju"
+        android:layout_centerInParent="true"
+        android:textSize="20.0sp" />
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="@dimen/actionBarSize"
+        android:layout_height="@dimen/actionBarSize"
+        android:layout_gravity="center|left"
+        android:background="#00000000"
+        android:padding="12dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/btn_back" />
+
+</RelativeLayout>
