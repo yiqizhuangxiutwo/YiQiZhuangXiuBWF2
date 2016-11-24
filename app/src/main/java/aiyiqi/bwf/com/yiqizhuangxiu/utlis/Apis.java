@@ -10,4 +10,8 @@ public interface Apis {
     //Home上部ViewPager接口
     String HTTP_HOME_VIEWPAGER = "http://118.178.142.34/YiQiHouse/HomeAD";
 
+    //Home下方RecycleView的接口
+    String HTTP_HOME_RECYCLERVIEW = "http://118.178.142.34/YiQiHouse/HomeBBS?page=1";
+
+
 }

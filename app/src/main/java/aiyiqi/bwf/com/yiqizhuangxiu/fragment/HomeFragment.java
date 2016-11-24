@@ -1,5 +1,6 @@
 package aiyiqi.bwf.com.yiqizhuangxiu.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.v4.view.ViewPager;
@@ -11,13 +12,21 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
+import aiyiqi.bwf.com.yiqizhuangxiu.activity.JianCaiJiaJuActivity;
+import aiyiqi.bwf.com.yiqizhuangxiu.activity.SheJiLiangFangActivity;
+import aiyiqi.bwf.com.yiqizhuangxiu.activity.TongChengHuoDongActivity;
+import aiyiqi.bwf.com.yiqizhuangxiu.activity.XiaoGuoTuActivity;
+import aiyiqi.bwf.com.yiqizhuangxiu.activity.ZhuangXiuGongSiActivity;
+import aiyiqi.bwf.com.yiqizhuangxiu.activity.ZhuangXiuXueTangActivity;
+import aiyiqi.bwf.com.yiqizhuangxiu.activity.ZhuangXiuYuSuanActivity;
+import aiyiqi.bwf.com.yiqizhuangxiu.activity.ZiZhuXiaDanActivity;
 import aiyiqi.bwf.com.yiqizhuangxiu.adapter.MainViewPagerAdapter;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_home_viewpager;
 import aiyiqi.bwf.com.yiqizhuangxiu.http.Http_Home_Viewpager;
-import aiyiqi.bwf.com.yiqizhuangxiu.utlis.Apis;
 import aiyiqi.bwf.com.yiqizhuangxiu.widget.PagerDotIndicator;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Yishi on 2016/11/23.
@@ -55,7 +64,9 @@ public class HomeFragment extends BaseFragment {
     @BindView(R.id.shejiliangfang)
     LinearLayout shejiliangfang;
 
-    /**管理指示器的对象**/
+    /**
+     * 管理指示器的对象
+     **/
     private PagerDotIndicator pagerDotIndicator;
 
 
@@ -66,15 +77,31 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void initViews() {
+        home_ViewPagerHttp();
+        home_RecyclerViewHttp();
+    }
+
+    /**
+     * Home下部的ViewPager的网络数据访问
+     */
+    private void home_RecyclerViewHttp() {
+
+    }
+
+
+    /**
+     * Home上部的ViewPager的网络数据访问
+     */
+    private void home_ViewPagerHttp() {
         Http_Home_Viewpager http = new Http_Home_Viewpager();
-        http.getHttp(Apis.HTTP_HOME_VIEWPAGER);
+        http.getHttp();
         http.setCallback(new Http_Home_Viewpager.Callback() {
             @Override
             public void ViewPagerCallback(Response_home_viewpager response_home_viewpager) {
                 MainViewPagerAdapter mainViewPagerAdapter = new MainViewPagerAdapter(getActivity(), response_home_viewpager);
-                pagerDotIndicator = new PagerDotIndicator(getActivity(),linearLayoutPagerIndicator,viewPagerMainListSlide);
+                pagerDotIndicator = new PagerDotIndicator(getActivity(), linearLayoutPagerIndicator, viewPagerMainListSlide);
                 viewPagerMainListSlide.setAdapter(mainViewPagerAdapter);
-                viewPagerMainListSlide.setCurrentItem(response_home_viewpager.getData().size()*10);
+                viewPagerMainListSlide.setCurrentItem(response_home_viewpager.getData().size() * 10);
                 pagerDotIndicator.setDotNums(response_home_viewpager.getData().size());
             }
         });
@@ -91,5 +118,40 @@ public class HomeFragment extends BaseFragment {
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
         ButterKnife.bind(this, rootView);
         return rootView;
+    }
+
+
+    /**
+     * Home界面八个按钮的跳转
+     * @param view
+     */
+    @OnClick({R.id.zhuangxiugonsi, R.id.tongchenghuodong, R.id.zhuangxiuxuetang, R.id.zhuangxiuyusuan, R.id.jiancaijiaju, R.id.xiaoguotu, R.id.zizhuxiadan, R.id.shejiliangfang})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.zhuangxiugonsi:
+                startActivity(new Intent(getActivity(),ZhuangXiuGongSiActivity.class));
+                break;
+            case R.id.tongchenghuodong:
+                startActivity(new Intent(getActivity(),TongChengHuoDongActivity.class));
+                break;
+            case R.id.zhuangxiuxuetang:
+                startActivity(new Intent(getActivity(),ZhuangXiuXueTangActivity.class));
+                break;
+            case R.id.zhuangxiuyusuan:
+                startActivity(new Intent(getActivity(),ZhuangXiuYuSuanActivity.class));
+                break;
+            case R.id.jiancaijiaju:
+                startActivity(new Intent(getActivity(),JianCaiJiaJuActivity.class));
+                break;
+            case R.id.xiaoguotu:
+                startActivity(new Intent(getActivity(),XiaoGuoTuActivity.class));
+                break;
+            case R.id.zizhuxiadan:
+                startActivity(new Intent(getActivity(),ZiZhuXiaDanActivity.class));
+                break;
+            case R.id.shejiliangfang:
+                startActivity(new Intent(getActivity(),SheJiLiangFangActivity.class));
+                break;
+        }
     }
 }

@@ -1,12 +1,11 @@
 package aiyiqi.bwf.com.yiqizhuangxiu.http;
 
-import android.util.Log;
-
 import com.alibaba.fastjson.JSON;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_home_viewpager;
+import aiyiqi.bwf.com.yiqizhuangxiu.utlis.Apis;
 import okhttp3.Call;
 
 /**
@@ -18,12 +17,12 @@ public class Http_Home_Viewpager {
 
     /**
      * Home界面头部Viewpager的网络访问数据
-     * @param url
+     * @param
      * @return
      */
-    public void getHttp(String url) {
+    public void getHttp() {
 
-        OkHttpUtils.get().url(url).build().execute(new StringCallback() {
+        OkHttpUtils.get().url(Apis.HTTP_HOME_VIEWPAGER).build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
 

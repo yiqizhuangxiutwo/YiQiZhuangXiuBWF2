@@ -8,7 +8,7 @@ import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.util.HashMap;
 
-import aiyiqi.bwf.com.yiqizhuangxiu.eneity.ResponseRecycleViewList;
+import aiyiqi.bwf.com.yiqizhuangxiu.entity.ResponseRecycleViewList;
 import aiyiqi.bwf.com.yiqizhuangxiu.utlis.APIUtils;
 import okhttp3.Call;
 
