@@ -5,7 +5,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="120dp"
         android:background="@color/greens">
 
             <ImageView
@@ -13,14 +13,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/main_tab_my_selected"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="50dp"
                 android:layout_marginLeft="20dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="点击登录"
                 android:textColor="@color/white"
-                android:layout_centerVertical="true"
+                android:layout_alignBottom="@id/mine_tab_login"
                 android:layout_toRightOf="@id/mine_tab_login"
                 android:layout_marginLeft="16dp"
                 />

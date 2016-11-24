@@ -9,7 +9,7 @@ import aiyiqi.bwf.com.yiqizhuangxiu.R;
 public class MineFragment extends BaseFragment{
     @Override
     protected int getContentViewResID() {
-        return R.layout.fragment_mine;
+        return R.layout.activity_mine;
     }
 
     @Override
