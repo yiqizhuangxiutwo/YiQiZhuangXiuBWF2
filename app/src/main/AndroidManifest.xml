@@ -17,6 +17,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.MainActivity"/>
+        <activity android:name=".activity.ZhuangXiuGongSiActivity"/>
+        <activity android:name=".activity.TongChengHuoDongActivity"/>
+        <activity android:name=".activity.ZhuangXiuXueTangActivity"/>
+        <activity android:name=".activity.ZhuangXiuYuSuanActivity"/>
+        <activity android:name=".activity.JianCaiJiaJuActivity"/>
+        <activity android:name=".activity.XiaoGuoTuActivity"/>
+        <activity android:name=".activity.ZiZhuXiaDanActivity"/>
+        <activity android:name=".activity.SheJiLiangFangActivity"/>
     </application>
 
 </manifest>

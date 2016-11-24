@@ -1,14 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="就业说"
-        android:textSize="30dp"/>
+    android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize">
+            <ImageVie
+                android:layout_centerVertical="true"
+                android:paddingLeft="10dp"
+                android:id="@id/search_new"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/search_new"
+                android:scaleType="centerCrop"
+                />
+            <android.support.design.widget.TabLayout
+                android:id="@id/tabLayout_main"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                app:tabTextAppearance="@style/mytextsize"
+                app:tabBackground="@android:color/white"
+                app:tabIndicatorColor="@android:color/holo_purple"
+                app:tabMode="scrollable"
+                app:tabSelectedTextColor="@android:color/holo_green_light"
+                app:tabTextColor="@android:color/black" />
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#ff898989"/>
+    <android.support.v4.view.ViewPager
+        android:id="@id/viewPager_main_fragment"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/white"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </LinearLayout>

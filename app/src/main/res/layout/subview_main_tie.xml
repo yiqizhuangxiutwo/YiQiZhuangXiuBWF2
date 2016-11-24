@@ -10,8 +10,10 @@
         android:orientation="horizontal">
         <com.facebook.drawee.view.SimpleDraweeView
             xmlns:fresco="http://schemas.android.com/apk/res-auto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
             android:id="@+id/main_recycleview_tie_touxiang"
             fresco:placeholderImage="@drawable/loading_placeholder"
             fresco:placeholderImageScaleType="fitCenter"
@@ -54,6 +56,18 @@
                 android:textColor="@color/jiaguanzhu"/>
         </LinearLayout>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp">
+        <TextView
+            android:id="@+id/main_tie_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我是大标题"
+            android:textSize="20dp"
+            android:padding="5dp"/>
+    </LinearLayout>
     <com.facebook.drawee.view.SimpleDraweeView
         xmlns:fresco="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
@@ -68,31 +82,38 @@
         android:orientation="horizontal"
         android:padding="2dp">
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="2"
             android:layout_height="wrap_content"
             android:text="@string/artcle_item_time"
             android:layout_marginLeft="10dp"
-            android:id="@+id/tie_item_time"
-            android:textColor="@color/tie_lianjie"/>
-        <ImageView
-            android:layout_width="wrap_content"
+            android:id="@+id/artcle_item_time"
+            android:textColor="@color/tie_lianjie"
+            android:textSize="15dp"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="220dp"
-            android:src="@drawable/looked_hui"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/main_tie_item_scan"
-            android:text="@string/scan"/>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:src="@drawable/looked_hui"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/main_tie_item_comments"
-            android:text="@string/comments"/>
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/looked_hui"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/main_article_item_scan"
+                android:text="@string/scan"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/looked_hui"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/main_article_item_comments"
+                android:text="@string/scan"/>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

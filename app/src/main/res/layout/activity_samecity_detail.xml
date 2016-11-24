@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include
+        layout="@layout/subview_titile">
+    </include>
+    <com.cjj.MaterialRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/white">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <FrameLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="150dp"
+                    android:background="@color/material_blue">
+                    <LinearLayout
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_gravity="bottom|right"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/samecity_hot">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="16dp"
+                            android:src="@drawable/activity_hot_sign"/>
+                        <TextView
+                            android:id="@+id/textView_tag_subview_article_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_gravity="center_vertical"
+                            android:text="火热报名中..." />
+                    </LinearLayout>
+                </FrameLayout>
+                <!--<include-->
+                    <!--layout="@layout/subview_article_title"/>-->
+                <!--<WebView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:id="@+id/webview"-->
+                    <!--/>-->
+                <!--<include-->
+                    <!--layout="@layout/subview_comments"/>-->
+            </LinearLayout>
+        </ScrollView>
+    </com.cjj.MaterialRefreshLayout>
+    <!--<include-->
+        <!--layout="@layout/subview_bottom_article_detail"></include>-->
+
+</LinearLayout>
