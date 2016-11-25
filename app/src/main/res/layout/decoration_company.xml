@@ -37,21 +37,23 @@
             android:id="@+id/zxgs_viewpager"
             android:layout_width="match_parent"
             android:layout_height="230dp"
-            ></android.support.v4.view.ViewPager>
+            >
+
+        </android.support.v4.view.ViewPager>
 
         <include layout="@layout/decoration_neworold"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="10dp"
-            android:background="@color/gray"/>
+            android:background="@color/mine_color"/>
 
         <include layout="@layout/three_option"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="10dp"
-            android:background="@color/gray"/>
+            android:background="@color/mine_color"/>
         <include layout="@layout/decoration_live"/>
     </LinearLayout>
 

@@ -16,5 +16,10 @@
     <string name="jiaguanzhu" >加关注</string>
     <string name="noMoreData">没有更多数据了~~~</string>
     <string name="loadDataFailedAndClickRetry">获取数据失败，点我重试</string>>
-    <string name="text_great_category">null</string>>
+    <string name="text_great_category">null</string>
+    <string name="effect_topic_left_titel">专题</string>
+    <string name="effect_topic_right_titel">美图</string>
+    <string name="zhuangxiuyusuan_left">装修预算</string>
+    <string name="zhaungxiuyusuan_right">我的预算</string>
+    <string name="effect_tag1">空间</string>>
 </resources>

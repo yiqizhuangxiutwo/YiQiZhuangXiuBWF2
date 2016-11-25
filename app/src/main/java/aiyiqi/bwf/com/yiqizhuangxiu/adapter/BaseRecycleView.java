@@ -32,7 +32,7 @@ public abstract  class BaseRecycleView<T> extends RecyclerView.Adapter<RecyclerV
      * @param datas
      */
     public void addDatas(List<T> datas){
-        this.datas.clear();
+//        this.datas.clear();
         this.datas.addAll(datas);
         notifyDataSetChanged();
     }

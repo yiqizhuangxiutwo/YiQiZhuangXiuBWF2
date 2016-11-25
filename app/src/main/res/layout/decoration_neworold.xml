@@ -39,7 +39,7 @@
         <View
             android:layout_width="1dp"
             android:layout_height="wrap_content"
-            android:background="#444444" />
+            android:background="@color/mine_color" />
 
         <LinearLayout
             android:id="@+id/linearlayout_old_house"

@@ -24,4 +24,10 @@ public interface Apis {
 
     //装修学堂上部TAG数据接口
     String ZZXT_TAG = " http://appapi.17house.com/StageApi.php?version=1&action=getTagsByStage&stage=1&model=android";
+
+    //效果图专题接口
+    String EFFECT_TOPIC_LEFT = " http://appapi.17house.com/xiaoguotuApi.php?version=1&page={0}&action=albumList2&pageSize=10&tagid=1&model=android";
+
+    //效果美图接口
+    String EFFECT_PICTURE_RIGHT = " http://appapi.17house.com/xiaoguotuApi.php?version=1&page={0}&action=imageList2&pageSize=10&tagid=0&model=android";
 }

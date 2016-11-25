@@ -16,6 +16,10 @@
     <color name="jiaguanzhu">#1e9e3e</color>
     <color name="tie_lianjie">#477ccc</color>
     <color name="dark">#dd0a0909</color>
-    <color name="effect_topic_text">#1a1919</color>
+    <color name="effect_topic_text">#2d2b2b</color>
     <color name="greens">#006400</color>
+    <color name="mine_color">#e6dfdf</color>
+    <color name="effect_color">#aba4a4</color>
+    <color name="topic_title_color">#161616</color>
+    <color name="topic_background">#161515</color>
 </resources>
