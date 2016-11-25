@@ -7,7 +7,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="?android:attr/actionBarSize">
-            <ImageVie
+            <ImageView
                 android:layout_centerVertical="true"
                 android:paddingLeft="10dp"
                 android:id="@id/search_new"

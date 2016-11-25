@@ -3,6 +3,7 @@ package aiyiqi.bwf.com.yiqizhuangxiu.fragment.speakfragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -17,6 +18,9 @@ import aiyiqi.bwf.com.yiqizhuangxiu.adapter.adapter.TabAdapter;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_Essence;
 import aiyiqi.bwf.com.yiqizhuangxiu.fragment.BaseFragment;
 import aiyiqi.bwf.com.yiqizhuangxiu.http.Http_Essence;
+import aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.presenter.SpeakPresenter;
+import aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.presenter.SpeakPresenterIml;
+import aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.view.SpeakView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -24,11 +28,13 @@ import butterknife.ButterKnife;
  * Created by Administrator on 2016/11/23.
  */
 
-public class Fragment1 extends BaseFragment implements View.OnTouchListener {
+public class Fragment1 extends BaseFragment implements  SpeakView {
     @BindView(R.id.recycleView)
     RecyclerView recycleView;
-    private ImageButton button;
+//    private ImageButton button;
     private MyRecyclecviewAdapter myadapter;
+    private SpeakPresenter speakPresenter;
+    private LinearLayoutManager manager;
     @Override
     protected int getContentViewResID() {
         return R.layout.fragment1;
@@ -36,48 +42,51 @@ public class Fragment1 extends BaseFragment implements View.OnTouchListener {
 
     @Override
     protected void initViews() {
-        button = (ImageButton) getView().findViewById(R.id.imgbnt);
-        button.setOnTouchListener(this);
-        httpgetDatas();
-        LinearLayoutManager manager = new LinearLayoutManager(getActivity());
+        manager = new LinearLayoutManager(getActivity());
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         recycleView.setLayoutManager(manager);
         myadapter = new MyRecyclecviewAdapter(getActivity());
         recycleView.setAdapter(myadapter);
+        recycleView.addOnScrollListener(onScrollListener);
+        speakPresenter = new SpeakPresenterIml(this);
+        speakPresenter.loadPage();
     }
 
     @Override
     protected void initDatas() {
     }
-
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            //重新设置按下时的背景图片
-            ((ImageButton) v).setImageDrawable(getResources().getDrawable(R.drawable.float_layer_menu_close));
-        } else if (event.getAction() == MotionEvent.ACTION_UP) {
-            //再修改为抬起时的正常图片
-            ((ImageButton) v).setImageDrawable(getResources().getDrawable(R.drawable.float_layer_menu_normal));
-        }
-        return false;
-    }
-
-    public void httpgetDatas() {
-        Http_Essence http = new Http_Essence();
-        http.getHttp();
-        http.setCallback(new Http_Essence.Callback() {
-            @Override
-            public void ViewPagerCallback(List<Response_Essence.DataBean> dataBean) {
-                myadapter.addDtas(dataBean);
+    private boolean isNoMoreData;
+    private boolean isDatas;
+    private RecyclerView.OnScrollListener onScrollListener = new RecyclerView.OnScrollListener() {
+        @Override
+        public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+            super.onScrolled(recyclerView, dx, dy);
+            if(isNoMoreData){
+                return;
             }
-        });
-    }
-
+            if(!isDatas&&manager.findLastVisibleItemPosition()==manager.getItemCount()-1){
+                isDatas = true;
+                speakPresenter.loadPage();
+            }
+        }
+    };
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO: inflate a fragment view
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
         ButterKnife.bind(this, rootView);
         return rootView;
+    }
+
+    @Override
+    public void showPage(List<Response_Essence.DataBean> dataBeen) {
+        Log.d("Fragment1", "dataBeen:" + dataBeen);
+        myadapter.addDtas(dataBeen);
+        isDatas = false;
+    }
+
+    @Override
+    public void showFaild() {
+
     }
 }

@@ -21,4 +21,9 @@
     <item name="comment_count" type="id" />
     <item name="author_name" type="id" />
     <item name="subject_name" type="id" />
+    <item name="linear1" type="id" />
+    <item name="explain_text" type="id" />
+    <item name="newrecycler" type="id" />
+    <item name="lookedtext" type="id" />
+    <item name="times" type="id" />
 </resources>

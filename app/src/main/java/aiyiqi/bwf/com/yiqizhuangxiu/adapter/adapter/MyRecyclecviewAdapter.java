@@ -49,10 +49,19 @@ public class MyRecyclecviewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         myViewHolder.imageViewAuthor.setImageURI(dataBean.getAvtUrl());
         myViewHolder.authorname.setText(dataBean.getAuthor());
         myViewHolder.textViewFrontMainTitle.setText(dataBean.getSubject());
-        myViewHolder.imageViewFrontTopImage.setImageURI(dataBean.getAttachments().get(0));
+        myViewHolder.commentcount.setText(dataBean.getReplies()+"");
+        if(dataBean.getAttachments()!=null){
+            myViewHolder.imageViewFrontTopImage.setImageURI(dataBean.getAttachments().get(0));
+        }else{
+            myViewHolder.imageViewFrontTopImage.setVisibility(View.GONE);
+        }
         myViewHolder.textViewFrontSubtitle.setText("精选自"+dataBean.getFname());
         myViewHolder.timeArtticle.setText(dataBean.getDateline());
-
+        if(dataBean.getTags()!=null){
+            for (int i = 0; i <dataBean.getTags().size(); i++) {
+                myViewHolder.explaintext.setText(dataBean.getTags().get(i).getTagname());
+            }
+        }
     }
     @Override
     public int getItemCount() {
@@ -81,6 +90,8 @@ public class MyRecyclecviewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         TextView authorname;
         @BindView(R.id.subject_name)
         TextView subjectname;
+        @BindView(R.id.explain_text)
+        TextView explaintext;
         public MyViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);

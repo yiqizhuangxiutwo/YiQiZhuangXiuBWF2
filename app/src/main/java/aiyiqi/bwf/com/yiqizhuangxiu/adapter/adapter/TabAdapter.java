@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.fragment.speakfragment.Fragment1;
+import aiyiqi.bwf.com.yiqizhuangxiu.fragment.speakfragment.Fragment2;
+import aiyiqi.bwf.com.yiqizhuangxiu.fragment.speakfragment.Fragment3;
 
 /**
  * Created by Administrator on 2016/11/23.
@@ -20,9 +22,9 @@ public class TabAdapter extends FragmentPagerAdapter {
         super(fm);
         fragments = new ArrayList<>();
         this.datas = datas;
-        for (int i = 0; i < datas.size(); i++) {
-            fragments.add(new Fragment1());
-        }
+        fragments.add(new Fragment1());
+        fragments.add(new Fragment2());
+        fragments.add(new Fragment3());
     }
 
     @Override
