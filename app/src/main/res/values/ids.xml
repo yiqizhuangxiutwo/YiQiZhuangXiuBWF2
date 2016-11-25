@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<<<<<<< HEAD
-=======
     <item name="layout_subview_recycleview_loadfooter" type="id" />
     <item name="progressbar_subview_recycleview_loadfooter" type="id" />
     <item name="textview_subview_recycleview_loadfooter" type="id" />
@@ -23,5 +21,4 @@
     <item name="comment_count" type="id" />
     <item name="author_name" type="id" />
     <item name="subject_name" type="id" />
->>>>>>> c4cde4f249c868032a05d9a94e75e984f03cfac8
 </resources>
