@@ -23,6 +23,7 @@ public interface Apis {
     String ZXYS_WEBVIEW = "http://m.beijing.17house.com/baojia/?sem=android&model=android";
 
     //装修学堂上部TAG数据接口
+
     String ZZXT_TAG = "http://appapi.17house.com/StageApi.php?version=1&action=getTagsByStage&stage=1&model=android";
 
     //设计量房左fragment的接口
@@ -33,4 +34,11 @@ public interface Apis {
 
     //自助下单的接口
     String ZZXD = "http://appapi.17house.com/GrouponApi.php?version=1&action=getSingleSupplementInfo&cityId=2&model=android&app_version=android_com.aiyiqi.galaxy_1.1";
+
+    //效果图专题接口
+    String EFFECT_TOPIC_LEFT = " http://appapi.17house.com/xiaoguotuApi.php?version=1&page={0}&action=albumList2&pageSize=10&tagid=1&model=android";
+
+    //效果美图接口
+    String EFFECT_PICTURE_RIGHT = " http://appapi.17house.com/xiaoguotuApi.php?version=1&page={0}&action=imageList2&pageSize=10&tagid=0&model=android";
+
 }
