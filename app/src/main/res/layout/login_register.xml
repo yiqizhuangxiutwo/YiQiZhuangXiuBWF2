@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:text="取消"
-            android:textSize="20dp" />
+            android:textSize="15dp" />
 
         <TextView
             android:id="@+id/textView"
@@ -25,24 +25,25 @@
             android:paddingLeft="60dp"
             android:text="登录/注册"
             android:textColor="@android:color/black"
-            android:textSize="25dp"
+            android:textSize="20dp"
             android:textStyle="bold" />
     </LinearLayout>
 
     <View
         android:layout_width="wrap_content"
         android:layout_height="1dp"
-        android:background="#444444" />
+        android:background="#c1bbbb"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
         android:gravity="left|center"
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_marginLeft="20dp"
             android:background="@drawable/phone_number" />
 
@@ -51,6 +52,7 @@
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            android:background="@null"
             android:textSize="15dp"
             android:hint="请输入账号" />
     </LinearLayout>
@@ -58,20 +60,21 @@
     <View
         android:layout_width="wrap_content"
         android:layout_height="1dp"
-        android:background="#444444" />
+        android:background="#c1bbbb"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
         android:orientation="horizontal"
         android:gravity="center"
         android:weightSum="1">
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="57dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="20dp"
             android:background="@drawable/password" />
 
         <EditText
@@ -81,6 +84,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="110dp"
             android:textSize="15dp"
+            android:background="@null"
             android:hint="6-20位字母，数字和符号" />
 
             <ImageButton
@@ -96,37 +100,42 @@
         android:orientation="horizontal">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="2dp">
         <Button
             android:id="@+id/msg_quick_login"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:text="短信快捷登录"
+            android:textSize="15dp"
             android:background="@color/white"/>
             <Button
                 android:id="@+id/forget_pwd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="180dp"
+                android:layout_marginLeft="150dp"
                 android:text="忘记密码？"
+                android:textSize="15dp"
                 android:background="@color/white"/>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center">
         <Button
             android:id="@+id/login_register"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:text="登录/注册"
-            android:textSize="30dp"
+            android:textSize="18dp"
             android:textColor="@color/white"
-            android:background="@drawable/shape_login_register"/>
+            android:background="@drawable/shape_login_register"
+            android:enabled="false"/>
     </LinearLayout>
 </LinearLayout>
