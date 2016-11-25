@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +25,8 @@ public class ZhuangXiuYuSuanActivity extends BaseActivity {
     TabLayout zxysTablayout;
     @BindView(R.id.zxys_viewpager)
     ViewPager zxysViewpager;
+    @BindView(R.id.zxys_back)
+    ImageView zxysBack;
 
     private List<Fragment> fragments;
     private String[] strings;
@@ -35,12 +39,18 @@ public class ZhuangXiuYuSuanActivity extends BaseActivity {
     @Override
     protected void initViews() {
         getFragments();
-        strings = new String[]{"装修报价","我的预算"};
+        strings = new String[]{"装修报价", "我的预算"};
         zxysTablayout.addTab(zxysTablayout.newTab().setText(strings[0]));
         zxysTablayout.addTab(zxysTablayout.newTab().setText(strings[1]));
-        ZXYS_FragmentPagerAdapter adapter = new ZXYS_FragmentPagerAdapter(fragments,strings,getSupportFragmentManager());
+        ZXYS_FragmentPagerAdapter adapter = new ZXYS_FragmentPagerAdapter(fragments, strings, getSupportFragmentManager());
         zxysViewpager.setAdapter(adapter);
         zxysTablayout.setupWithViewPager(zxysViewpager);
+        zxysBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void getFragments() {

@@ -15,9 +15,6 @@
     <string name="auther_time">16小时前</string>
     <string name="jiaguanzhu" >加关注</string>
     <string name="noMoreData">没有更多数据了~~~</string>
-<<<<<<< HEAD
     <string name="loadDataFailedAndClickRetry">获取数据失败，点我重试</string>>
-=======
     <string name="text_great_category">null</string>>
->>>>>>> 2d951a59faf8463b0e2175b0e0fe3b0c27b09372
 </resources>
