@@ -30,4 +30,7 @@ public interface Apis {
 
     //设计量房右fragment的接口
     String SJLF_RIGHT = "http://hui.17house.com/svc/payment-facade/h5/measureDesignFree/designFree.html?model=android";
+
+    //自助下单的接口
+    String ZZXD = "http://appapi.17house.com/GrouponApi.php?version=1&action=getSingleSupplementInfo&cityId=2&model=android&app_version=android_com.aiyiqi.galaxy_1.1";
 }
