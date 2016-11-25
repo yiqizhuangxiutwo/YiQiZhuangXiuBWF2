@@ -11,9 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
-import aiyiqi.bwf.com.yiqizhuangxiu.adapter.ZXYS_FragmentPagerAdapter;
-import aiyiqi.bwf.com.yiqizhuangxiu.fragment.ZXYS_Fragment_Left;
-import aiyiqi.bwf.com.yiqizhuangxiu.fragment.ZXYS_Fragment_Right;
+import aiyiqi.bwf.com.yiqizhuangxiu.adapter.WebViewFragmentPagerAdapter;
+import aiyiqi.bwf.com.yiqizhuangxiu.fragment.WebFragment;
+import aiyiqi.bwf.com.yiqizhuangxiu.utlis.Apis;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -42,7 +42,7 @@ public class ZhuangXiuYuSuanActivity extends BaseActivity {
         strings = new String[]{"装修报价", "我的预算"};
         zxysTablayout.addTab(zxysTablayout.newTab().setText(strings[0]));
         zxysTablayout.addTab(zxysTablayout.newTab().setText(strings[1]));
-        ZXYS_FragmentPagerAdapter adapter = new ZXYS_FragmentPagerAdapter(fragments, strings, getSupportFragmentManager());
+        WebViewFragmentPagerAdapter adapter = new WebViewFragmentPagerAdapter(fragments, strings, getSupportFragmentManager());
         zxysViewpager.setAdapter(adapter);
         zxysTablayout.setupWithViewPager(zxysViewpager);
         zxysBack.setOnClickListener(new View.OnClickListener() {
@@ -55,8 +55,8 @@ public class ZhuangXiuYuSuanActivity extends BaseActivity {
 
     private void getFragments() {
         fragments = new ArrayList<>();
-        fragments.add(new ZXYS_Fragment_Left());
-        fragments.add(new ZXYS_Fragment_Right());
+        fragments.add(new WebFragment(Apis.ZXYS_WEBVIEW));
+        fragments.add(new WebFragment(Apis.ZXYS_WEBVIEW));
     }
 
     @Override

@@ -88,11 +88,11 @@ public class Response_ZXXT_Up_Tag {
         private String value8166;
         @SerializedName("8667")
         private String value8667;
-
+        @SerializedName("305")
         public String getValue305() {
             return value305;
         }
-
+        @SerializedName("305")
         public void setValue305(String value305) {
             this.value305 = value305;
         }

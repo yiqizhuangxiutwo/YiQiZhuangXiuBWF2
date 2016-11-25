@@ -23,5 +23,11 @@ public interface Apis {
     String ZXYS_WEBVIEW = "http://m.beijing.17house.com/baojia/?sem=android&model=android";
 
     //装修学堂上部TAG数据接口
-    String ZZXT_TAG = " http://appapi.17house.com/StageApi.php?version=1&action=getTagsByStage&stage=1&model=android";
+    String ZZXT_TAG = "http://appapi.17house.com/StageApi.php?version=1&action=getTagsByStage&stage=1&model=android";
+
+    //设计量房左fragment的接口
+    String SJLF_LEFT = "http://hui.17house.com/svc/payment-facade/h5/measureDesignFree/measureFree.html?model=android";
+
+    //设计量房右fragment的接口
+    String SJLF_RIGHT = "http://hui.17house.com/svc/payment-facade/h5/measureDesignFree/designFree.html?model=android";
 }

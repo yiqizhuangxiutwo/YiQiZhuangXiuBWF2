@@ -13,10 +13,10 @@ import java.util.List;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
 import aiyiqi.bwf.com.yiqizhuangxiu.adapter.adapter.MyRecyclecviewAdapter;
-import aiyiqi.bwf.com.yiqizhuangxiu.adapter.adapter.TabAdapter;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_Essence;
 import aiyiqi.bwf.com.yiqizhuangxiu.fragment.BaseFragment;
 import aiyiqi.bwf.com.yiqizhuangxiu.http.Http_Essence;
+import aiyiqi.bwf.com.yiqizhuangxiu.view.FullyLinearLayoutManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -39,7 +39,7 @@ public class Fragment1 extends BaseFragment implements View.OnTouchListener {
         button = (ImageButton) getView().findViewById(R.id.imgbnt);
         button.setOnTouchListener(this);
         httpgetDatas();
-        LinearLayoutManager manager = new LinearLayoutManager(getActivity());
+        FullyLinearLayoutManager manager = new FullyLinearLayoutManager(getActivity());
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         recycleView.setLayoutManager(manager);
         myadapter = new MyRecyclecviewAdapter(getActivity());

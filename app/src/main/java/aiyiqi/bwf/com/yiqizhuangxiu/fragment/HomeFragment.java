@@ -3,7 +3,6 @@ package aiyiqi.bwf.com.yiqizhuangxiu.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,8 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
-import java.util.List;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
 import aiyiqi.bwf.com.yiqizhuangxiu.activity.JianCaiJiaJuActivity;
@@ -29,6 +26,7 @@ import aiyiqi.bwf.com.yiqizhuangxiu.entity.ResponseRecycleViewList;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_home_viewpager;
 import aiyiqi.bwf.com.yiqizhuangxiu.http.Http_Home_RecyclerView;
 import aiyiqi.bwf.com.yiqizhuangxiu.http.Http_Home_Viewpager;
+import aiyiqi.bwf.com.yiqizhuangxiu.view.FullyLinearLayoutManager;
 import aiyiqi.bwf.com.yiqizhuangxiu.widget.PagerDotIndicator;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -71,7 +69,10 @@ public class HomeFragment extends BaseFragment {
     /**
      * 管理指示器的对象
      **/
-    private PagerDotIndicator pagerDotIndicator;
+    private PagerDotIndicator pagerDotIndicator;public static final int STATE_GONE = 0;
+    public static final int STATE_LOADING = 1;
+    public static final int STATE_NO_MORE_DATA = 2;
+    public static final int STATE_LOAD_FAILED = 3;
 
 
     @Override
@@ -94,12 +95,11 @@ public class HomeFragment extends BaseFragment {
         http.setCallback(new Http_Home_RecyclerView.Callback() {
             @Override
             public void RecyclerViewCallback(ResponseRecycleViewList responseRecycleViewList) {
-                LinearLayoutManager manager = new LinearLayoutManager(getActivity());
-                manager.setOrientation(LinearLayoutManager.VERTICAL);
+                FullyLinearLayoutManager manager = new FullyLinearLayoutManager(getActivity());
+                manager.setOrientation(FullyLinearLayoutManager.VERTICAL);
                 homeRecyclerview.setLayoutManager(manager);
                 HomeRecyvlerViewAdapter homerecyvlerviewadapter = new HomeRecyvlerViewAdapter(getActivity(),responseRecycleViewList.getData());
-                List<ResponseRecycleViewList.DataBean> dataBeen = responseRecycleViewList.getData();
-                homerecyvlerviewadapter.addDatas(dataBeen);
+                homerecyvlerviewadapter.updateFooterState(STATE_LOADING);
                 homeRecyclerview.setAdapter(homerecyvlerviewadapter);
             }
         });
@@ -131,6 +131,8 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void initDatas() {
+        //判定到最后进行下一页的数据加载
+
     }
 
     /**

@@ -10,12 +10,11 @@ import java.util.List;
  * Created by Yishi on 2016/11/24.
  */
 
-public class ZXYS_FragmentPagerAdapter extends FragmentPagerAdapter{
-    public final static int COUNT = 2;
+public class WebViewFragmentPagerAdapter extends FragmentPagerAdapter{
     private List<Fragment> fragments;
     private String[] strings;
 
-    public ZXYS_FragmentPagerAdapter(List<Fragment> fragments,String[] strings,FragmentManager fm) {
+    public WebViewFragmentPagerAdapter(List<Fragment> fragments, String[] strings, FragmentManager fm) {
         super(fm);
         this.fragments = fragments;
         this.strings = strings;
@@ -28,7 +27,7 @@ public class ZXYS_FragmentPagerAdapter extends FragmentPagerAdapter{
 
     @Override
     public int getCount() {
-        return COUNT;
+        return fragments.size();
     }
 
     @Override
