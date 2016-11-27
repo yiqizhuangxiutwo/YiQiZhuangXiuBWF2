@@ -40,8 +40,6 @@ public class ZhuangXiuYuSuanActivity extends BaseActivity {
     protected void initViews() {
         getFragments();
         strings = new String[]{"装修报价", "我的预算"};
-        zxysTablayout.addTab(zxysTablayout.newTab().setText(strings[0]));
-        zxysTablayout.addTab(zxysTablayout.newTab().setText(strings[1]));
         WebViewFragmentPagerAdapter adapter = new WebViewFragmentPagerAdapter(fragments, strings, getSupportFragmentManager());
         zxysViewpager.setAdapter(adapter);
         zxysTablayout.setupWithViewPager(zxysViewpager);

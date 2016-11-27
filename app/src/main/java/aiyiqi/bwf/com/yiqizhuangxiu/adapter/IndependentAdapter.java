@@ -1,10 +1,12 @@
 package aiyiqi.bwf.com.yiqizhuangxiu.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -49,16 +51,19 @@ public class IndependentAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.independent_order_viewpager_item_image, parent, false);
             holder = new ViewHolder(convertView);
             convertView.setTag(holder);
-        }else{
+        } else {
             holder = (ViewHolder) convertView.getTag();
         }
         holder.independentOrderViewpagerItemImage.setImageURI(dataBeen.get(position).getLogo());
-        return null;
+        holder.independentOrderViewpagerItemText.setText(dataBeen.get(position).getBusiness_name());
+        return convertView;
     }
 
     static class ViewHolder {
         @BindView(R.id.independent_order_viewpager_item_image)
         SimpleDraweeView independentOrderViewpagerItemImage;
+        @BindView(R.id.independent_order_viewpager_item_text)
+        TextView independentOrderViewpagerItemText;
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);
