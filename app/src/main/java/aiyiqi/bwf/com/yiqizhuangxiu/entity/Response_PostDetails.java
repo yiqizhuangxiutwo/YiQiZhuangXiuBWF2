@@ -1,0 +1,110 @@
+package aiyiqi.bwf.com.yiqizhuangxiu.entity;
+
+import java.util.List;
+
+/**
+ * Created by Administrator on 2016/11/28.
+ */
+
+public class Response_PostDetails {
+
+    /**
+     * data : [{"uid":"1618947","dateline":"1480072168","username":"18680414330","avtUrl":"http://bbs.17house.com/uc_server/avatar.php?uid=1618947&size=big"},{"uid":"1631067","dateline":"1479192532","username":"XUZHENHU","avtUrl":"http://bbs.17house.com/uc_server/avatar.php?uid=1631067&size=big"},{"uid":"1516666","dateline":"1479178914","username":"老房有喜","avtUrl":"http://bbs.17house.com/uc_server/avatar.php?uid=1516666&size=big"}]
+     * currentPage : 1
+     * totalCount : 3
+     * error : 0
+     * message : 成功
+     */
+
+    private int currentPage;
+    private int totalCount;
+    private String error;
+    private String message;
+    private List<DataBean> data;
+
+    public int getCurrentPage() {
+        return currentPage;
+    }
+
+    public void setCurrentPage(int currentPage) {
+        this.currentPage = currentPage;
+    }
+
+    public int getTotalCount() {
+        return totalCount;
+    }
+
+    public void setTotalCount(int totalCount) {
+        this.totalCount = totalCount;
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public List<DataBean> getData() {
+        return data;
+    }
+
+    public void setData(List<DataBean> data) {
+        this.data = data;
+    }
+
+    public static class DataBean {
+        /**
+         * uid : 1618947
+         * dateline : 1480072168
+         * username : 18680414330
+         * avtUrl : http://bbs.17house.com/uc_server/avatar.php?uid=1618947&size=big
+         */
+
+        private String uid;
+        private String dateline;
+        private String username;
+        private String avtUrl;
+
+        public String getUid() {
+            return uid;
+        }
+
+        public void setUid(String uid) {
+            this.uid = uid;
+        }
+
+        public String getDateline() {
+            return dateline;
+        }
+
+        public void setDateline(String dateline) {
+            this.dateline = dateline;
+        }
+
+        public String getUsername() {
+            return username;
+        }
+
+        public void setUsername(String username) {
+            this.username = username;
+        }
+
+        public String getAvtUrl() {
+            return avtUrl;
+        }
+
+        public void setAvtUrl(String avtUrl) {
+            this.avtUrl = avtUrl;
+        }
+    }
+}

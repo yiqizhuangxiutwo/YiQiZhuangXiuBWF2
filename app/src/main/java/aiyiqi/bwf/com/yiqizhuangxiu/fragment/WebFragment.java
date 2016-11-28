@@ -7,27 +7,32 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
-import aiyiqi.bwf.com.yiqizhuangxiu.utlis.Apis;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by Yishi on 2016/11/24.
+ * Created by Yishi on 2016/11/25.
  */
 
-public class ZXYS_Fragment_Left extends BaseFragment {
-    @BindView(R.id.zxys_webview)
-    WebView zxysWebview;
+public class WebFragment extends BaseFragment {
+    @BindView(R.id.fragment_webview)
+    WebView fragmentWebview;
+
+    private String webFragmentUrl;
+
+    public WebFragment(String webFragmentUrl) {
+        this.webFragmentUrl = webFragmentUrl;
+    }
 
     @Override
     protected int getContentViewResID() {
-        return R.layout.zxys_fragment_left;
+        return R.layout.fragment_webview;
     }
 
     @Override
     protected void initViews() {
-        zxysWebview.getSettings().setJavaScriptEnabled(true);
-        zxysWebview.loadUrl(Apis.ZXYS_WEBVIEW);
+        fragmentWebview.getSettings().setJavaScriptEnabled(true);
+        fragmentWebview.loadUrl(webFragmentUrl);
     }
 
     @Override

@@ -3,7 +3,6 @@ package aiyiqi.bwf.com.yiqizhuangxiu.activity;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -55,7 +54,6 @@ public class ZhuangXiuXueTangActivity extends BaseActivity {
         zxxt_tag.setCallback(new Http_ZXXT_Tag.Callback() {
             @Override
             public void ZXXTTagCallback(Response_ZXXT_Up_Tag response_zxxt_up_tag) {
-                Toast.makeText(ZhuangXiuXueTangActivity.this, response_zxxt_up_tag.getData().getValue899(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
