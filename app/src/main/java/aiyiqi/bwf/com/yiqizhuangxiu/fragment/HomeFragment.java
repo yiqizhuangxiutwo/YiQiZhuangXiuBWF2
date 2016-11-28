@@ -165,6 +165,7 @@ public class HomeFragment extends BaseFragment {
             case R.id.shejiliangfang:
                 startActivity(new Intent(getActivity(), SheJiLiangFangActivity.class));
                 break;
+
         }
     }
 
