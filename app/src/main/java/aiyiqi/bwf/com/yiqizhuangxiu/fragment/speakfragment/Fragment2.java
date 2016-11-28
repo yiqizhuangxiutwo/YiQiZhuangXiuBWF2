@@ -14,7 +14,7 @@ import aiyiqi.bwf.com.yiqizhuangxiu.adapter.adapter.NewRecycleviewAdapter;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_New;
 import aiyiqi.bwf.com.yiqizhuangxiu.fragment.BaseFragment;
 import aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.presenter.NewSpeakPresenter;
-import aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.presenter.NewSpeakPresenterIml;
+import aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.presenter.iml.NewSpeakPresenterIml;
 import aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.view.NewSpeakView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,7 +37,6 @@ public class Fragment2 extends BaseFragment implements NewSpeakView {
 
     @Override
     protected void initViews() {
-        newrecycler = (RecyclerView) getView().findViewById(R.id.newrecycler);
         manager = new LinearLayoutManager(getActivity());
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         newrecycler.setLayoutManager(manager);

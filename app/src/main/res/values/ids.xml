@@ -26,4 +26,8 @@
     <item name="newrecycler" type="id" />
     <item name="lookedtext" type="id" />
     <item name="times" type="id" />
+    <item name="tipname" type="id" />
+    <item name="tipcount" type="id" />
+    <item name="gridview" type="id" />
+    <item name="gridview1" type="id" />
 </resources>

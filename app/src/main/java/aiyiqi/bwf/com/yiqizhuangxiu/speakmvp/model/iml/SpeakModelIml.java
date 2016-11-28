@@ -1,4 +1,4 @@
-package aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.model;
+package aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.model.iml;
 
 import android.util.Log;
 
@@ -8,13 +8,14 @@ import com.zhy.http.okhttp.callback.StringCallback;
 import com.zhy.http.okhttp.request.RequestCall;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_Essence;
+import aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.model.SpeakModel;
 import okhttp3.Call;
 
 /**
  * Created by Administrator on 2016/11/25.
  */
 
-public class SpeakModelIml implements SpeakModel{
+public class SpeakModelIml implements SpeakModel {
     @Override
     public void loadNextPage(String url,final LoadCallbak callbak) {
 

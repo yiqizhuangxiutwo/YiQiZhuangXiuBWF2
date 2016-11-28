@@ -1,21 +1,18 @@
-package aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.presenter;
+package aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.presenter.iml;
 
 import java.util.List;
 
-import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_Essence;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_New;
 import aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.model.NewSpeakModel;
-import aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.model.NewSpeakModelIml;
-import aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.model.SpeakModel;
-import aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.model.SpeakModelIml;
+import aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.model.iml.NewSpeakModelIml;
+import aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.presenter.NewSpeakPresenter;
 import aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.view.NewSpeakView;
-import aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.view.SpeakView;
 
 /**
  * Created by Administrator on 2016/11/25.
  */
 
-public class NewSpeakPresenterIml implements NewSpeakPresenter{
+public class NewSpeakPresenterIml implements NewSpeakPresenter {
     private NewSpeakModel model;
     private NewSpeakView view;
     private int nextPage=1;

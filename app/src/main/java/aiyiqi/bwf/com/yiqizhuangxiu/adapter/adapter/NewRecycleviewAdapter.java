@@ -47,7 +47,6 @@ public class NewRecycleviewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         newViewHolder.lookedtext.setText(dataBean.getViews()+"");
         newViewHolder.times.setText(dataBean.getDateline());
     }
-
     @Override
     public int getItemCount() {
         return dataBeens.size();

@@ -1,17 +1,18 @@
-package aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.presenter;
+package aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.presenter.iml;
 
 import java.util.List;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_Essence;
 import aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.model.SpeakModel;
-import aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.model.SpeakModelIml;
+import aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.model.iml.SpeakModelIml;
+import aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.presenter.SpeakPresenter;
 import aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.view.SpeakView;
 
 /**
  * Created by Administrator on 2016/11/25.
  */
 
-public class SpeakPresenterIml implements SpeakPresenter{
+public class SpeakPresenterIml implements SpeakPresenter {
     private SpeakModel model;
     private SpeakView view;
     private int nextPage=1;
