@@ -76,13 +76,9 @@ public class EffectTopicLeft extends BaseFragment implements EffectTopicLeftView
             super.onScrolled(recyclerView, dx, dy);
             if(isNoMoreData)
                 return;
-//            Log.d("EffectTopicLeft", "manager.findLastVisibleItemPosition():" + manager.findLastVisibleItemPosition());
-//            Log.d("EffectTopicLeft", "manager.getItemCount():" + manager.getItemCount());
-
             if(!isLoading && manager.findLastVisibleItemPosition() == manager.getItemCount() - 1){
-//                Log.d("EffectTopicLeft", "jinlaile");
+                isLoading =true;
                 loadNextDatas();
-
             }
         }
     };

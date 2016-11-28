@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
-import aiyiqi.bwf.com.yiqizhuangxiu.adapter.ZXYS_FragmentPagerAdapter;
+import aiyiqi.bwf.com.yiqizhuangxiu.adapter.WebViewFragmentPagerAdapter;
 import aiyiqi.bwf.com.yiqizhuangxiu.fragment.EffectPictureRight;
 import aiyiqi.bwf.com.yiqizhuangxiu.fragment.EffectTopicLeft;
 import butterknife.BindView;
@@ -42,7 +42,7 @@ public class XiaoGuoTuActivity extends BaseActivity{
 
         zxysTablayout.addTab(zxysTablayout.newTab().setText(string[0]));
         zxysTablayout.addTab(zxysTablayout.newTab().setText(string[1]));
-        ZXYS_FragmentPagerAdapter adapter = new ZXYS_FragmentPagerAdapter(fragments, string, getSupportFragmentManager());
+        WebViewFragmentPagerAdapter adapter = new WebViewFragmentPagerAdapter(fragments, string, getSupportFragmentManager());
         zxysViewpager.setAdapter(adapter);
         zxysTablayout.setupWithViewPager(zxysViewpager);
         zxysBack.setOnClickListener(new View.OnClickListener() {

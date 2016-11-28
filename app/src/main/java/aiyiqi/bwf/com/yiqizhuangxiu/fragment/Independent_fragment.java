@@ -1,16 +1,16 @@
 package aiyiqi.bwf.com.yiqizhuangxiu.fragment;
 
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
 
 import java.util.List;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
-import aiyiqi.bwf.com.yiqizhuangxiu.adapter.IndependentAdapter;
+import aiyiqi.bwf.com.yiqizhuangxiu.adapter.IndependentAdapter_RecyclerView;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_IndependentOrder;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,14 +20,15 @@ import butterknife.ButterKnife;
  */
 
 public class Independent_fragment extends BaseFragment {
-    @BindView(R.id.independent_order_viewpager_item_gridview)
-    GridView independentOrderViewpagerItemGridview;
+
+
+    @BindView(R.id.independent_order_viewpager_item_recyclerview)
+    RecyclerView independentOrderViewpagerItemRecyclerview;
 
     private List<Response_IndependentOrder.DataBeanX.DataBean> dataBeen;
 
     public Independent_fragment(List<Response_IndependentOrder.DataBeanX.DataBean> dataBeen) {
         this.dataBeen = dataBeen;
-        Log.d("Independent_fragment", "得到了data"+dataBeen.get(0).getBrand_name());
     }
 
     @Override
@@ -37,8 +38,11 @@ public class Independent_fragment extends BaseFragment {
 
     @Override
     protected void initViews() {
-        IndependentAdapter adapter = new IndependentAdapter(getActivity(),dataBeen);
-        independentOrderViewpagerItemGridview.setAdapter(adapter);
+        GridLayoutManager manager = new GridLayoutManager(getActivity(), 3);
+        manager.setOrientation(GridLayoutManager.VERTICAL);
+        independentOrderViewpagerItemRecyclerview.setLayoutManager(manager);
+        IndependentAdapter_RecyclerView adapter = new IndependentAdapter_RecyclerView(getActivity(), dataBeen);
+        independentOrderViewpagerItemRecyclerview.setAdapter(adapter);
     }
 
     @Override
@@ -51,7 +55,6 @@ public class Independent_fragment extends BaseFragment {
         // TODO: inflate a fragment view
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
         ButterKnife.bind(this, rootView);
-        Log.d("Independent_fragment", "fragment  view创建了");
         return rootView;
     }
 }

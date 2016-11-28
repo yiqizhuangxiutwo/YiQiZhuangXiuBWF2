@@ -52,8 +52,6 @@ public class SheJiLiangFangActivity extends BaseActivity {
     protected void initViews() {
         getFragments();
         strings = new String[]{"免费设计", "免费量房"};
-        sjlfTablayout.addTab(sjlfTablayout.newTab().setText(strings[0]));
-        sjlfTablayout.addTab(sjlfTablayout.newTab().setText(strings[1]));
         WebViewFragmentPagerAdapter adapter = new WebViewFragmentPagerAdapter(fragments, strings, getSupportFragmentManager());
         sjlfViewpager.setAdapter(adapter);
         sjlfTablayout.setupWithViewPager(sjlfViewpager);
