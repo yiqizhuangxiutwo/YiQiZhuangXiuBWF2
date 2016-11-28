@@ -41,6 +41,10 @@ public interface Apis {
     //效果美图接口
     String EFFECT_PICTURE_RIGHT = " http://appapi.17house.com/xiaoguotuApi.php?version=1&page={0}&action=imageList2&pageSize=10&tagid=0&model=android";
 
+<<<<<<< HEAD
     //装修公司界面头部Viewpager的接口
     String HTTP_BUILD_COMPANY_VIEWPAGER = " http://appapi.17house.com/AppManagerApi.php?version=1&action=integratedpackage&model=android&app_version=android_com.aiyiqi.galaxy_1.1";
+=======
+    String SEARCH_POSTD_EATAILS ="http://bbs.17house.com/motnt/index.php?a=viewThread&c=forumThread&imgwidth=330&uuid=86305803367590&tid=1216903&m=forum&haspermission=yes&model=android&app_version=android_com.aiyiqi.galaxy_1.1";
+>>>>>>> 0eaa61b3ee871ea7da46ecb1ba1f67c17b8cdac4
 }
