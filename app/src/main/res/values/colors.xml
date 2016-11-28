@@ -20,6 +20,9 @@
     <color name="greens">#006400</color>
     <color name="mine_color">#e6dfdf</color>
     <color name="effect_color">#aba4a4</color>
-    <color name="topic_title_color">#161616</color>
+    <color name="topic_title_color">#faf6f6</color>
     <color name="topic_background">#161515</color>
+    <color name="article_bottom">#0d9165</color>
+    <color name="search_text">#1e9f2f</color>
+    <color name="texttag02">#2e8bce</color>
 </resources>

@@ -6,9 +6,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.Toast;
 
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
@@ -23,12 +26,13 @@ import aiyiqi.bwf.com.yiqizhuangxiu.mvp.presenter.impl.EffectPictureRightPresent
 import aiyiqi.bwf.com.yiqizhuangxiu.mvp.view.EffectPictureRightView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Lee Vane.
  */
 
-public class EffectPictureRight extends BaseFragment implements EffectPictureRightView {
+public class EffectPictureRight extends BaseFragment implements EffectPictureRightView, View.OnClickListener {
     @BindView(R.id.effect_picture_tag01)
     LinearLayout effectPictureTag01;
     @BindView(R.id.effect_picture_tag02)
@@ -41,10 +45,12 @@ public class EffectPictureRight extends BaseFragment implements EffectPictureRig
     RecyclerView buidHomeRecycleview;
     @BindView(R.id.refreshLayout)
     MaterialRefreshLayout refreshLayout;
+
     private EffectPictureRightAdapter adapter;
     private EffectPictureRightPresenter presenter;
     private LinearLayoutManager manager;
     private GridLayoutManager gridLayoutManager;
+
     @Override
     protected int getContentViewResID() {
         return R.layout.effect_picture_right;
@@ -70,28 +76,32 @@ public class EffectPictureRight extends BaseFragment implements EffectPictureRig
         });
 
     }
+
     private boolean isLoading;
     private boolean isNoMoreData;
-    private void loadNextDatas(){
+
+    private void loadNextDatas() {
         presenter.loadDatas();
         isLoading = false;
     }
+
     private RecyclerView.OnScrollListener onScrollListener = new RecyclerView.OnScrollListener() {
         @Override
         public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
             super.onScrolled(recyclerView, dx, dy);
-            if(isNoMoreData)
+            if (isNoMoreData)
                 return;
 //            Log.d("EffectTopicLeft", "manager.findLastVisibleItemPosition():" + manager.findLastVisibleItemPosition());
 //            Log.d("EffectTopicLeft", "manager.getItemCount():" + manager.getItemCount());
 
-            if(!isLoading && gridLayoutManager.findLastVisibleItemPosition() == gridLayoutManager.getItemCount() - 1){
+            if (!isLoading && gridLayoutManager.findLastVisibleItemPosition() == gridLayoutManager.getItemCount() - 1) {
 //                Log.d("EffectTopicLeft", "jinlaile");
                 loadNextDatas();
 
             }
         }
     };
+
     @Override
     protected void initDatas() {
         presenter = new EffectPictureRightPresenterImpl(this);
@@ -121,5 +131,40 @@ public class EffectPictureRight extends BaseFragment implements EffectPictureRig
     @Override
     public void showFailed() {
 
+    }
+
+    private void showPopuWindow(View view) {
+
+        View contentView = LayoutInflater.from(getContext()).inflate(R.layout.effect_picture_popuwindow, null);
+
+        final PopupWindow popupWindow = new PopupWindow(contentView, ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT, true);
+        popupWindow.setTouchable(true);
+
+        popupWindow.setTouchInterceptor(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                // 这里如果返回true的话，touch事件将被拦截
+                // 拦截后 PopupWindow的onTouchEvent不被调用，这样点击外部区域无法dismiss
+                return false;
+            }
+        });
+        popupWindow.setBackgroundDrawable(getResources().getDrawable(R.color.white));
+
+        popupWindow.showAsDropDown(view);
+
+    }
+
+    @OnClick({R.id.effect_picture_tag01, R.id.effect_picture_tag02, R.id.effect_picture_tag03, R.id.effect_picture_tag04})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.effect_picture_tag01:
+            case R.id.effect_picture_tag02:
+            case R.id.effect_picture_tag03:
+            case R.id.effect_picture_tag04:
+                Toast.makeText(getContext(), "弹出PopupWindow", Toast.LENGTH_SHORT).show();
+                showPopuWindow(view);
+                break;
+        }
     }
 }

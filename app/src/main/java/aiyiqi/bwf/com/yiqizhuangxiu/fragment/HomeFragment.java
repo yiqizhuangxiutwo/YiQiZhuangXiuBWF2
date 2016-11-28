@@ -17,6 +17,18 @@ import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
+<<<<<<< HEAD
+=======
+import aiyiqi.bwf.com.yiqizhuangxiu.activity.JianCaiJiaJuActivity;
+import aiyiqi.bwf.com.yiqizhuangxiu.activity.SearchActivity;
+import aiyiqi.bwf.com.yiqizhuangxiu.activity.SheJiLiangFangActivity;
+import aiyiqi.bwf.com.yiqizhuangxiu.activity.TongChengHuoDongActivity;
+import aiyiqi.bwf.com.yiqizhuangxiu.activity.XiaoGuoTuActivity;
+import aiyiqi.bwf.com.yiqizhuangxiu.activity.ZhuangXiuGongSiActivity;
+import aiyiqi.bwf.com.yiqizhuangxiu.activity.ZhuangXiuXueTangActivity;
+import aiyiqi.bwf.com.yiqizhuangxiu.activity.ZhuangXiuYuSuanActivity;
+import aiyiqi.bwf.com.yiqizhuangxiu.activity.ZiZhuXiaDanActivity;
+>>>>>>> 3f94e8245aa1b562e29aa5b9505b25530df35151
 import aiyiqi.bwf.com.yiqizhuangxiu.adapter.HomeRecyvlerViewAdapter;
 import aiyiqi.bwf.com.yiqizhuangxiu.adapter.MainViewPagerAdapter;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.ResponseRecycleViewList;
@@ -78,6 +90,7 @@ public class HomeFragment extends BaseFragment {
     @Override
     protected void initViews() {
         home_ViewPagerHttp();
+<<<<<<< HEAD
         pager = 1;
         home_RecyclerViewHttp("1218226",3,pager);
         homerecyvlerviewadapter = new HomeRecyvlerViewAdapter(getActivity());
@@ -85,6 +98,16 @@ public class HomeFragment extends BaseFragment {
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         homeRecyclerview.setLayoutManager(manager);
         homeRecyclerview.setAdapter(homerecyvlerviewadapter);
+=======
+        home_RecyclerViewHttp();
+
+        mainTitleSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), SearchActivity.class));
+            }
+        });
+>>>>>>> 3f94e8245aa1b562e29aa5b9505b25530df35151
     }
 
 
