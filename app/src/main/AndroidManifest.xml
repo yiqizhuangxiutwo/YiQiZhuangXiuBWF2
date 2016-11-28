@@ -28,12 +28,9 @@
         <activity android:name=".activity.NewHouseBuild"/>
         <activity android:name=".activity.OldHouseBuild"/>
         <activity android:name=".activity.LoginRegisterActivity"/>
-<<<<<<< HEAD
         <activity android:name=".activity.ZiZhuXiaDan_Inner_Activity"/>
-=======
         <activity android:name=".activity.SearchPostDetailsActivity"/>
         <activity android:name=".activity.PersonalNewsActivity"/>
->>>>>>> 0eaa61b3ee871ea7da46ecb1ba1f67c17b8cdac4
     </application>
 
 </manifest>
