@@ -21,5 +21,12 @@
     <string name="effect_topic_right_titel">美图</string>
     <string name="zhuangxiuyusuan_left">装修预算</string>
     <string name="zhaungxiuyusuan_right">我的预算</string>
-    <string name="effect_tag1">空间</string>>
+    <string name="effect_tag1">空间</string>
+    <string name="article_bottom_text">申请装修</string>
+    <string name="cancle">取消</string>
+    <string name="search_textview">请输入搜索内容</string>
+    <string name="search_textview_content">搜索更过内容</string>
+    <string name="user">用户</string>
+    <string name="tiezi">帖子</string>
+    <string name="text_01">相关用户</string>>
 </resources>

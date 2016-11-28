@@ -16,6 +16,7 @@ import java.util.List;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
 import aiyiqi.bwf.com.yiqizhuangxiu.activity.JianCaiJiaJuActivity;
+import aiyiqi.bwf.com.yiqizhuangxiu.activity.SearchActivity;
 import aiyiqi.bwf.com.yiqizhuangxiu.activity.SheJiLiangFangActivity;
 import aiyiqi.bwf.com.yiqizhuangxiu.activity.TongChengHuoDongActivity;
 import aiyiqi.bwf.com.yiqizhuangxiu.activity.XiaoGuoTuActivity;
@@ -83,6 +84,13 @@ public class HomeFragment extends BaseFragment {
     protected void initViews() {
         home_ViewPagerHttp();
         home_RecyclerViewHttp();
+
+        mainTitleSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), SearchActivity.class));
+            }
+        });
     }
 
     /**

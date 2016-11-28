@@ -81,6 +81,7 @@ public class EffectTopicLeft extends BaseFragment implements EffectTopicLeftView
 
             if(!isLoading && manager.findLastVisibleItemPosition() == manager.getItemCount() - 1){
 //                Log.d("EffectTopicLeft", "jinlaile");
+                isLoading = true;
                 loadNextDatas();
 
             }
