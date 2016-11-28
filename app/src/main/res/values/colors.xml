@@ -5,7 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="white">#ffffff</color>
     <color name="green">#00a051</color>
-    <color name="gray">#9b9b9b</color>
+    <color name="gray">#e4dada</color>
     <color name="windowBackground">#ffffffff</color>
     <color name="tabIndicatorColor">#ff000000</color>
     <color name="tabSelectedTextColor">#ff000000</color>
@@ -16,6 +16,10 @@
     <color name="jiaguanzhu">#1e9e3e</color>
     <color name="tie_lianjie">#477ccc</color>
     <color name="dark">#dd0a0909</color>
-    <color name="effect_topic_text">#1a1919</color>
+    <color name="effect_topic_text">#2d2b2b</color>
     <color name="greens">#006400</color>
+    <color name="mine_color">#e6dfdf</color>
+    <color name="effect_color">#aba4a4</color>
+    <color name="topic_title_color">#161616</color>
+    <color name="topic_background">#161515</color>
 </resources>

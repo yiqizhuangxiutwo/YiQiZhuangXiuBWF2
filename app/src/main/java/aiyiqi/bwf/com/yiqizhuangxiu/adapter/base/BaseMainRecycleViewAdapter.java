@@ -37,9 +37,11 @@ public abstract class BaseMainRecycleViewAdapter<T> extends BaseRecycleViewAdapt
     public void updateFooterState(int state) {
         this.state = state;
         notifyItemChanged(getItemCount() - 1);
-        Log.d("BaseMainRecycleViewAdap", "Adapter更新第" + (getItemCount() - 1) + "个View");
     }
 
+    /**
+     * 脚的布局
+     */
     class FooterHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.progressbar_subview_recycleview_loadfooter)
