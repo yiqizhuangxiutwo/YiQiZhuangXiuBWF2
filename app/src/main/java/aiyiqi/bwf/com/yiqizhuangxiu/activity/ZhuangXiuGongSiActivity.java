@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
+import aiyiqi.bwf.com.yiqizhuangxiu.adapter.ZXGS_RecycleView_Adapter;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_Buide_Company_ViewPager;
 import aiyiqi.bwf.com.yiqizhuangxiu.http.Http_Build_Company_ViewPager;
 import butterknife.BindView;
@@ -27,6 +28,8 @@ public class ZhuangXiuGongSiActivity extends BaseActivity {
     @BindView(R.id.zxgs_recyclerview)
     RecyclerView zxgsRecyclerview;
 
+    private ZXGS_RecycleView_Adapter adapter;
+
     @Override
     public int getContentViewResID() {
         return R.layout.decoration_company;
@@ -38,8 +41,8 @@ public class ZhuangXiuGongSiActivity extends BaseActivity {
         LinearLayoutManager manager = new LinearLayoutManager(this);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         zxgsRecyclerview.setLayoutManager(manager);
-//        ZXGS_RecycleView_Adapter adapter = new ZXGS_RecycleView_Adapter(this);
-//        zxgsRecyclerview.setAdapter(adapter);
+        adapter = new ZXGS_RecycleView_Adapter(this);
+        zxgsRecyclerview.setAdapter(adapter);
         getViewPager_Http();
 
     }
@@ -53,7 +56,7 @@ public class ZhuangXiuGongSiActivity extends BaseActivity {
         http_build_company_viewPager.setCallback(new Http_Build_Company_ViewPager.Callback() {
             @Override
             public void ViewPagerCallback(Response_Buide_Company_ViewPager response_home_viewpager) {
-                Log.d("ZhuangXiuGongSiActivity", response_home_viewpager.getData().get(0).getImagesrc());
+                adapter.addViewPagerDatas(response_home_viewpager.getData());
             }
 
             @Override

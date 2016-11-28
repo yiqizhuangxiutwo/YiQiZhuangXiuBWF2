@@ -87,9 +87,9 @@ public class HomeRecyvlerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
         if (position == getItemCount() - 1) {
             return ITEM_TYPE_FOOTER;
         } else {
-            if (dataBeens.get(position).getType() == WENZHANG) {
+            if (dataBeens.get(position-1).getType() == WENZHANG) {
                 return ITEM_TYPE_CONTENT_WENGZHANG;
-            } else if (dataBeens.get(position).getType() == TIEZI) {
+            } else if (dataBeens.get(position-1).getType() == TIEZI) {
                 return ITEM_TYPE_CONTENT_TIEZI;
             }
         }
@@ -127,24 +127,24 @@ public class HomeRecyvlerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
         }
         if (getItemViewType(position) == ITEM_TYPE_CONTENT_WENGZHANG) {
             MyWenZhangHolder wenZhangHolder = (MyWenZhangHolder) holder;
-            wenZhangHolder.mainArticleTitle.setText(dataBeens.get(position).getTitle());
-            wenZhangHolder.mainArticleImage.setImageURI(dataBeens.get(position).getPath());
-            wenZhangHolder.artcleItemTime.setText(dataBeens.get(position).getDateline());
-            wenZhangHolder.mainArticleItemScan.setText(dataBeens.get(position).getViews());
-            wenZhangHolder.mainArticleItemComments.setText(dataBeens.get(position).getReplies());
+            wenZhangHolder.mainArticleTitle.setText(dataBeens.get(position-1).getTitle());
+            wenZhangHolder.mainArticleImage.setImageURI(dataBeens.get(position-1).getPath());
+            wenZhangHolder.artcleItemTime.setText(dataBeens.get(position-1).getDateline());
+            wenZhangHolder.mainArticleItemScan.setText(dataBeens.get(position-1).getViews());
+            wenZhangHolder.mainArticleItemComments.setText(dataBeens.get(position-1).getReplies());
         } else if (getItemViewType(position) == ITEM_TYPE_CONTENT_TIEZI) {
             MyTeiZiHolder myTeiZiHolder = (MyTeiZiHolder) holder;
-            myTeiZiHolder.auther.setText(dataBeens.get(position).getAuthor());
-            myTeiZiHolder.autherTime.setText(dataBeens.get(position).getDateline());
-            myTeiZiHolder.mainRecycleviewTieTouxiang.setImageURI(dataBeens.get(position).getAvtUrl());
-            myTeiZiHolder.mainTieTitle.setText(dataBeens.get(position).getTitle());
-            if (dataBeens.get(position).getPath() == null){
+            myTeiZiHolder.auther.setText(dataBeens.get(position-1).getAuthor());
+            myTeiZiHolder.autherTime.setText(dataBeens.get(position-1).getDateline());
+            myTeiZiHolder.mainRecycleviewTieTouxiang.setImageURI(dataBeens.get(position-1).getAvtUrl());
+            myTeiZiHolder.mainTieTitle.setText(dataBeens.get(position-1).getTitle());
+            if (dataBeens.get(position-1).getPath() == null){
                 myTeiZiHolder.mainTieImage.setVisibility(View.GONE);
             }else{
                 myTeiZiHolder.mainTieImage.setVisibility(View.VISIBLE);
-                myTeiZiHolder.mainTieImage.setImageURI(dataBeens.get(position).getPath());
+                myTeiZiHolder.mainTieImage.setImageURI(dataBeens.get(position-1).getPath());
             }
-            myTeiZiHolder.tieItemTime.setText("精简至" + dataBeens.get(position).getForum().getName());
+            myTeiZiHolder.tieItemTime.setText("精简至" + dataBeens.get(position-1).getForum().getName());
         } else if (getItemViewType(position) == ITEM_TYPE_FOOTER) {
             bindFooterViewHolder(holder, position);
         }
@@ -152,7 +152,7 @@ public class HomeRecyvlerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
     }
     @Override
     public int getItemCount() {
-        return dataBeens.size();
+        return dataBeens.size()+2;
     }
 
     /**
