@@ -175,6 +175,43 @@ public class HomeFragment extends BaseFragment {
             }
         });
 
+<<<<<<< HEAD
+=======
+    /**
+     * Home界面八个按钮的跳转
+     *
+     * @param view
+     */
+    @OnClick({R.id.zhuangxiugonsi, R.id.tongchenghuodong, R.id.zhuangxiuxuetang, R.id.zhuangxiuyusuan, R.id.jiancaijiaju, R.id.xiaoguotu, R.id.zizhuxiadan, R.id.shejiliangfang})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.zhuangxiugonsi:
+                startActivity(new Intent(getActivity(), ZhuangXiuGongSiActivity.class));
+                break;
+            case R.id.tongchenghuodong:
+                startActivity(new Intent(getActivity(), TongChengHuoDongActivity.class));
+                break;
+            case R.id.zhuangxiuxuetang:
+                startActivity(new Intent(getActivity(), ZhuangXiuXueTangActivity.class));
+                break;
+            case R.id.zhuangxiuyusuan:
+                startActivity(new Intent(getActivity(), ZhuangXiuYuSuanActivity.class));
+                break;
+            case R.id.jiancaijiaju:
+                startActivity(new Intent(getActivity(), JianCaiJiaJuActivity.class));
+                break;
+            case R.id.xiaoguotu:
+                startActivity(new Intent(getActivity(), XiaoGuoTuActivity.class));
+                break;
+            case R.id.zizhuxiadan:
+                startActivity(new Intent(getActivity(), ZiZhuXiaDanActivity.class));
+                break;
+            case R.id.shejiliangfang:
+                startActivity(new Intent(getActivity(), SheJiLiangFangActivity.class));
+                break;
+
+        }
+>>>>>>> 0eaa61b3ee871ea7da46ecb1ba1f67c17b8cdac4
     }
 
     //绑定黄油刀
