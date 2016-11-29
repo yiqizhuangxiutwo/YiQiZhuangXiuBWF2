@@ -16,5 +16,8 @@ public interface TongchenghuodongModel {
     public interface Callback{
         void loadDatasSuccess(List<ResponseTongcheng.DataBean.ForumlistBean> tongcheng);
         void loadError();
+
+
     }
+
 }

@@ -1,7 +1,5 @@
 package aiyiqi.bwf.com.yiqizhuangxiu.mvp.model.impl;
 
-import android.util.Log;
-
 import com.alibaba.fastjson.JSON;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -16,6 +14,7 @@ import okhttp3.Call;
  */
 
 public class TongchengModelImpl implements TongchenghuodongModel{
+
     @Override
     public void showTongchengDatas(final Callback callback) {
         OkHttpUtils.get().url(Apis.HTTP_TONGCHENG)
@@ -29,12 +28,13 @@ public class TongchengModelImpl implements TongchenghuodongModel{
                     @Override
                     public void onResponse(String response, int id) {
                         ResponseTongcheng tongcheng = JSON.parseObject(response, ResponseTongcheng.class);
-                        Log.d("TongchengModelImpl", "tongcheng:" + tongcheng);
                         callback.loadDatasSuccess(tongcheng.getData().getForumlist());
                     }
 
                 });
+
     }
+
 
 
 }

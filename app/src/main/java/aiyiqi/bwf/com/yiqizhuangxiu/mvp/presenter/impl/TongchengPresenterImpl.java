@@ -22,6 +22,7 @@ public class TongchengPresenterImpl implements TongchengPresenter {
     }
     @Override
     public void loadTongchengDatas() {
+
         tongchengModel.showTongchengDatas(new TongchenghuodongModel.Callback() {
             @Override
             public void loadDatasSuccess(List<ResponseTongcheng.DataBean.ForumlistBean> tongcheng) {
@@ -32,6 +33,9 @@ public class TongchengPresenterImpl implements TongchengPresenter {
             public void loadError() {
 
             }
+
         });
+
     }
+
 }

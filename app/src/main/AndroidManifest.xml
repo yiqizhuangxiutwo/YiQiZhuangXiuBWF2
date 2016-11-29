@@ -36,6 +36,7 @@
         <activity android:name=".activity.SearchActivity"/>
         <activity android:name=".activity.SearchPostDetailsActivity"/>
         <activity android:name=".activity.PersonalNewsActivity"/>
+        <activity android:name=".activity.TongchengWeb_Activity"/>
 
     </application>
 
