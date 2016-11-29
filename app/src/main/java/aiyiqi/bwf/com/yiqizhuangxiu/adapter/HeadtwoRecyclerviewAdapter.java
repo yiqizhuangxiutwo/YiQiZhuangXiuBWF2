@@ -27,7 +27,7 @@ public class HeadtwoRecyclerviewAdapter extends RecyclerView.Adapter{
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new GridRecyclerView(inflater.inflate(R.layout.site_headertwo_item,parent,false));
+//        return new GridRecyclerView(inflater.inflate(R.layout.site_headertwo_item,parent,false));
     }
 
     @Override
