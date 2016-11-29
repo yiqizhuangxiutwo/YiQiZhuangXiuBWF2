@@ -1,11 +1,11 @@
 package aiyiqi.bwf.com.yiqizhuangxiu.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +17,7 @@ import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
+import aiyiqi.bwf.com.yiqizhuangxiu.activity.SearchActivity;
 import aiyiqi.bwf.com.yiqizhuangxiu.adapter.HomeRecyvlerViewAdapter;
 import aiyiqi.bwf.com.yiqizhuangxiu.adapter.MainViewPagerAdapter;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.ResponseRecycleViewList;
@@ -28,12 +29,14 @@ import aiyiqi.bwf.com.yiqizhuangxiu.view.CustomRefreshLayout;
 import aiyiqi.bwf.com.yiqizhuangxiu.widget.PagerDotIndicator;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Yishi on 2016/11/23.
  */
 
 public class HomeFragment extends BaseFragment {
+
 
     @BindView(R.id.viewPager_main_list_slide)
     AutoScrollViewPager viewPagerMainListSlide;
@@ -53,7 +56,6 @@ public class HomeFragment extends BaseFragment {
     RecyclerView homeRecyclerview;
     @BindView(R.id.refreshLayout)
     CustomRefreshLayout refreshLayout;
-
     /**
      * 管理指示器的对象
      **/
@@ -79,7 +81,7 @@ public class HomeFragment extends BaseFragment {
     protected void initViews() {
         home_ViewPagerHttp();
         pager = 1;
-        home_RecyclerViewHttp("1218226",3,pager);
+        home_RecyclerViewHttp("1218226", 3, pager);
         homerecyvlerviewadapter = new HomeRecyvlerViewAdapter(getActivity());
         manager = new LinearLayoutManager(getActivity());
         manager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -90,16 +92,14 @@ public class HomeFragment extends BaseFragment {
 
     private boolean isload;
     private boolean isrefresh;
+
     /**
      * Home下部的ViewPager的网络数据访问
      */
     private void home_RecyclerViewHttp(String id, int type, final int pager) {
         refreshLayout.finishRefresh();
-
-        Log.d("HomeFragment", "执行了");
-
         http = new Http_Home_RecyclerView();
-        http.getHttp(id,type,pager);
+        http.getHttp(id, type, pager);
         http.setCallback(new Http_Home_RecyclerView.Callback() {
             @Override
             public void RecyclerViewCallback(final ResponseRecycleViewList responseRecycleViewList) {
@@ -111,13 +111,12 @@ public class HomeFragment extends BaseFragment {
                     @Override
                     public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                         super.onScrolled(recyclerView, dx, dy);
-                        if (!isrefresh && !isload && manager.findLastVisibleItemPosition() == manager.getItemCount() - 1){
-                            Log.d("HomeFragment", "进来了");
+                        if (!isrefresh && !isload && manager.findLastVisibleItemPosition() == manager.getItemCount() - 1) {
                             isload = true;
-                            int type = responseRecycleViewList.getData().get(responseRecycleViewList.getData().size()-1).getType();
-                            String id = responseRecycleViewList.getData().get(responseRecycleViewList.getData().size()-1).getId();
-                            int nexpage = pager +1;
-                            home_RecyclerViewHttp(id,type,nexpage);
+                            int type = responseRecycleViewList.getData().get(responseRecycleViewList.getData().size() - 1).getType();
+                            String id = responseRecycleViewList.getData().get(responseRecycleViewList.getData().size() - 1).getId();
+                            int nexpage = pager + 1;
+                            home_RecyclerViewHttp(id, type, nexpage);
                         }
                     }
                 });
@@ -170,56 +169,29 @@ public class HomeFragment extends BaseFragment {
             @Override
             public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
                 homerecyvlerviewadapter.setClear();
-                home_RecyclerViewHttp("1218226",3,pager);
+                home_RecyclerViewHttp("1218226", 3, pager);
                 isrefresh = true;
             }
         });
 
-<<<<<<< HEAD
-=======
-    /**
-     * Home界面八个按钮的跳转
-     *
-     * @param view
-     */
-    @OnClick({R.id.zhuangxiugonsi, R.id.tongchenghuodong, R.id.zhuangxiuxuetang, R.id.zhuangxiuyusuan, R.id.jiancaijiaju, R.id.xiaoguotu, R.id.zizhuxiadan, R.id.shejiliangfang})
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.zhuangxiugonsi:
-                startActivity(new Intent(getActivity(), ZhuangXiuGongSiActivity.class));
-                break;
-            case R.id.tongchenghuodong:
-                startActivity(new Intent(getActivity(), TongChengHuoDongActivity.class));
-                break;
-            case R.id.zhuangxiuxuetang:
-                startActivity(new Intent(getActivity(), ZhuangXiuXueTangActivity.class));
-                break;
-            case R.id.zhuangxiuyusuan:
-                startActivity(new Intent(getActivity(), ZhuangXiuYuSuanActivity.class));
-                break;
-            case R.id.jiancaijiaju:
-                startActivity(new Intent(getActivity(), JianCaiJiaJuActivity.class));
-                break;
-            case R.id.xiaoguotu:
-                startActivity(new Intent(getActivity(), XiaoGuoTuActivity.class));
-                break;
-            case R.id.zizhuxiadan:
-                startActivity(new Intent(getActivity(), ZiZhuXiaDanActivity.class));
-                break;
-            case R.id.shejiliangfang:
-                startActivity(new Intent(getActivity(), SheJiLiangFangActivity.class));
-                break;
-
-        }
->>>>>>> 0eaa61b3ee871ea7da46ecb1ba1f67c17b8cdac4
     }
 
-    //绑定黄油刀
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO: inflate a fragment view
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
         ButterKnife.bind(this, rootView);
         return rootView;
+    }
+
+    @OnClick({R.id.main_title_zxing, R.id.main_title_search})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.main_title_zxing:
+                break;
+            case R.id.main_title_search:
+                startActivity(new Intent(getActivity(), SearchActivity.class));
+                break;
+        }
     }
 }

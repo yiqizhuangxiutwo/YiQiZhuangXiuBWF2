@@ -77,7 +77,7 @@ public class EffectTopicLeft extends BaseFragment implements EffectTopicLeftView
             if(isNoMoreData)
                 return;
             if(!isLoading && manager.findLastVisibleItemPosition() == manager.getItemCount() - 1){
-                isLoading =true;
+                isLoading = true;
                 loadNextDatas();
             }
         }

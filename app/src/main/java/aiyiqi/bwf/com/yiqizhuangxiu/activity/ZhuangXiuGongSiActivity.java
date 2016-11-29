@@ -3,13 +3,19 @@ package aiyiqi.bwf.com.yiqizhuangxiu.activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.cjj.MaterialRefreshLayout;
+import com.cjj.MaterialRefreshListener;
+
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
+import aiyiqi.bwf.com.yiqizhuangxiu.adapter.ZXGS_RecycleView_Adapter;
+import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_Buide_Company_ListView;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_Buide_Company_ViewPager;
+import aiyiqi.bwf.com.yiqizhuangxiu.http.Http_Build_Company_ListView;
 import aiyiqi.bwf.com.yiqizhuangxiu.http.Http_Build_Company_ViewPager;
+import aiyiqi.bwf.com.yiqizhuangxiu.view.CustomRefreshLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -26,6 +32,10 @@ public class ZhuangXiuGongSiActivity extends BaseActivity {
     ImageView imageViewBackSubviewTitle;
     @BindView(R.id.zxgs_recyclerview)
     RecyclerView zxgsRecyclerview;
+    @BindView(R.id.refreshLayout)
+    CustomRefreshLayout refreshLayout;
+
+    private ZXGS_RecycleView_Adapter adapter;
 
     @Override
     public int getContentViewResID() {
@@ -38,9 +48,31 @@ public class ZhuangXiuGongSiActivity extends BaseActivity {
         LinearLayoutManager manager = new LinearLayoutManager(this);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         zxgsRecyclerview.setLayoutManager(manager);
-//        ZXGS_RecycleView_Adapter adapter = new ZXGS_RecycleView_Adapter(this);
-//        zxgsRecyclerview.setAdapter(adapter);
+        adapter = new ZXGS_RecycleView_Adapter(this);
+        zxgsRecyclerview.setAdapter(adapter);
         getViewPager_Http();
+        getListView_Http();
+
+    }
+
+    /**
+     * 获得ListView的网络数据
+     */
+    private void getListView_Http() {
+        Http_Build_Company_ListView http_build_company_listView = new Http_Build_Company_ListView();
+        http_build_company_listView.getHttp();
+        http_build_company_listView.setCallback(new Http_Build_Company_ListView.Callback() {
+            @Override
+            public void ViewPagerCallback(Response_Buide_Company_ListView response_buide_company_listView) {
+                refreshLayout.finishRefresh();
+                adapter.addListViewDatas(response_buide_company_listView.getData());
+            }
+
+            @Override
+            public void HttpFailded(Exception e) {
+
+            }
+        });
 
     }
 
@@ -53,7 +85,8 @@ public class ZhuangXiuGongSiActivity extends BaseActivity {
         http_build_company_viewPager.setCallback(new Http_Build_Company_ViewPager.Callback() {
             @Override
             public void ViewPagerCallback(Response_Buide_Company_ViewPager response_home_viewpager) {
-                Log.d("ZhuangXiuGongSiActivity", response_home_viewpager.getData().get(0).getImagesrc());
+                refreshLayout.finishRefresh();
+                adapter.addViewPagerDatas(response_home_viewpager.getData());
             }
 
             @Override
@@ -66,7 +99,16 @@ public class ZhuangXiuGongSiActivity extends BaseActivity {
 
     @Override
     protected void initDatas() {
-
+        //刷新的监听
+        refreshLayout.setMaterialRefreshListener(new MaterialRefreshListener() {
+            @Override
+            public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
+                adapter.setListViewDatasClear();
+                adapter.setViewPagerDatasClear();
+                getViewPager_Http();
+                getListView_Http();
+            }
+        });
     }
 
     @Override
