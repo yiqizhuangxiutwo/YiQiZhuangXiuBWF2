@@ -28,5 +28,6 @@
     <string name="search_textview_content">搜索更过内容</string>
     <string name="user">用户</string>
     <string name="tiezi">帖子</string>
-    <string name="text_01">相关用户</string>>
+    <string name="text_01">相关用户</string>
+    <string name="text_03">暂无搜索数据</string>>
 </resources>
