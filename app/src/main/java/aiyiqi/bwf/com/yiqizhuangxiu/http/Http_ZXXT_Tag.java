@@ -1,13 +1,10 @@
 package aiyiqi.bwf.com.yiqizhuangxiu.http;
 
-import android.util.Log;
-
 import com.alibaba.fastjson.JSON;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_ZXXT_Up_Tag;
-import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_home_viewpager;
 import aiyiqi.bwf.com.yiqizhuangxiu.utlis.Apis;
 import okhttp3.Call;
 

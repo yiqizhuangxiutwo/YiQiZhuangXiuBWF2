@@ -3,7 +3,6 @@ package aiyiqi.bwf.com.yiqizhuangxiu.activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -47,7 +46,7 @@ public class TongChengHuoDongActivity extends BaseActivity implements TongchengV
 
     @Override
     protected void initViews() {
-        Log.d("TongChengHuoDongActivit", "tongchengAdapter:" + tongchengAdapter);
+
         linearLayoutManager =new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         tongchengRecyclerview.setLayoutManager(linearLayoutManager);
@@ -57,6 +56,9 @@ public class TongChengHuoDongActivity extends BaseActivity implements TongchengV
         tongchengPresenter = new TongchengPresenterImpl(this);
 
         tongchengPresenter.loadTongchengDatas();
+
+
+
 
 //        refreshLayout.setMaterialRefreshListener(new MaterialRefreshListener() {
 //            @Override
@@ -69,8 +71,9 @@ public class TongChengHuoDongActivity extends BaseActivity implements TongchengV
 
     @Override
     public void showTongchengSuccess(List<ResponseTongcheng.DataBean.ForumlistBean> tongcheng) {
-        Log.d("TongChengHuoDongActivit", "tongcheng:" + tongcheng);
-        tongchengAdapter.addDatas(tongcheng);
+                tongchengAdapter.addDatas(tongcheng);
+
+
     }
     @Override
     public void showFailed() {

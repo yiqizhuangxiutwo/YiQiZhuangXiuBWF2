@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:id="@+id/main_recycleview_item">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:padding="5dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
         <com.facebook.drawee.view.SimpleDraweeView
             xmlns:fresco="http://schemas.android.com/apk/res-auto"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_marginLeft="10dp"
             android:id="@+id/main_recycleview_tie_touxiang"
             fresco:placeholderImage="@drawable/loading_placeholder"
             fresco:placeholderImageScaleType="fitCenter"
             fresco:fadeDuration="1000"
-            />
+            fresco:roundAsCircle="true"/>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,7 +41,7 @@
         </LinearLayout>
         <LinearLayout
             android:id="@+id/fouces_button"
-            android:layout_marginLeft="200dp"
+            android:layout_marginLeft="300dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -53,7 +54,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/jiaguanzhu"
-                android:textColor="@color/jiaguanzhu"/>
+                android:textColor="@color/jiaguanzhu"
+                android:textSize="15dp"/>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
@@ -68,22 +70,24 @@
             android:textSize="20dp"
             android:padding="5dp"/>
     </LinearLayout>
+
     <com.facebook.drawee.view.SimpleDraweeView
-        xmlns:fresco="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="200dp"
         android:id="@+id/main_tie_image"
         fresco:placeholderImage="@drawable/loading_placeholder"
-        fresco:placeholderImageScaleType="fitCenter"
+        fresco:placeholderImageScaleType="centerCrop"
         fresco:fadeDuration="1000" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="30dp"
         android:orientation="horizontal"
-        android:padding="2dp">
+        android:padding="2dp"
+        android:gravity="center_vertical">
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="2"
+            android:layout_weight="3"
             android:layout_height="wrap_content"
             android:text="@string/artcle_item_time"
             android:layout_marginLeft="10dp"
@@ -103,7 +107,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/main_tie_item_scan"
-                android:text="@string/scan"/>
+                android:text="0"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -113,7 +117,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/main_tie_item_comments"
-                android:text="@string/scan"/>
+                android:text="0"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

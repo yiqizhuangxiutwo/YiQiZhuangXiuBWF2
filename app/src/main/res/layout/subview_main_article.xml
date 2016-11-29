@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:id="@+id/main_recycleview_item">
 
     <LinearLayout
@@ -35,14 +35,14 @@
     <com.facebook.drawee.view.SimpleDraweeView
         xmlns:fresco="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="200dp"
         fresco:placeholderImage="@drawable/loading_placeholder"
-        fresco:placeholderImageScaleType="fitCenter"
+        fresco:placeholderImageScaleType="centerCrop"
         fresco:fadeDuration="1000"
         android:id="@+id/main_article_image"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="30dp"
         android:orientation="horizontal"
         android:padding="2dp">
         <TextView
@@ -65,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/main_article_item_scan"
-                android:text="@string/scan"/>
+                android:text="0"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -75,7 +75,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/main_article_item_comments"
-                android:text="@string/scan"/>
+                android:text="0"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

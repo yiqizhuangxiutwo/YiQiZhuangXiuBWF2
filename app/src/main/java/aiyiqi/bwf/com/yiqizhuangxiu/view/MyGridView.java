@@ -2,6 +2,7 @@ package aiyiqi.bwf.com.yiqizhuangxiu.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.widget.GridView;
 
 /**
@@ -25,5 +26,10 @@ public class MyGridView extends GridView {
         heightMeasureSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2,
                 MeasureSpec.AT_MOST);
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        return false;
     }
 }

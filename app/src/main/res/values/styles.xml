@@ -16,4 +16,8 @@
         <item name="android:textSize">25sp</item>
     </style>
 
+    <style name="zzxd_inner_message_text">
+        <item name="android:textSize">18dp</item>
+    </style>
+
 </resources>

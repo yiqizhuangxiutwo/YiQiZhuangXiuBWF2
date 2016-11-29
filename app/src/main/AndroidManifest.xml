@@ -28,6 +28,15 @@
         <activity android:name=".activity.NewHouseBuild"/>
         <activity android:name=".activity.OldHouseBuild"/>
 
+
+
+        <activity android:name=".activity.LoginRegisterActivity"/>
+        <activity android:name=".activity.ZiZhuXiaDan_Inner_Activity"/>
+        <activity android:name=".activity.ArticleDetailsActivity"/>
+        <activity android:name=".activity.SearchActivity"/>
+        <activity android:name=".activity.SearchPostDetailsActivity"/>
+        <activity android:name=".activity.PersonalNewsActivity"/>
+
     </application>
 
 </manifest>

@@ -30,7 +30,7 @@
     <View
         android:layout_width="wrap_content"
         android:layout_height="1dp"
-        android:background="#444444" />
+        android:background="@color/mine_color" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
@@ -51,12 +51,10 @@
             android:textSize="15dp"
             android:hint="请输入手机号码" />
     </LinearLayout>
-
     <View
         android:layout_width="wrap_content"
         android:layout_height="1dp"
-        android:background="#444444" />
-
+        android:background="@color/mine_color" />
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="70dp"
@@ -91,7 +89,7 @@
     <View
         android:layout_width="wrap_content"
         android:layout_height="1dp"
-        android:background="#444444"
+        android:background="@color/mine_color"
         android:layout_marginRight="115dp"/>
     <LinearLayout
         android:layout_width="match_parent"
