@@ -6,15 +6,16 @@ import android.support.design.widget.AppBarLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
+
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
 import aiyiqi.bwf.com.yiqizhuangxiu.activity.SearchActivity;
 import aiyiqi.bwf.com.yiqizhuangxiu.adapter.HomeRecyvlerViewAdapter;
@@ -172,7 +173,6 @@ public class HomeFragment extends BaseFragment {
                 isrefresh = true;
             }
         });
-
 
     }
 
