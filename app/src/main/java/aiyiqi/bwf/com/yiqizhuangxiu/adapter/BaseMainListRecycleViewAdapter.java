@@ -22,6 +22,8 @@ public abstract class BaseMainListRecycleViewAdapter<T> extends BaseRecycleView<
 
     public BaseMainListRecycleViewAdapter(Context context) {
         super(context);
+
+
     }
 
     public static final int STATE_LOADING = 1;

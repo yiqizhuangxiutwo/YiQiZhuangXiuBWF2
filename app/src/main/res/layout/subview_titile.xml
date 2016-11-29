@@ -10,13 +10,17 @@
         android:textSize="18sp"
         android:layout_centerInParent="true"
         android:text="同城活动"/>
+
     <ImageView
         android:id="@+id/imageView_back_subview_title"
         android:layout_width="?android:actionBarSize"
         android:layout_height="match_parent"
         android:scaleType="centerInside"
         android:padding="15dp"
-        android:src="@drawable/btn_new_back_nor"/>
+        android:src="@drawable/btn_new_back_nor"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 
 </RelativeLayout>
