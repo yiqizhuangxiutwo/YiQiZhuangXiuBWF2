@@ -59,7 +59,7 @@ public class GongDiZhiBoActivity extends BaseActivity {
         http_gdzb.setCallback(new Http_GDZB.Callback() {
             @Override
             public void RecyclerViewCallback(Response_GDZB response_gdzb) {
-//                addDatas(response_gdzb);
+                adapter.addDatas(response_gdzb);
             }
         });
     }
