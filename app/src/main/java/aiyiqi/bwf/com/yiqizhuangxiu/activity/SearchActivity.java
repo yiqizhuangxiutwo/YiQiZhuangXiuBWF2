@@ -103,7 +103,28 @@ public class SearchActivity extends BaseActivity implements SearchView {
                     searchCancleImage.setVisibility(View.GONE);
                 } else {
                     searchCancleImage.setVisibility(View.VISIBLE);
+                    searchCancleImage.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            searchTextview.setText("");
+                        }
+                    });
                 }
+
+                content = searchTextview.getText().toString();
+                if (content.equals("")) {
+                    searchLinearlayoutView.setVisibility(View.VISIBLE);
+                    refreshLayoutSearch.setVisibility(View.GONE);
+                    searchNull.setVisibility(View.GONE);
+                    return;
+                } else {
+                    searchLinearlayoutView.setVisibility(View.GONE);
+                    refreshLayoutSearch.setVisibility(View.VISIBLE);
+                    searchNull.setVisibility(View.GONE);
+                    presenter = new SearchPresenterImpl(SearchActivity.this);
+                    presenter.loadDatas(content);
+                }
+
             }
 
             @Override
@@ -122,35 +143,25 @@ public class SearchActivity extends BaseActivity implements SearchView {
 
     @Override
     protected void initDatas() {
-        content = searchTextview.getText().toString();
-//        content = "aa";
-        if (content.equals("")) {
-            searchLinearlayoutView.setVisibility(View.VISIBLE);
-            refreshLayoutSearch.setVisibility(View.GONE);
-            searchNull.setVisibility(View.GONE);
-            return;
-        } else {
-            searchLinearlayoutView.setVisibility(View.GONE);
-            refreshLayoutSearch.setVisibility(View.VISIBLE);
-            searchNull.setVisibility(View.GONE);
-            presenter = new SearchPresenterImpl(this);
-            presenter.loadDatas(content);
-        }
 
     }
 
     @Override
-    public void showPictureSuccess(List<ResponseSearch.DataBean> dataBeen) {
-        Log.d("SearchActivity", "jinglaile");
-        Log.d("SearchActivity", "dataBeen:" + dataBeen);
-        refreshLayoutSearch.finishRefresh();
+    public void showPictureSuccess(int page, List<ResponseSearch.DataBean> dataBeen) {
         if(dataBeen == null){
             searchNull.setVisibility(View.VISIBLE);
             searchLinearlayoutView.setVisibility(View.GONE);
             refreshLayoutSearch.setVisibility(View.GONE);
+            return;
         }
-        adapter.addDatas(dataBeen);
-
+        if(page == 1){
+            adapter.setDatas(dataBeen);
+            isNoMoreData = false;
+        }else{
+            adapter.addDatas(dataBeen);
+        }
+        refreshLayoutSearch.finishRefresh();
+        Log.d("testactivity", dataBeen.get(0).getAuthor());
     }
 
     @Override

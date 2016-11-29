@@ -26,13 +26,16 @@ public abstract  class BaseRecycleView<T> extends RecyclerView.Adapter<RecyclerV
         this.context = context;
         inflater = LayoutInflater.from(context);
     }
-
+    public void setDatas(List<T> datas){
+        this.datas.clear();
+        this.datas.addAll(datas);
+        this.notifyDataSetChanged();
+    }
     /**
      * 新增数据
      * @param datas
      */
     public void addDatas(List<T> datas){
-//        this.datas.clear();
         this.datas.addAll(datas);
         notifyDataSetChanged();
     }

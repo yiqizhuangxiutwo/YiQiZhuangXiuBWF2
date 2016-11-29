@@ -90,9 +90,9 @@ public class SearchPostDetailsActivity extends BaseActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.back:
-                Intent intent1 = new Intent(this,SearchUserPostActivity.class);
-                startActivity(intent1);
-                finish();
+//                Intent intent1 = new Intent(this,SearchUserPostActivity.class);
+//                startActivity(intent1);
+//                finish();
                 break;
             case R.id.post_details_simpledrawweeview_author:
                 Intent intent2 = new Intent(this,PersonalNewsActivity.class);

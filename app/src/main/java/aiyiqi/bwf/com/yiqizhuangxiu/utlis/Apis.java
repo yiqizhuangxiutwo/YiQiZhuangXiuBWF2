@@ -8,10 +8,10 @@ package aiyiqi.bwf.com.yiqizhuangxiu.utlis;
 
 public interface Apis {
     //Home上部ViewPager接口
-    String HTTP_HOME_VIEWPAGER = "http://118.178.142.34/YiQiHouse/HomeAD";
+    String HTTP_HOME_VIEWPAGER = "http://appapi.17house.com/AppManagerApi.php?version=1&action=getownerinfo&cityId=2&model=android";
 
     //Home下方RecycleView的接口
-    String HTTP_HOME_RECYCLERVIEW = "http://118.178.142.34/YiQiHouse/HomeBBS?page=1";
+    String HTTP_HOME_RECYCLERVIEW = "http://bbs.17house.com/motnt/index.php?a=appindex&c=index&id={0}&uuid=86305803367590&pageSize=10&uid=1633055&m=misc&type={1}&page={2}&haspermission=yes&model=android&sessionToken=6U49kCYKE260RqvPqEdFsBGskNQStKhm&app_version=android_com.aiyiqi.galaxy_1.1";
 
     //建材家居
     String HTTP_BUIDLING_HOME = "http://bbs.17house.com/motnt/index.php?a=product&m=misc&model=android&uuid=a444d1b2af4f&app_version=android_com.aiyiqi.galaxy_1.1";
@@ -40,6 +40,9 @@ public interface Apis {
 
     //效果美图接口
     String EFFECT_PICTURE_RIGHT = " http://appapi.17house.com/xiaoguotuApi.php?version=1&page={0}&action=imageList2&pageSize=10&tagid=0&model=android";
+
+    //装修公司界面头部Viewpager的接口
+    String HTTP_BUILD_COMPANY_VIEWPAGER = " http://appapi.17house.com/AppManagerApi.php?version=1&action=integratedpackage&model=android&app_version=android_com.aiyiqi.galaxy_1.1";
 
     //搜索接口
     String SEARCH = "http://bbs.17house.com/motnt/index.php?a=searchForum&c=search&uuid=86305803367590&pageSize=10&m=search&page={0}&haspermission=yes&kw={1}&model=android&sessionToken=&app_version=android_com.aiyiqi.galaxy_1.1";

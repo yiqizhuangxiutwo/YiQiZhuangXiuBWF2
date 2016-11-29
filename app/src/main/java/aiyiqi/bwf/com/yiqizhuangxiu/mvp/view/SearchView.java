@@ -9,7 +9,7 @@ import aiyiqi.bwf.com.yiqizhuangxiu.entity.ResponseSearch;
  */
 
 public interface SearchView {
-    void showPictureSuccess(List<ResponseSearch.DataBean> dataBeen);
+    void showPictureSuccess(int page, List<ResponseSearch.DataBean> dataBeen);
     void showNoMoreData();
     void showFailed();
 }

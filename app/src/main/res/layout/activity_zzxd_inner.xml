@@ -1,22 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout
+    android:orientation="vertical">
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <include layout="@layout/subview_title"/>
-        <View
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/gray"/>
-        <include layout="@layout/activity_zzxd_inner_title"/>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:background="@color/gray"/>
-        <include layout="@layout/activity_zzxd_inner_message"/>
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <include layout="@layout/subview_title"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray"/>
+            <include layout="@layout/activity_zzxd_inner_title"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/gray"/>
+            <include layout="@layout/activity_zzxd_inner_message"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/gray"/>
 
-</ScrollView>
+            <android.support.design.widget.TabLayout
+                android:id="@+id/zzxd_inner_tablayou"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:padding="5dp"/>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/zzxd_inner_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+    </ScrollView>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="确认下单"
+        android:textSize="25dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:background="@color/green"/>
+</LinearLayout>
