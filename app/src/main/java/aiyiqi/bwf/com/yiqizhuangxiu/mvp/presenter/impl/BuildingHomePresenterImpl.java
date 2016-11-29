@@ -10,7 +10,7 @@ import aiyiqi.bwf.com.yiqizhuangxiu.mvp.view.BuildingHomeView;
  * Created by Lee Vane.
  */
 
-public class BuildingHomePresenterImpl implements BuildingHomePresenter {
+public class   BuildingHomePresenterImpl implements BuildingHomePresenter {
 
     private BuildingHomeModelImpl model;
     private BuildingHomeView view ;
