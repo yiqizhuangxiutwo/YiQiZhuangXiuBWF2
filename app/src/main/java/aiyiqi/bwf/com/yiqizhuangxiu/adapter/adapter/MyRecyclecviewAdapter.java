@@ -1,12 +1,16 @@
 package aiyiqi.bwf.com.yiqizhuangxiu.adapter.adapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -14,19 +18,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
+import aiyiqi.bwf.com.yiqizhuangxiu.activity.speakactivity.ArticleActivity;
+import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_Commit;
+import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_Detail;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_Essence;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 /**
  * Created by Administrator on 2016/11/24.
  */
 
-public class MyRecyclecviewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class MyRecyclecviewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private List<Response_Essence.DataBean> datas;
     private LayoutInflater inflater;
-
+    private List<Response_Detail.DataBean> dataBean1;
+    private Context context;
     public MyRecyclecviewAdapter(Context context) {
+        this.context =context;
         inflater = LayoutInflater.from(context);
         this.datas = new ArrayList<>();
     }
@@ -43,8 +54,8 @@ public class MyRecyclecviewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        MyViewHolder myViewHolder = (MyViewHolder) holder;
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+        final MyViewHolder myViewHolder = (MyViewHolder) holder;
         Response_Essence.DataBean dataBean = datas.get(position);
         myViewHolder.imageViewAuthor.setImageURI(dataBean.getAvtUrl());
         myViewHolder.authorname.setText(dataBean.getAuthor());
@@ -62,12 +73,38 @@ public class MyRecyclecviewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 myViewHolder.explaintext.setText(dataBean.getTags().get(i).getTagname());
             }
         }
+        myViewHolder.imageViewFrontTopImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                dataBean1 = (List<Response_Detail.DataBean>) getIem(position);
+                Intent intent = new Intent(context, ArticleActivity.class);
+//                intent.putExtra("articleId",dataBean1.get(position).getTid());
+                Toast.makeText(context, dataBean1.get(position).getTid(), Toast.LENGTH_SHORT).show();
+                context.startActivity(intent);
+            }
+        });
+        myViewHolder.textViewFrontSubtitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        myViewHolder.imageViewAuthor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
     @Override
     public int getItemCount() {
         return datas.size();
     }
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+
+//    public Response_Detail.DataBean getIem(int positon){
+//        return dataBean1.get(positon);
+//    }
+    public  class MyViewHolder extends RecyclerView.ViewHolder{
         @BindView(R.id.imageView_author)
         SimpleDraweeView imageViewAuthor;
         @BindView(R.id.textView_front_main_title)

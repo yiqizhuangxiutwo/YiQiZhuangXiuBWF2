@@ -1,5 +1,6 @@
 package aiyiqi.bwf.com.yiqizhuangxiu.fragment.speakfragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,8 +12,10 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
+import aiyiqi.bwf.com.yiqizhuangxiu.activity.speakactivity.ArticleActivity;
 import aiyiqi.bwf.com.yiqizhuangxiu.adapter.adapter.MyRecyclecviewAdapter;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_Essence;
+
 import aiyiqi.bwf.com.yiqizhuangxiu.fragment.BaseFragment;
 import aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.presenter.SpeakPresenter;
 import aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.presenter.iml.SpeakPresenterIml;
@@ -24,7 +27,7 @@ import butterknife.ButterKnife;
  * Created by Administrator on 2016/11/23.
  */
 
-public class Fragment1 extends BaseFragment implements  SpeakView {
+public class Fragment1 extends BaseFragment implements SpeakView {
     @BindView(R.id.recycleView)
     RecyclerView recycleView;
 //    private ImageButton button;
@@ -39,6 +42,7 @@ public class Fragment1 extends BaseFragment implements  SpeakView {
     @Override
     protected void initViews() {
         manager = new LinearLayoutManager(getActivity());
+        LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         recycleView.setLayoutManager(manager);
         myadapter = new MyRecyclecviewAdapter(getActivity());

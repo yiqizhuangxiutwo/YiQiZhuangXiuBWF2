@@ -28,6 +28,9 @@
         <activity android:name=".activity.NewHouseBuild"/>
         <activity android:name=".activity.OldHouseBuild"/>
         <activity android:name=".activity.LoginRegisterActivity"/>
+        <activity android:name=".activity.SearchPostDetailsActivity"/>
+        <activity android:name=".activity.PersonalNewsActivity"/>
+        <activity android:name=".activity.speakactivity.ArticleActivity"/>
     </application>
 
 </manifest>

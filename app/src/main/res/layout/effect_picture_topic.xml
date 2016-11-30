@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="150dp">
@@ -14,18 +14,20 @@
                 fresco:placeholderImageScaleType="fitCenter"
                 fresco:fadeDuration="1000"/>
             <LinearLayout
+                android:id="@+id/topic_linearlayout_background"
                 android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:layout_marginTop="110dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="125dp"
                 android:orientation="horizontal">
                 <TextView
+                    android:id="@+id/topic_titel"
                     android:layout_width="0dp"
-                    android:layout_weight="2"
+                    android:layout_weight="3"
                     android:layout_height="wrap_content"
                     android:text="titletitletitle"
-                    android:textSize="20dp"
+                    android:textSize="15dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/topic_title_color"/>
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -34,21 +36,29 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
                         android:src="@drawable/looked_hui"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/main_article_item_scan"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="15dp"
+                        android:textColor="@color/topic_title_color"
                         android:text="@string/scan"/>
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
+                        android:layout_marginTop="3dp"
                         android:src="@drawable/looked_hui"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="15dp"
                         android:id="@+id/main_article_item_like"
+                        android:textColor="@color/topic_title_color"
                         android:text="@string/scan"/>
                 </LinearLayout>
             </LinearLayout>
@@ -57,13 +67,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="7dp">
+        android:padding="15dp">
         <TextView
+            android:id="@+id/topic_text_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="2"
             android:text="tttttttt"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:textColor="@color/effect_topic_text"/>
     </LinearLayout>
 
