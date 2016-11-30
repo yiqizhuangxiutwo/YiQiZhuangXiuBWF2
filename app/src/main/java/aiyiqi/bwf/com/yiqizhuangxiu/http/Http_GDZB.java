@@ -6,7 +6,6 @@ import com.zhy.http.okhttp.callback.StringCallback;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_GDZB;
 import aiyiqi.bwf.com.yiqizhuangxiu.utlis.Apis;
-import aiyiqi.bwf.com.yiqizhuangxiu.utlis.UrlHandler;
 import okhttp3.Call;
 
 /**
@@ -21,12 +20,11 @@ public class Http_GDZB {
      */
 
     public void getHttp(String id) {
-        String url = UrlHandler.handlUrl(Apis.HTTP_GDZB);
         OkHttpUtils
                 .post().addParams("token","DAB088BA50C9405E84C789055D657614")
                 .addParams("app_version","android_com.aiyiqi.galaxy_1.1")
                 .addParams("buildingId",id)
-                .url(url).build().execute(new StringCallback() {
+                .url(Apis.HTTP_GDZB).build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
 
