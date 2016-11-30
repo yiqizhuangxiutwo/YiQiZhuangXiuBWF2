@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -27,6 +28,7 @@ import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_GDZB_ST;
 import aiyiqi.bwf.com.yiqizhuangxiu.fragment.Inner_Fragment;
 import aiyiqi.bwf.com.yiqizhuangxiu.http.Http_GDZB;
 import aiyiqi.bwf.com.yiqizhuangxiu.http.Http_GDZB_ST;
+import aiyiqi.bwf.com.yiqizhuangxiu.utlis.TimeChange;
 import aiyiqi.bwf.com.yiqizhuangxiu.view.CustomRefreshLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -85,7 +87,6 @@ public class GongDiZhiBoActivity extends BaseActivity {
         textTitleSubviewTitle.setText("工地直播");
         Intent intent = this.getIntent();
         id = intent.getStringExtra("id");
-        fm = this.getSupportFragmentManager();
         getHttp_GDZB();
     }
 
@@ -99,7 +100,6 @@ public class GongDiZhiBoActivity extends BaseActivity {
         http_gdzb.setCallback(new Http_GDZB.Callback() {
             @Override
             public void RecyclerViewCallback(Response_GDZB response_gdzb) {
-                getFragments(response_gdzb.getData().getProgress().size());
 
                 decorationListviewSimpledrawee.setImageURI(response_gdzb.getData().getImageUrl());
                 decorationListviewTextup.setText(response_gdzb.getData().getOrderHouse().getCommunity());
@@ -144,64 +144,32 @@ public class GongDiZhiBoActivity extends BaseActivity {
     }
 
 
-    private List<Fragment> fragments;
-
-
-    private void getFragments(int size) {
-        fragments = new ArrayList<>();
-        for (int i = 0; i < size; i++) {
-            fragments.add(new Inner_Fragment());
-        }
-    }
-
-
-    private FragmentManager fm;
-    private FragmentTransaction ft;
-    private Fragment currentFrag = null;
-    private int currentIndex = -1;
-
-    public void showFragments(int index) {
-        ft = fm.beginTransaction();
-        if (currentIndex == index) {
-            return;
-        } else {
-            currentIndex = index;
-        }
-//        switch (index) {
-//            case 0:
-//                ft.add(R.id.framelayout, fragments.get(0));
-//                ft.show(fragments.get(0));
-//                break;
-//            case 1:
-//                ft.add(R.id.framelayout, fragments.get(1));
-//                ft.show(fragments.get(1));
-//                break;
-//            case 2:
-//                ft.add(R.id.framelayout, fragments.get(2));
-//                ft.show(fragments.get(2));
-//                break;
-//        }
-//        ft.commit();
-    }
-
-    private static View inner_view;
     private static LinearLayout ll;
+    private static int currentProgressId = -1;
 
-    public void setPosition(final int position, int progressId) {
+    public void setPosition(int progressId) {
+        if (currentProgressId == progressId){
+            return;
+        }
+        Log.d("GongDiZhiBoActivity", "进来了");
+        currentProgressId = progressId;
         ll.removeAllViews();
-//        showFragments(position);
-        //装修进度晒图
         Http_GDZB_ST http_gdzb_st = new Http_GDZB_ST();
         http_gdzb_st.getHttp(progressId, id);
         http_gdzb_st.setCallback(new Http_GDZB_ST.Callback() {
             @Override
             public void RecyclerViewCallback(Response_GDZB_ST response_gdzb_st) {
 
-                for (int i = 0; i < 10; i++) {
-                    View inner_view2 = inflater.inflate(R.layout.innerview,null);
-                    Inner_ViewHolder holder = new Inner_ViewHolder(inner_view2);
-                    holder.name.setText(response_gdzb_st.getData().get(0).getCreatorName());
-                    ll.addView(inner_view2);
+                for (int i = 0; i < response_gdzb_st.getData().size(); i++) {
+                    View inner_view = inflater.inflate(R.layout.innerview,null);
+                    Inner_ViewHolder holder = new Inner_ViewHolder(inner_view);
+                    holder.name.setText(response_gdzb_st.getData().get(i).getCreatorName()+"("
+                        +response_gdzb_st.getData().get(i).getCreatorRole()+")");
+                    holder.message.setText(response_gdzb_st.getData().get(i).getMessage());
+                    holder.simple.setImageURI(response_gdzb_st.getData().get(i).getAvatar());
+                    String time = new TimeChange().formatDuring(response_gdzb_st.getData().get(i).getCreateTime());
+                    holder.time.setText(time);
+                    ll.addView(inner_view);
                 }
             }
         });

@@ -63,7 +63,7 @@ public class GDZB_Recycler_Adapter extends RecyclerView.Adapter {
             @Override
             public void onClick(View v) {
                 GongDiZhiBoActivity activity = new GongDiZhiBoActivity();
-                activity.setPosition(position,progress.get(position).getProgressStatus());
+                activity.setPosition(progress.get(position).getProgressStatus());
             }
         });
     }
