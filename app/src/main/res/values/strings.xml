@@ -34,5 +34,6 @@
     <string name="text_04">没有更多数据了哦~~~</string>
     <string name="text_05">回帖</string>
     <string name="text_06">精选自</string>
-    <string name="text_07">相关文章推荐</string>>
+    <string name="text_07">相关文章推荐</string>
+    <string name="text_08">评论列表</string>>
 </resources>

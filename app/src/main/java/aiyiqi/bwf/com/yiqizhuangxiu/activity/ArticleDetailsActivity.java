@@ -20,9 +20,13 @@ import java.util.List;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
 import aiyiqi.bwf.com.yiqizhuangxiu.adapter.ArticleRelatedAdapter;
+import aiyiqi.bwf.com.yiqizhuangxiu.entity.ResponseArticleComments;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.ResponseArticleDetails;
+import aiyiqi.bwf.com.yiqizhuangxiu.mvp.presenter.ArticleCommentsPresenter;
 import aiyiqi.bwf.com.yiqizhuangxiu.mvp.presenter.ArticleDetailsPresenter;
+import aiyiqi.bwf.com.yiqizhuangxiu.mvp.presenter.impl.ArticleCommentsPresenterImpl;
 import aiyiqi.bwf.com.yiqizhuangxiu.mvp.presenter.impl.ArticleDetailsPresenterImpl;
+import aiyiqi.bwf.com.yiqizhuangxiu.mvp.view.ArticleCommentsView;
 import aiyiqi.bwf.com.yiqizhuangxiu.mvp.view.ArticleDetailsView;
 import aiyiqi.bwf.com.yiqizhuangxiu.widget.MyListView;
 import butterknife.BindView;
@@ -32,7 +36,7 @@ import butterknife.ButterKnife;
  * Created by Lee Vane.
  */
 
-public class ArticleDetailsActivity extends BaseActivity implements ArticleDetailsView {
+public class ArticleDetailsActivity extends BaseActivity implements ArticleDetailsView, ArticleCommentsView {
 
 
     @BindView(R.id.title)
@@ -51,11 +55,15 @@ public class ArticleDetailsActivity extends BaseActivity implements ArticleDetai
     MyListView articelDetailsRelated;
     @BindView(R.id.scrollview_tag)
     ScrollView scrollviewTag;
+    @BindView(R.id.articel_details_comments)
+    LinearLayout articelDetailsComments;
+    @BindView(R.id.comment_footer)
+    LinearLayout commentFooter;
 
 
     private String articleId;
-    private ArticleRelatedAdapter relatedAdapter;
     private ArticleDetailsPresenter presenter;
+    private ArticleCommentsPresenter commentsPresenter;
 
     @Override
     public int getContentViewResID() {
@@ -80,6 +88,9 @@ public class ArticleDetailsActivity extends BaseActivity implements ArticleDetai
         presenter = new ArticleDetailsPresenterImpl(this);
         presenter.loadDatas(articleId);
 
+        commentsPresenter = new ArticleCommentsPresenterImpl(this);
+        commentsPresenter.loadDatas(articleId);
+
         new Handler() {
             @Override
             public void handleMessage(Message msg) {
@@ -98,7 +109,7 @@ public class ArticleDetailsActivity extends BaseActivity implements ArticleDetai
 
     @Override
     public void showArticel(ResponseArticleDetails.DataBean.CurrentNewsBean currentNewsBeen) {
-        scrollviewTag.scrollTo(0,0);
+        scrollviewTag.scrollTo(0, 0);
         refreshLayout.finishRefresh();
         articleTitle.setText(currentNewsBeen.getTitle());
         LayoutInflater inflater = LayoutInflater.from(this);
@@ -125,6 +136,29 @@ public class ArticleDetailsActivity extends BaseActivity implements ArticleDetai
         ArticleRelatedAdapter adapter = new ArticleRelatedAdapter(this, relatedNewsBeen);
         articelDetailsRelated.setAdapter(adapter);
     }
+    @Override
+    public void showArticelComments(List<ResponseArticleComments.DataBean1.DataBean> dataBeens) {
+        LayoutInflater inflater = LayoutInflater.from(this);
+        articelDetailsComments.setVisibility(View.VISIBLE);
+        articelDetailsComments.removeAllViews();
+        for(ResponseArticleComments.DataBean1.DataBean dataBean : dataBeens){
+            View view = inflater.inflate(R.layout.article_comments,articelDetailsComments,false);
+            CommentsViewHolder holder = new CommentsViewHolder(view);
+            holder.imageviewAuthorAvaterComments.setImageURI(dataBean.getUserheadimage());
+            holder.commentAuthor.setText(dataBean.getComment_user_name());
+            holder.commentContent.setText(dataBean.getComment_content());
+//        SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        String time = format.format(new Date(dataBeen.get(position).getComment_time()));
+            holder.commentTime.setText(dataBean.getComment_time());
+            articelDetailsComments.addView(view);
+        }
+        footer();
+    }
+
+    @Override
+    public void showNoMoreDatas() {
+        footer();
+    }
 
     @Override
     public void showError() {
@@ -147,5 +181,25 @@ public class ArticleDetailsActivity extends BaseActivity implements ArticleDetai
         TextViewHolder(View view) {
             ButterKnife.bind(this, view);
         }
+    }
+    static class CommentsViewHolder {
+        @BindView(R.id.imageview_author_avater_comments)
+        SimpleDraweeView imageviewAuthorAvaterComments;
+        @BindView(R.id.comment_author)
+        TextView commentAuthor;
+        @BindView(R.id.comment_time)
+        TextView commentTime;
+        @BindView(R.id.comment_content)
+        TextView commentContent;
+
+        CommentsViewHolder(View view) {
+            ButterKnife.bind(this, view);
+        }
+    }
+    public void footer(){
+        LayoutInflater inflater = LayoutInflater.from(this);
+        commentFooter.setVisibility(View.VISIBLE);
+        View view = inflater.inflate(R.layout.comments_nomore_data, commentFooter, false);
+        commentFooter.addView(view);
     }
 }
