@@ -4,24 +4,19 @@
     android:id="@+id/site_live_linearlayout"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="180dp">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="90dp"
         android:orientation="horizontal">
-        <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/site_live_title_picture"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            fresco:placeholderImage="@drawable/loading_placeholder"
-            fresco:placeholderImageScaleType="fitCenter"
-            fresco:fadeDuration="1000"/>
+        <include layout="@layout/listview_decoration_live"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -34,11 +29,12 @@
             android:layout_height="40dp"
             fresco:placeholderImage="@drawable/default_avatar"
             fresco:placeholderImageScaleType="fitCenter"
-            fresco:fadeDuration="1000"/>
+            fresco:fadeDuration="1000"
+            fresco:roundAsCircle="true"/>
             <TextView
+                android:id="@+id/site_live_title_designer_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="wang"
                 android:textStyle="bold"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -57,11 +53,12 @@
                 android:layout_height="40dp"
                 fresco:placeholderImage="@drawable/default_avatar"
                 fresco:placeholderImageScaleType="fitCenter"
-                fresco:fadeDuration="1000"/>
+                fresco:fadeDuration="1000"
+                fresco:roundAsCircle="true"/>
             <TextView
+                android:id="@+id/site_live_title_supervisor_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="wang"
                 android:textStyle="bold"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -80,11 +77,12 @@
                 android:layout_height="40dp"
                 fresco:placeholderImage="@drawable/default_avatar"
                 fresco:placeholderImageScaleType="fitCenter"
-                fresco:fadeDuration="1000"/>
+                fresco:fadeDuration="1000"
+                fresco:roundAsCircle="true"/>
             <TextView
+                android:id="@+id/site_live_title_foreman_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="wang"
                 android:textStyle="bold"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -103,14 +101,14 @@
                 android:layout_height="40dp"
                 fresco:placeholderImage="@drawable/default_avatar"
                 fresco:placeholderImageScaleType="fitCenter"
-                fresco:fadeDuration="1000"/>
+                fresco:fadeDuration="1000"
+                fresco:roundAsCircle="true"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="wang"
                 android:textStyle="bold"
-                android:id="@+id/textView2" />
+                android:id="@+id/site_live_title_adviser_text" />
 
             <TextView
                 android:layout_width="wrap_content"

@@ -55,8 +55,16 @@ public interface Apis {
 
     String SEARCH_POSTD_EATAILS ="http://bbs.17house.com/motnt/index.php?a=viewThread&c=forumThread&imgwidth=330&uuid=86305803367590&tid=1216903&m=forum&haspermission=yes&model=android&app_version=android_com.aiyiqi.galaxy_1.1";
 
+<<<<<<< HEAD
 
     //工地直播基本信息获取
     String HTTP_GDZB = "http://hui.17house.com/svc/payment-facade/housekeep/getLiveBuildingSite";
 
+=======
+    //工地直播基本信息获取
+    String HTTP_GDZB = "http://hui.17house.com/svc/payment-facade/housekeep/getLiveBuildingSite";
+
+    //工地晒图信息获取
+    String HTTP_GDZB_ST = "http://hui.17house.com/svc/payment-facade/housekeep/listBuildingSiteTrackByProgress";
+>>>>>>> 8258b6dee05e14995cea2aa10a53e0ab9d7648c5
 }

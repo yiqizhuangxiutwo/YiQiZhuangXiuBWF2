@@ -27,14 +27,12 @@
         <activity android:name=".activity.SheJiLiangFangActivity"/>
         <activity android:name=".activity.NewHouseBuild"/>
         <activity android:name=".activity.OldHouseBuild"/>
-
-
-
         <activity android:name=".activity.LoginRegisterActivity"/>
         <activity android:name=".activity.ZiZhuXiaDan_Inner_Activity"/>
         <activity android:name=".activity.ArticleDetailsActivity"/>
         <activity android:name=".activity.SearchActivity"/>
         <activity android:name=".activity.PersonalNewsActivity"/>
+<<<<<<< HEAD
 
         <activity android:name=".activity.TongchengWeb_Activity"/>
 
@@ -42,6 +40,11 @@
         <activity android:name=".activity.GongDiZhiBoActivity"/>
         <activity android:name=".activity.TeamTogether"/>
 
+=======
+        <activity android:name=".activity.TongchengWeb_Activity"/>
+        <activity android:name=".activity.GongDiZhiBoActivity"/>
+        <activity android:name=".activity.TeamTogether"/>
+>>>>>>> 8258b6dee05e14995cea2aa10a53e0ab9d7648c5
     </application>
 
 </manifest>
