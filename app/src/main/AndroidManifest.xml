@@ -35,13 +35,13 @@
         <activity android:name=".activity.ArticleDetailsActivity"/>
         <activity android:name=".activity.SearchActivity"/>
         <activity android:name=".activity.PersonalNewsActivity"/>
-<<<<<<< HEAD
+
         <activity android:name=".activity.TongchengWeb_Activity"/>
 
-=======
+
         <activity android:name=".activity.GongDiZhiBoActivity"/>
         <activity android:name=".activity.TeamTogether"/>
->>>>>>> 0b325a950a600dfff2dc3fb4708c3c04732e3c6f
+
     </application>
 
 </manifest>

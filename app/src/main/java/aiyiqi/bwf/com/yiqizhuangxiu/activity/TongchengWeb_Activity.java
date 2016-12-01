@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cjj.MaterialRefreshLayout;
+import com.cjj.MaterialRefreshListener;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
 import aiyiqi.bwf.com.yiqizhuangxiu.adapter.Tongcheng_Adapter;
@@ -35,7 +36,9 @@ public class TongchengWeb_Activity extends BaseActivity{
     private Tongcheng_Adapter tongchengAdapter;
     private TongchengPresenter tongchengPresenter;
     private LinearLayoutManager linearLayoutManager;
-
+    private String web;
+    private String urls;
+    private Intent intent;
 
     @Override
     public int getContentViewResID() {
@@ -44,9 +47,14 @@ public class TongchengWeb_Activity extends BaseActivity{
 
     @Override
     protected void initViews() {
-        Intent intent = this.getIntent();
-        String web = intent.getStringExtra("web");
-        String urls = intent.getStringExtra("urls");
+        intent = this.getIntent();
+        gethttp(intent);
+    }
+
+    private void gethttp(Intent intent) {
+        refreshLayout.finishRefresh();
+        web = intent.getStringExtra("web");
+        urls = intent.getStringExtra("urls");
         tongchengWebview.getSettings().setJavaScriptEnabled(true);
         if (web == null){
             tongchengWebview.loadUrl(urls);
@@ -62,12 +70,22 @@ public class TongchengWeb_Activity extends BaseActivity{
         });
     }
 
+
+
+
     @Override
     protected void initDatas() {
         imageViewBackSubviewTitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        refreshLayout.setMaterialRefreshListener(new MaterialRefreshListener() {
+            @Override
+            public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
+                gethttp(intent);
             }
         });
     }

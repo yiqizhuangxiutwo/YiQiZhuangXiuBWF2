@@ -26,4 +26,5 @@
     <color name="search_text">#1e9f2f</color>
     <color name="texttag02">#2e8bce</color>
     <color name="zxgs_zxzb_view">#10000000</color>
+    <color name="theme_color_text_1">#ff999999</color>
 </resources>

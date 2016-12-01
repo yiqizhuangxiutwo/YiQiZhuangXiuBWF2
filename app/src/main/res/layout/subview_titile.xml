@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="content"
+            type="String"/>
+    </data>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="?android:actionBarSize"
@@ -9,6 +15,7 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:layout_centerInParent="true"
+
         android:text="同城活动"/>
 
     <ImageView
@@ -24,3 +31,4 @@
 
 
 </RelativeLayout>
+</layout>

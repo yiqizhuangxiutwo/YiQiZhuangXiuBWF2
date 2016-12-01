@@ -53,11 +53,10 @@ public interface Apis {
     //装修公司的装修直播
     String HTTP_BUILD_COMPANY_LISTVIEW = "http://hui.17house.com/svc/payment-facade/housekeep/listLatestLiveBuildingSites";
 
-<<<<<<< HEAD
     String SEARCH_POSTD_EATAILS ="http://bbs.17house.com/motnt/index.php?a=viewThread&c=forumThread&imgwidth=330&uuid=86305803367590&tid=1216903&m=forum&haspermission=yes&model=android&app_version=android_com.aiyiqi.galaxy_1.1";
 
-=======
+
     //工地直播基本信息获取
     String HTTP_GDZB = "http://hui.17house.com/svc/payment-facade/housekeep/getLiveBuildingSite";
->>>>>>> 0b325a950a600dfff2dc3fb4708c3c04732e3c6f
+
 }

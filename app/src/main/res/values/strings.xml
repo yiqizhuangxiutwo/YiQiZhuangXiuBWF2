@@ -29,4 +29,5 @@
     <string name="user">用户</string>
     <string name="tiezi">帖子</string>
     <string name="text_01">相关用户</string>>
+    <string name="score_and_review2">%1$s分（%2$d人评分）</string>
 </resources>
