@@ -16,7 +16,8 @@ import aiyiqi.bwf.com.yiqizhuangxiu.utlis.UrlHandler;
  * Created by Lee Vane.
  */
 
-public class EffectPictureRightPresenterImpl implements EffectPictureRightPresenter {
+public class
+EffectPictureRightPresenterImpl implements EffectPictureRightPresenter {
 
     private EffectPictureRightModel model;
     private EffectPictureRightView view;

@@ -20,4 +20,16 @@
         <item name="android:textSize">18dp</item>
     </style>
 
+    <style name="headertwo_up_text">
+        <item name="android:text">未完成</item>
+        <item name="android:background">@android:color/darker_gray</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="headertwo_down_text">
+        <item name="android:padding">2dp</item>
+        <item name="android:textSize">17dp</item>
+    </style>
+
 </resources>

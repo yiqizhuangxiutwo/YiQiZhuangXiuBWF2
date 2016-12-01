@@ -4,23 +4,23 @@ import com.alibaba.fastjson.JSON;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
-import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_PostDetails;
+import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_Buide_Company_ListView;
 import aiyiqi.bwf.com.yiqizhuangxiu.utlis.Apis;
 import okhttp3.Call;
 
 /**
- * Created by Administrator on 2016/11/28.
+ * Created by Yishi on 2016/11/29.
  */
+public class Http_Build_Company_ListView {
 
-public class Http_SearchPostDetails {
     /**
-     * 装修学堂头部的tag数据
+     * 装修公司界面身体ListView的网络访问数据
      * @param
      * @return
      */
     public void getHttp() {
 
-        OkHttpUtils.get().url(Apis.SEARCH_POSTD_EATAILS).build().execute(new StringCallback() {
+        OkHttpUtils.get().url(Apis.HTTP_BUILD_COMPANY_LISTVIEW).build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
                 if (e!=null){
@@ -30,18 +30,19 @@ public class Http_SearchPostDetails {
 
             @Override
             public void onResponse(String response, int id) {
-                Response_PostDetails response_postDetails = JSON.parseObject(response, Response_PostDetails.class);
-                callback.PostDetails(response_postDetails);
+                Response_Buide_Company_ListView response_buide_company_listView = JSON.parseObject(response,Response_Buide_Company_ListView.class);
+                callback.ViewPagerCallback(response_buide_company_listView);
             }
         });
     }
 
-    private Http_SearchPostDetails.Callback callback;
-    public void setCallback(Http_SearchPostDetails.Callback callback){
+    private Callback callback;
+    public void setCallback(Callback callback){
         this.callback = callback;
     }
     public interface Callback{
-        void PostDetails(Response_PostDetails response_postDetails);
+        void ViewPagerCallback( Response_Buide_Company_ListView response_buide_company_listView);
         void HttpFailded(Exception e);
     }
+
 }

@@ -25,11 +25,6 @@ public class Http_Home_RecyclerView {
 
     public void getHttp(String id,int type,int pager) {
         String url = UrlHandler.handlUrl(Apis.HTTP_HOME_RECYCLERVIEW,id,type,pager);
-
-        Log.d("Http_Home_RecyclerView", "pager:" + pager);
-
-        Log.d("Http_Home_RecyclerView", "pager:" + pager);
-
         OkHttpUtils.get().url(url).build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {

@@ -31,9 +31,11 @@
         <activity android:name=".activity.ZiZhuXiaDan_Inner_Activity"/>
         <activity android:name=".activity.ArticleDetailsActivity"/>
         <activity android:name=".activity.SearchActivity"/>
-        <activity android:name=".activity.SearchPostDetailsActivity"/>
         <activity android:name=".activity.PersonalNewsActivity"/>
         <activity android:name=".activity.TieActivity"/>
+        <activity android:name=".activity.TongchengWeb_Activity"/>
+        <activity android:name=".activity.GongDiZhiBoActivity"/>
+        <activity android:name=".activity.TeamTogether"/>
     </application>
 
 </manifest>
