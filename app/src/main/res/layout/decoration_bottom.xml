@@ -2,7 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:layout_alignParentBottom="true">
+    android:layout_alignParentBottom="true"
+    android:id="@+id/decoration_bottom"
+    android:visibility="gone">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

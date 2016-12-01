@@ -5,7 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="white">#ffffff</color>
     <color name="green">#00a051</color>
-    <color name="gray">#e4dada</color>
+    <color name="gray">#bfded7d7</color>
     <color name="windowBackground">#ffffffff</color>
     <color name="tabIndicatorColor">#ff000000</color>
     <color name="tabSelectedTextColor">#ff000000</color>
@@ -20,6 +20,11 @@
     <color name="greens">#006400</color>
     <color name="mine_color">#e6dfdf</color>
     <color name="effect_color">#aba4a4</color>
-    <color name="topic_title_color">#161616</color>
+    <color name="topic_title_color">#faf6f6</color>
     <color name="topic_background">#161515</color>
+    <color name="article_bottom">#0d9165</color>
+    <color name="search_text">#1e9f2f</color>
+    <color name="texttag02">#2e8bce</color>
+    <color name="zxgs_zxzb_view">#10000000</color>
+    <color name="green_light">#abe4b2</color>
 </resources>

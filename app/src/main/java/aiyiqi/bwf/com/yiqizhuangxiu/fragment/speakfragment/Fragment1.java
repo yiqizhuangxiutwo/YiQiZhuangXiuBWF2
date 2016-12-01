@@ -23,6 +23,8 @@ import aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.view.SpeakView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static android.R.attr.button;
+
 /**
  * Created by Administrator on 2016/11/23.
  */

@@ -1,11 +1,14 @@
 package aiyiqi.bwf.com.yiqizhuangxiu.http;
 
+import android.util.Log;
+
 import com.alibaba.fastjson.JSON;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.ResponseRecycleViewList;
 import aiyiqi.bwf.com.yiqizhuangxiu.utlis.Apis;
+import aiyiqi.bwf.com.yiqizhuangxiu.utlis.UrlHandler;
 import okhttp3.Call;
 
 /**
@@ -13,7 +16,6 @@ import okhttp3.Call;
  */
 
 public class Http_Home_RecyclerView {
-    public String strresponse = null;
 
     /**
      * Home界面下方的RecycleView的网络访问数据
@@ -21,10 +23,9 @@ public class Http_Home_RecyclerView {
      * @return
      */
 
-
-    public void getHttp() {
-
-        OkHttpUtils.get().url(Apis.HTTP_HOME_RECYCLERVIEW).build().execute(new StringCallback() {
+    public void getHttp(String id,int type,int pager) {
+        String url = UrlHandler.handlUrl(Apis.HTTP_HOME_RECYCLERVIEW,id,type,pager);
+        OkHttpUtils.get().url(url).build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
 
@@ -32,8 +33,7 @@ public class Http_Home_RecyclerView {
 
             @Override
             public void onResponse(String response, int id) {
-                strresponse = response;
-                ResponseRecycleViewList responseRecycleViewList = JSON.parseObject(strresponse,ResponseRecycleViewList.class);
+                ResponseRecycleViewList responseRecycleViewList = JSON.parseObject(response,ResponseRecycleViewList.class);
                 callback.RecyclerViewCallback(responseRecycleViewList);
             }
         });

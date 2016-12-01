@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by Administrator on 2016/11/24.
  */
 
-public class ResponseZzhuangxiuxuetang {
+public class ResponseZhuangxiuxuetang {
 
     /**
      * error : 0
