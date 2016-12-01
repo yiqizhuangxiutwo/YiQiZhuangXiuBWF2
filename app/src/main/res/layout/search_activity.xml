@@ -31,6 +31,7 @@
                 android:imeOptions="actionSearch"
                 android:id="@+id/search_textview"
                 android:textSize="17dp"
+                android:singleLine="true"
                 android:background="@drawable/edit_text_style"/>
 
 

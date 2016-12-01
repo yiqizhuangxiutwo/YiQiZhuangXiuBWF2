@@ -124,7 +124,7 @@ public class SearchActivity extends BaseActivity implements SearchView {
                     presenter = new SearchPresenterImpl(SearchActivity.this);
                     presenter.loadDatas(content);
                 }
-
+                searchRecycleview.setAdapter(adapter);
             }
 
             @Override
@@ -148,27 +148,27 @@ public class SearchActivity extends BaseActivity implements SearchView {
 
     @Override
     public void showPictureSuccess(int page, List<ResponseSearch.DataBean> dataBeen) {
+
         if(dataBeen == null){
             searchNull.setVisibility(View.VISIBLE);
             searchLinearlayoutView.setVisibility(View.GONE);
             refreshLayoutSearch.setVisibility(View.GONE);
             return;
         }
+        Log.d("SearchActivity", "dataBeen:" + dataBeen.toString());
+        refreshLayoutSearch.finishRefresh();
         if(page == 1){
             adapter.setDatas(dataBeen);
             isNoMoreData = false;
         }else{
             adapter.addDatas(dataBeen);
         }
-        refreshLayoutSearch.finishRefresh();
-        Log.d("testactivity", dataBeen.get(0).getAuthor());
     }
 
     @Override
     public void showNoMoreData() {
 
     }
-
     @Override
     public void showFailed() {
 

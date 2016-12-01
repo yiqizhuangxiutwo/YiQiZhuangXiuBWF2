@@ -8,13 +8,14 @@
     <string name="zizhuxiadan">自助下单</string>
     <string name="shejiliangfang">设计/量房</string>
     <string name="main_list_artilce">装修学堂</string>
-    <string name="artcle_item_time">5小时前</string>
+    <string name="artcle_item_time">精选自北京装修论坛></string>
     <string name="scan">172</string>
     <string name="comments">17</string>
     <string name="auther">作者</string>
     <string name="auther_time">16小时前</string>
     <string name="jiaguanzhu" >加关注</string>
     <string name="noMoreData">没有更多数据了~~~</string>
+    <string name="no_Search_data">相关数据为空</string>
     <string name="loadDataFailedAndClickRetry">获取数据失败，点我重试</string>>
     <string name="text_great_category">null</string>
     <string name="effect_topic_left_titel">专题</string>
@@ -29,5 +30,9 @@
     <string name="user">用户</string>
     <string name="tiezi">帖子</string>
     <string name="text_01">相关用户</string>
-    <string name="text_03">暂无搜索数据</string>>
+    <string name="text_03">暂无搜索数据</string>
+    <string name="text_04">没有更多数据了哦~~~</string>
+    <string name="text_05">回帖</string>
+    <string name="text_06">精选自</string>
+    <string name="text_07">相关文章推荐</string>>
 </resources>

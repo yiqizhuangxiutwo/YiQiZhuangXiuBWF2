@@ -46,6 +46,7 @@ public class SearchPresenterImpl implements SearchPresenter {
             @Override
             public void loadSuccess(List<ResponseSearch.DataBean> dataBeen) {
                 view.showPictureSuccess(nextpage, dataBeen);
+                nextpage ++;
             }
 
             @Override

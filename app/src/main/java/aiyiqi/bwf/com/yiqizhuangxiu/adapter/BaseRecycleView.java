@@ -50,6 +50,9 @@ public abstract  class BaseRecycleView<T> extends RecyclerView.Adapter<RecyclerV
     public int getItemCount() {
         //TODO  到时候要考虑header和footer
         Log.d("BaseRecycleView", "datas.size() + getHeaderCount() + getFooterCount():" + (datas.size() + getHeaderCount() + getFooterCount()));
+        Log.d("testa", "datas.size():" + datas.size());
+        Log.d("testa", "getHeaderCount():" + getHeaderCount());
+        Log.d("testa", "getFooterCount():" + getFooterCount());
         return datas.size() + getHeaderCount() + getFooterCount();
     }
 
