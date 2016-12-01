@@ -2,22 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <com.cjj.MaterialRefreshLayout
-        android:id="@+id/teamtogether_refreshLayout"
+    <FrameLayout
+        android:id="@+id/teamtogether_fragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-        <GridView
-            android:id="@+id/gridView"
+        android:layout_height="wrap_content">
+        <com.cjj.MaterialRefreshLayout
+            android:id="@+id/teamtogether_refreshLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:horizontalSpacing="10dp"
-            android:verticalSpacing="10dp"
-            android:numColumns="2"
-            android:layout_margin="10dp"
-            android:scrollbars="none"
-            />
-    </com.cjj.MaterialRefreshLayout>
+            android:layout_height="wrap_content"
+            >
+            <GridView
+                android:id="@+id/teamtogether_gridView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:horizontalSpacing="10dp"
+                android:verticalSpacing="10dp"
+                android:numColumns="2"
+                android:layout_margin="10dp"
+                android:scrollbars="none"
+                />
+        </com.cjj.MaterialRefreshLayout>
+    </FrameLayout>
 
 </LinearLayout>
