@@ -14,6 +14,7 @@ import java.util.List;
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
 import aiyiqi.bwf.com.yiqizhuangxiu.activity.speakactivity.ArticleActivity;
 import aiyiqi.bwf.com.yiqizhuangxiu.adapter.adapter.MyRecyclecviewAdapter;
+import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_Detail;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_Essence;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.fragment.BaseFragment;

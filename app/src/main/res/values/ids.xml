@@ -30,4 +30,17 @@
     <item name="tipcount" type="id" />
     <item name="gridview" type="id" />
     <item name="gridview1" type="id" />
+    <item name="attention" type="id" />
+    <item name="attention_topic" type="id" />
+    <item name="maintitle" type="id" />
+    <item name="article_date" type="id" />
+    <item name="article_detail" type="id" />
+    <item name="authorname" type="id" />
+    <item name="subjectname" type="id" />
+    <item name="textView_main_title" type="id" />
+    <item name="textView_subtitle" type="id" />
+    <item name="iamgeView_subview_main_slide_page" type="id" />
+    <item name="textviewdetail" type="id" />
+    <item name="article_tag" type="id" />
+    <item name="btntag" type="id" />
 </resources>

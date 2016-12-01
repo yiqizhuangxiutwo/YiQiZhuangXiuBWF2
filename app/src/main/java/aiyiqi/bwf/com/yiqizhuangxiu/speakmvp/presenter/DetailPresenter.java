@@ -5,5 +5,5 @@ package aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.presenter;
  */
 
 public interface DetailPresenter {
-    void loadDetails(int article);
+    void loadDetails(String article);
 }

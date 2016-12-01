@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.cjj.MaterialRefreshLayout;
@@ -32,14 +33,19 @@ public class ZhuangXiuGongSiActivity extends BaseActivity {
     ImageView imageViewBackSubviewTitle;
     @BindView(R.id.zxgs_recyclerview)
     RecyclerView zxgsRecyclerview;
+    @BindView(R.id.linearlayout_yuye)
+    LinearLayout linearlayoutYuye;
+    @BindView(R.id.linearlayout_zixun)
+    LinearLayout linearlayoutZixun;
+    @BindView(R.id.decoration_bottom)
+    LinearLayout decorationBottom;
     @BindView(R.id.refreshLayout)
     CustomRefreshLayout refreshLayout;
-
     private ZXGS_RecycleView_Adapter adapter;
 
     @Override
     public int getContentViewResID() {
-        return R.layout.decoration_company;
+        return R.layout.build_company;
     }
 
     @Override

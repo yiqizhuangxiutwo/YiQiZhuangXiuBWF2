@@ -57,4 +57,7 @@ public interface Apis {
 
     //工地直播基本信息获取
     String HTTP_GDZB = "http://hui.17house.com/svc/payment-facade/housekeep/getLiveBuildingSite";
+
+    //工地晒图信息获取
+    String HTTP_GDZB_ST = "http://hui.17house.com/svc/payment-facade/housekeep/listBuildingSiteTrackByProgress";
 }

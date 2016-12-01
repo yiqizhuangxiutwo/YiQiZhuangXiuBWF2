@@ -34,7 +34,6 @@ import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 public class MyRecyclecviewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private List<Response_Essence.DataBean> datas;
     private LayoutInflater inflater;
-    private List<Response_Detail.DataBean> dataBean1;
     private Context context;
     public MyRecyclecviewAdapter(Context context) {
         this.context =context;
@@ -56,7 +55,7 @@ public class MyRecyclecviewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         final MyViewHolder myViewHolder = (MyViewHolder) holder;
-        Response_Essence.DataBean dataBean = datas.get(position);
+        final Response_Essence.DataBean dataBean = datas.get(position);
         myViewHolder.imageViewAuthor.setImageURI(dataBean.getAvtUrl());
         myViewHolder.authorname.setText(dataBean.getAuthor());
         myViewHolder.textViewFrontMainTitle.setText(dataBean.getSubject());
@@ -76,23 +75,9 @@ public class MyRecyclecviewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         myViewHolder.imageViewFrontTopImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                dataBean1 = (List<Response_Detail.DataBean>) getIem(position);
-                Intent intent = new Intent(context, ArticleActivity.class);
-//                intent.putExtra("articleId",dataBean1.get(position).getTid());
-                Toast.makeText(context, dataBean1.get(position).getTid(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context,ArticleActivity.class);
+                intent.putExtra("articleId",datas.get(position).getTid());
                 context.startActivity(intent);
-            }
-        });
-        myViewHolder.textViewFrontSubtitle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-        myViewHolder.imageViewAuthor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
             }
         });
     }
@@ -100,10 +85,6 @@ public class MyRecyclecviewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     public int getItemCount() {
         return datas.size();
     }
-
-//    public Response_Detail.DataBean getIem(int positon){
-//        return dataBean1.get(positon);
-//    }
     public  class MyViewHolder extends RecyclerView.ViewHolder{
         @BindView(R.id.imageView_author)
         SimpleDraweeView imageViewAuthor;
@@ -133,5 +114,8 @@ public class MyRecyclecviewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
+    }
+    public Response_Essence.DataBean getItem(int position){
+        return datas.get(position+1);
     }
 }

@@ -1,9 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include layout="@layout/headerlayout"></include>
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="niaho"/>
+        android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@id/article_detail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#ff898989" />
+
+                <include layout="@layout/sublayout"></include>
+
+                <TextView
+                    android:id="@id/textView_main_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10.0dip"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="This is main title."
+                    android:textColor="#ff434343"
+                    android:textSize="22.0sp" />
+                <include
+                    layout="@layout/articletime">
+                </include>
+                <LinearLayout
+                    android:id="@id/article_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"/>
+            </LinearLayout>
+    </ScrollView>
 </LinearLayout>

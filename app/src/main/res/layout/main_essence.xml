@@ -24,7 +24,7 @@
             android:ellipsize="end"
             android:maxLines="2"
             android:text="This is subtitle."
-            android:textColor="#3aced9"
+            android:textColor="#1c32b3"
             android:textSize="12.0sp" />
 
         <RelativeLayout
