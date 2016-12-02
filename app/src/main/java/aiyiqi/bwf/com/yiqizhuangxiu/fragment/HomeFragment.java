@@ -15,8 +15,10 @@ import android.widget.Toast;
 
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
+import com.uuzuche.lib_zxing.activity.CodeUtils;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
+import aiyiqi.bwf.com.yiqizhuangxiu.activity.MyZxingActivity;
 import aiyiqi.bwf.com.yiqizhuangxiu.activity.SearchActivity;
 import aiyiqi.bwf.com.yiqizhuangxiu.adapter.HomeRecyvlerViewAdapter;
 import aiyiqi.bwf.com.yiqizhuangxiu.adapter.MainViewPagerAdapter;
@@ -87,8 +89,39 @@ public class HomeFragment extends BaseFragment {
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         homeRecyclerview.setLayoutManager(manager);
         homeRecyclerview.setAdapter(homerecyvlerviewadapter);
+
+        mainTitleZxing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MyZxingActivity.class);
+                getActivity().startActivity(intent);
+            }
+        });
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        /**
+         * 处理二维码扫描结果
+         */
+        if (requestCode == 1000) {
+            //处理扫描结果（在界面上显示）
+            if (null != data) {
+                Bundle bundle = data.getExtras();
+                if (bundle == null) {
+                    return;
+                }
+                if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
+                    String result = bundle.getString(CodeUtils.RESULT_STRING);
+                    Toast.makeText(getContext(), "解析结果:" + result, Toast.LENGTH_LONG).show();
+                } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
+                    Toast.makeText(getContext(), "解析二维码失败", Toast.LENGTH_LONG).show();
+                }
+            }
+        }
+    }
 
     private boolean isload;
     private boolean isrefresh;
