@@ -35,12 +35,13 @@
             android:layout_height="wrap_content"
             android:text="wdasd"
             android:textColor="@android:color/black"/>
-        <GridView
+        <aiyiqi.bwf.com.yiqizhuangxiu.view.MyGridView
             android:id="@+id/innergrid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:numColumns="3"
-            android:paddingTop="10dp"/>
+            android:paddingTop="10dp"
+            android:verticalSpacing="15dp"/>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -57,7 +58,8 @@
                 android:layout_width="10dp"
                 android:layout_height="10dp"
                 android:layout_alignParentRight="true"
-                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:paddingRight="30dp"
                 android:background="@drawable/ic_share"/>
         </RelativeLayout>
     </LinearLayout>
