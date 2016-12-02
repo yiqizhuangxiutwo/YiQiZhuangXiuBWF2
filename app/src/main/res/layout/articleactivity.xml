@@ -2,23 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
     <include layout="@layout/headerlayout"></include>
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="1">
             <LinearLayout
                 android:id="@id/article_detail"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical" >
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1px"
                     android:background="#ff898989" />
-
                 <include layout="@layout/sublayout"></include>
-
                 <TextView
                     android:id="@id/textView_main_title"
                     android:layout_width="match_parent"
@@ -32,11 +32,24 @@
                 <include
                     layout="@layout/articletime">
                 </include>
+                    <LinearLayout
+                        android:id="@id/article_detail"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+                    </LinearLayout>
+                <cn.lankton.flowlayout.FlowLayout
+                    android:id="@id/article_tag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </cn.lankton.flowlayout.FlowLayout>
                 <LinearLayout
-                    android:id="@id/article_detail"
+                    android:id="@+id/article_zan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"/>
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+                </LinearLayout>
             </LinearLayout>
     </ScrollView>
 </LinearLayout>

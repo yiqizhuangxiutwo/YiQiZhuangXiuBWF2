@@ -3,13 +3,13 @@ package aiyiqi.bwf.com.yiqizhuangxiu.activity;
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
 
 /**
- * Created by Administrator on 2016/11/28.
+ * Created by Lee Vane.
  */
 
-public class SearchUserPostActivity extends BaseActivity {
+public class ArticleBuikdingActivity extends BaseActivity {
     @Override
     public int getContentViewResID() {
-        return R.layout.search_user_post;
+        return R.layout.article_details_activity;
     }
 
     @Override

@@ -43,4 +43,8 @@
     <item name="textviewdetail" type="id" />
     <item name="article_tag" type="id" />
     <item name="btntag" type="id" />
+    <item name="iamgeView_subview_page" type="id" />
+    <item name="article_button" type="id" />
+    <item name="iamgeView_zan" type="id" />
+    <item name="article_zan" type="id" />
 </resources>

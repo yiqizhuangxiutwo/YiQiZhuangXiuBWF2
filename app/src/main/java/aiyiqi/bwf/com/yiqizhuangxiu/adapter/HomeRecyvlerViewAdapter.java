@@ -18,8 +18,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
+import aiyiqi.bwf.com.yiqizhuangxiu.activity.ArticleDetailsActivity;
 import aiyiqi.bwf.com.yiqizhuangxiu.activity.JianCaiJiaJuActivity;
 import aiyiqi.bwf.com.yiqizhuangxiu.activity.SheJiLiangFangActivity;
+import aiyiqi.bwf.com.yiqizhuangxiu.activity.TieActivity;
 import aiyiqi.bwf.com.yiqizhuangxiu.activity.TongChengHuoDongActivity;
 import aiyiqi.bwf.com.yiqizhuangxiu.activity.XiaoGuoTuActivity;
 import aiyiqi.bwf.com.yiqizhuangxiu.activity.ZhuangXiuGongSiActivity;
@@ -113,7 +115,7 @@ public class HomeRecyvlerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         if (getItemViewType(position) == ITEM_TYPE_HEADER){
             MyHeader myHeader = (MyHeader) holder;
             myHeader.zhuangxiugonsi.setOnClickListener(this);
@@ -132,6 +134,16 @@ public class HomeRecyvlerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
             wenZhangHolder.artcleItemTime.setText(dataBeens.get(position-1).getDateline());
             wenZhangHolder.mainArticleItemScan.setText(dataBeens.get(position-1).getViews());
             wenZhangHolder.mainArticleItemComments.setText(dataBeens.get(position-1).getReplies());
+            wenZhangHolder.mainRecycleviewItem.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, ArticleDetailsActivity.class);
+                    intent.putExtra("articleId", dataBeens.get(position - 1).getId());
+                    Log.d("hahaha", dataBeens.get(position - 1).getId());
+                    context.startActivity(intent);
+
+                }
+            });
         } else if (getItemViewType(position) == ITEM_TYPE_CONTENT_TIEZI) {
             MyTeiZiHolder myTeiZiHolder = (MyTeiZiHolder) holder;
             myTeiZiHolder.auther.setText(dataBeens.get(position-1).getAuthor());
@@ -145,6 +157,16 @@ public class HomeRecyvlerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
                 myTeiZiHolder.mainTieImage.setImageURI(dataBeens.get(position-1).getPath());
             }
             myTeiZiHolder.tieItemTime.setText("精简至" + dataBeens.get(position-1).getForum().getName());
+
+            myTeiZiHolder.mainRecycleviewItem.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, TieActivity.class);
+                    intent.putExtra("tieId", dataBeens.get(position).getId());
+                    Log.d("HomeRecyvlerViewAdapter", dataBeens.get(position).getId());
+                    context.startActivity(intent);
+                }
+            });
         } else if (getItemViewType(position) == ITEM_TYPE_FOOTER) {
             bindFooterViewHolder(holder, position);
         }

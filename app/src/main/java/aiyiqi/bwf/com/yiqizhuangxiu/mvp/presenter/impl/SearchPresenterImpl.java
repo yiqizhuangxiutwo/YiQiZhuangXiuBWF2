@@ -1,6 +1,7 @@
 package aiyiqi.bwf.com.yiqizhuangxiu.mvp.presenter.impl;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -40,11 +41,12 @@ public class SearchPresenterImpl implements SearchPresenter {
         }
 
         String url = UrlHandler.handlUrl(Apis.SEARCH, nextpage, content);
-
+        Log.d("test1111", url);
         model.loadDatasSearch(url, new SearchModel.Callback() {
             @Override
             public void loadSuccess(List<ResponseSearch.DataBean> dataBeen) {
-                view.showPictureSuccess(dataBeen);
+                view.showPictureSuccess(nextpage, dataBeen);
+                nextpage ++;
             }
 
             @Override
@@ -55,10 +57,9 @@ public class SearchPresenterImpl implements SearchPresenter {
             @Override
             public void loadError() {
                 view.showFailed();
-                nextpage --;
             }
         });
-        nextpage ++;
+
     }
 
     @Override

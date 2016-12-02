@@ -77,6 +77,7 @@ public class MyRecyclecviewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             public void onClick(View v) {
                 Intent intent = new Intent(context,ArticleActivity.class);
                 intent.putExtra("articleId",datas.get(position).getTid());
+                intent.putExtra("zan",datas.get(position).getZan());
                 context.startActivity(intent);
             }
         });
