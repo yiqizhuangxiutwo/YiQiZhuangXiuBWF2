@@ -10,23 +10,22 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_ZXXT_DownNews;
 import aiyiqi.bwf.com.yiqizhuangxiu.utlis.Apis;
 import aiyiqi.bwf.com.yiqizhuangxiu.utlis.UrlHandler;
 import okhttp3.Call;
 
 /**
- * Created by lenovo on 2016-11-24.
+ * Created by Yishi on 2016/12/2.
  */
-
-public class Http_ZXXT_Tag {
-
+public class Http_ZXXT_DownNews {
     /**
-     * 装修学堂头部的tag数据
+     * 装修学堂下部的新闻数据
      * @param
      * @return
      */
-    public void getHttp(int state) {
-        String url = UrlHandler.handlUrl(Apis.ZZXT_TAG,state);
+    public void getHttp(final int state, int page) {
+        String url = UrlHandler.handlUrl(Apis.ZZXT_DOWNNEWS,state,page);
         OkHttpUtils.get().url(url).build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
@@ -45,17 +44,26 @@ public class Http_ZXXT_Tag {
                     String key = (String) iterator.next();
                     stringMap.put(key,jsonObject.getString(key));
                 }
-                callback.ZXXTTagCallback(stringMap);
+                String str = stringMap.get("data");
+//                Log.d("Http_ZXXT_DownNews", str);
+//                int x = str.indexOf("tag");
+//                Log.d("Http_ZXXT_DownNews", "x:" + x);
+//                int y = str.indexOf("isJump");
+//                Log.d("Http_ZXXT_DownNews", "y:" + y);
+//                String str2 = str.substring(x,y);
+//                Log.d("Http_ZXXT_DownNews", str2);
+                Response_ZXXT_DownNews response_zxxt_downNews = JSON.parseObject(response,Response_ZXXT_DownNews.class);
+                callback.ZXXTTagCallback(response_zxxt_downNews,str);
             }
         });
     }
 
-    private Http_ZXXT_Tag.Callback callback;
-    public void setCallback(Http_ZXXT_Tag.Callback callback){
+    private Callback callback;
+    public void setCallback(Callback callback){
         this.callback = callback;
     }
     public interface Callback{
-        void ZXXTTagCallback(Map<String, String> stringMap);
+        void ZXXTTagCallback(Response_ZXXT_DownNews response_zxxt_downNews,String str);
         void HttpFailded(Exception e);
     }
 
