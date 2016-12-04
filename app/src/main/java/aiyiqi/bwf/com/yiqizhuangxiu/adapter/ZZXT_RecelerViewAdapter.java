@@ -1,6 +1,7 @@
 package aiyiqi.bwf.com.yiqizhuangxiu.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,15 +24,18 @@ public class ZZXT_RecelerViewAdapter extends RecyclerView.Adapter {
     private List<String> list_tags;
     private LayoutInflater inflater;
     private ZXXT_Fragment zzxt_fragment;
+    private int state;
 
-    public ZZXT_RecelerViewAdapter(Context context) {
+    public ZZXT_RecelerViewAdapter(Context context, int state) {
         this.context = context;
+        this.state = state;
         this.list_tags = new ArrayList<>();
         inflater = LayoutInflater.from(context);
         zzxt_fragment = new ZXXT_Fragment();
     }
 
     public void addDatas(List<String> list_tags) {
+        this.list_tags.clear();
         this.list_tags.addAll(list_tags);
         notifyDataSetChanged();
     }
@@ -48,16 +52,20 @@ public class ZZXT_RecelerViewAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-        HeadTag headTag = (HeadTag) holder;
+        final HeadTag headTag = (HeadTag) holder;
         if (position == 0){
             headTag.textView2.setText("全部");
+
         }else if (position != 0 && list_tags.size()!=0){
             headTag.textView2.setText(list_tags.get(position-1));
         }
+        zzxt_fragment.setDownNews(state,0);
         headTag.textView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                zzxt_fragment.setDownNews(position);
+                headTag.textView2.setBackgroundResource(R.color.green);
+                headTag.textView2.setTextColor(Color.WHITE);
+                zzxt_fragment.setDownNews(state,position);
             }
         });
     }

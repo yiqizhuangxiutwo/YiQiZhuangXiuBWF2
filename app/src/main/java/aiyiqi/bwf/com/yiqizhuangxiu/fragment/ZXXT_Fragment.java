@@ -18,7 +18,6 @@ import aiyiqi.bwf.com.yiqizhuangxiu.adapter.ZZXT_Receler_Down_ViewAdapter;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_ZXXT_DownNews;
 import aiyiqi.bwf.com.yiqizhuangxiu.http.Http_ZXXT_DownNews;
 import aiyiqi.bwf.com.yiqizhuangxiu.http.Http_ZXXT_Tag;
-import aiyiqi.bwf.com.yiqizhuangxiu.view.MyRecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -29,7 +28,7 @@ public class ZXXT_Fragment extends BaseFragment {
     @BindView(R.id.recyclerview)
     RecyclerView recyclerview;
     @BindView(R.id.recyclerviewdown)
-    MyRecyclerView recyclerviewdown;
+    RecyclerView recyclerviewdown;
 
     private int state;
     private String[] tags;
@@ -53,20 +52,16 @@ public class ZXXT_Fragment extends BaseFragment {
     private static ZZXT_Receler_Down_ViewAdapter zzxt_down_recelerViewAdapter;
 
     @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            getHttpTag(state);
+        }
+    }
+
+    @Override
     protected void initViews() {
-        LinearLayoutManager manager = new LinearLayoutManager(getActivity());
-        manager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        recyclerview.setLayoutManager(manager);
-        zzxt_recelerViewAdapter = new ZZXT_RecelerViewAdapter(getActivity());
-        recyclerview.setAdapter(zzxt_recelerViewAdapter);
 
-        LinearLayoutManager manager2 = new LinearLayoutManager(getActivity());
-        manager2.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerviewdown.setLayoutManager(manager2);
-        zzxt_down_recelerViewAdapter = new ZZXT_Receler_Down_ViewAdapter(getActivity());
-        recyclerviewdown.setAdapter(zzxt_down_recelerViewAdapter);
-
-        getHttpTag(state);
     }
 
     @Override
@@ -80,15 +75,26 @@ public class ZXXT_Fragment extends BaseFragment {
     /**
      * 获得上部TAG的数据星信息
      */
-    private void getHttpTag(int state) {
+    private void getHttpTag(final int state) {
         Http_ZXXT_Tag zxxt_tag = new Http_ZXXT_Tag();
-        Log.d("ZXXT_Fragment", "state:" + state);
         zxxt_tag.getHttp(state);
         list_tags.clear();
-        zxxt_tag.setCallback(new Http_ZXXT_Tag.Callback() {
 
+        zxxt_tag.setCallback(new Http_ZXXT_Tag.Callback() {
             @Override
             public void ZXXTTagCallback(Map<String, String> stringMap) {
+                LinearLayoutManager manager = new LinearLayoutManager(getActivity());
+                manager.setOrientation(LinearLayoutManager.HORIZONTAL);
+                recyclerview.setLayoutManager(manager);
+                zzxt_recelerViewAdapter = new ZZXT_RecelerViewAdapter(getActivity(),state);
+                recyclerview.setAdapter(zzxt_recelerViewAdapter);
+
+                LinearLayoutManager manager2 = new LinearLayoutManager(getActivity());
+                manager2.setOrientation(LinearLayoutManager.VERTICAL);
+                recyclerviewdown.setLayoutManager(manager2);
+                zzxt_down_recelerViewAdapter = new ZZXT_Receler_Down_ViewAdapter(getActivity());
+                recyclerviewdown.setAdapter(zzxt_down_recelerViewAdapter);
+
                 tags = new String[stringMap.size()];
                 String inner_map = stringMap.get("data");
                 String[] strs = inner_map.split("\"");
@@ -113,14 +119,20 @@ public class ZXXT_Fragment extends BaseFragment {
         return rootView;
     }
 
-    public void setDownNews(final int index) {
+
+    private int oldState = -1;
+    public void setDownNews(int state, final int position) {
+        if (oldState == state){
+            return;
+        }
+        oldState = state;
         Http_ZXXT_DownNews http_zxxt_downNews = new Http_ZXXT_DownNews();
-        http_zxxt_downNews.getHttp(index+1,1);
+        http_zxxt_downNews.getHttp(state, 1);
         http_zxxt_downNews.setCallback(new Http_ZXXT_DownNews.Callback() {
 
             @Override
             public void ZXXTTagCallback(Response_ZXXT_DownNews response_zxxt_downNews, String str) {
-                if (index == 0){
+                if (position == 0) {
                     zzxt_down_recelerViewAdapter.addDatas(response_zxxt_downNews.getData().getList());
                 }
             }
