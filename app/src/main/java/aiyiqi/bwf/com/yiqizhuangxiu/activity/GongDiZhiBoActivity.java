@@ -161,7 +161,8 @@ public class GongDiZhiBoActivity extends BaseActivity{
             public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
 
                 adapter.clearDatas();
-                downAdapteradapte.clearDatas();                 getHttp_GDZB();
+                downAdapteradapte.clearDatas();
+                getHttp_GDZB();
             }
         });
     }
