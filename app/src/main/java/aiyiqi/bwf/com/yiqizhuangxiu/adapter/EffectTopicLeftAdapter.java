@@ -1,7 +1,6 @@
 package aiyiqi.bwf.com.yiqizhuangxiu.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,6 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
-import aiyiqi.bwf.com.yiqizhuangxiu.activity.ArticleDetailsActivity;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.ResponseEffectTopicLeft;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -73,14 +71,6 @@ public class EffectTopicLeftAdapter extends BaseMainListRecycleViewAdapter<Respo
         mholder.mainArticleItemLike.setText(listBean.getLike_num() + "");
         mholder.topicTextContent.setText(listBean.getDesc());
 
-        mholder.effectFrameLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, ArticleDetailsActivity.class);
-                intent.putExtra("articleId", listBean.getId());
-                context.startActivity(intent);
-            }
-        });
     }
 
     static class TopicViewHolder extends RecyclerView.ViewHolder{

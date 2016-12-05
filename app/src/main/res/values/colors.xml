@@ -28,4 +28,7 @@
     <color name="zxgs_zxzb_view">#10000000</color>
     <color name="green_light">#abe4b2</color>
     <color name="dark_green">#00a051</color>
+    <color name="textcolor">#2fab79</color>
+    <color name="grey_01">#d4d4d4</color>
+    <color name="green_01">#28cfa0</color>
 </resources>
