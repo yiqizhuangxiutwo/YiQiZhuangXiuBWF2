@@ -66,6 +66,7 @@ public class ZZXT_RecelerViewAdapter extends RecyclerView.Adapter {
                 headTag.textView2.setBackgroundResource(R.color.green);
                 headTag.textView2.setTextColor(Color.WHITE);
                 zzxt_fragment.setDownNews(state,position);
+
             }
         });
     }
