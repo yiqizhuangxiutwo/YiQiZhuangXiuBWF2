@@ -41,6 +41,11 @@ public class ArticleDetailsPresenterImpl implements ArticleDetailsPresenter {
            }
 
            @Override
+           public void loadTagsDatas(String dateBean) {
+               view.showTags(dateBean);
+           }
+
+           @Override
            public void loadFailed() {
                 view.showError();
                nextpage --;

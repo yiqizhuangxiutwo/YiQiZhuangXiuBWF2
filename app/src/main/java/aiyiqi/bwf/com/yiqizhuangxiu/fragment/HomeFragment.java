@@ -3,6 +3,7 @@ package aiyiqi.bwf.com.yiqizhuangxiu.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -27,8 +28,6 @@ import aiyiqi.bwf.com.yiqizhuangxiu.http.Http_Home_RecyclerView;
 import aiyiqi.bwf.com.yiqizhuangxiu.http.Http_Home_Viewpager;
 import aiyiqi.bwf.com.yiqizhuangxiu.view.AutoScrollViewPager;
 import aiyiqi.bwf.com.yiqizhuangxiu.view.CustomRefreshLayout;
-import aiyiqi.bwf.com.yiqizhuangxiu.widget.CustomLinearLayoutManager;
-import aiyiqi.bwf.com.yiqizhuangxiu.widget.MyRecycleView;
 import aiyiqi.bwf.com.yiqizhuangxiu.widget.PagerDotIndicator;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -59,7 +58,7 @@ public class HomeFragment extends BaseFragment {
     @BindView(R.id.refreshLayout)
     CustomRefreshLayout refreshLayout;
     @BindView(R.id.home_recyclerview)
-    MyRecycleView homeRecyclerview;
+    RecyclerView homeRecyclerview;
     /**
      * 管理指示器的对象
      **/
@@ -70,7 +69,7 @@ public class HomeFragment extends BaseFragment {
     public static final int STATE_NO_MORE_DATA = 2;
     public static final int STATE_LOAD_FAILED = 3;
 
-    private CustomLinearLayoutManager manager; //recycler
+    private LinearLayoutManager manager; //recycler
     private Http_Home_RecyclerView http;
     private int pager;
     private HomeRecyvlerViewAdapter homerecyvlerviewadapter;
@@ -87,8 +86,8 @@ public class HomeFragment extends BaseFragment {
         pager = 1;
         home_RecyclerViewHttp("1218226", 3, pager);
         homerecyvlerviewadapter = new HomeRecyvlerViewAdapter(getActivity());
-        manager = new CustomLinearLayoutManager(getActivity());
-        manager.setScrollEnabled(false);
+        manager = new LinearLayoutManager(getActivity());
+        manager.setOrientation(LinearLayoutManager.VERTICAL);
         homeRecyclerview.setLayoutManager(manager);
         homeRecyclerview.setAdapter(homerecyvlerviewadapter);
 
@@ -172,7 +171,7 @@ public class HomeFragment extends BaseFragment {
                 MainViewPagerAdapter mainViewPagerAdapter = new MainViewPagerAdapter(getActivity(), response_home_viewpager);
                 pagerDotIndicator = new PagerDotIndicator(getActivity(), linearLayoutPagerIndicator, viewPagerMainListSlide);
                 viewPagerMainListSlide.setAdapter(mainViewPagerAdapter);
-                viewPagerMainListSlide.setCurrentItem(response_home_viewpager.getData().size() * 10);
+                viewPagerMainListSlide.setCurrentItem(response_home_viewpager.getData().size());
                 pagerDotIndicator.setDotNums(response_home_viewpager.getData().size());
             }
 

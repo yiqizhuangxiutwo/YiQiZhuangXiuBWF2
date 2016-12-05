@@ -1,22 +1,28 @@
 package aiyiqi.bwf.com.yiqizhuangxiu.activity;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
 import com.facebook.drawee.view.SimpleDraweeView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
 import aiyiqi.bwf.com.yiqizhuangxiu.adapter.ArticleRelatedAdapter;
@@ -28,6 +34,7 @@ import aiyiqi.bwf.com.yiqizhuangxiu.mvp.presenter.impl.ArticleCommentsPresenterI
 import aiyiqi.bwf.com.yiqizhuangxiu.mvp.presenter.impl.ArticleDetailsPresenterImpl;
 import aiyiqi.bwf.com.yiqizhuangxiu.mvp.view.ArticleCommentsView;
 import aiyiqi.bwf.com.yiqizhuangxiu.mvp.view.ArticleDetailsView;
+import aiyiqi.bwf.com.yiqizhuangxiu.widget.FlowLayout;
 import aiyiqi.bwf.com.yiqizhuangxiu.widget.MyListView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -59,6 +66,12 @@ public class ArticleDetailsActivity extends BaseActivity implements ArticleDetai
     LinearLayout articelDetailsComments;
     @BindView(R.id.comment_footer)
     LinearLayout commentFooter;
+    @BindView(R.id.flowLayout)
+    FlowLayout flowLayout;
+    @BindView(R.id.image_button_tag02)
+    ImageButton imageButtonTag02;
+    @BindView(R.id.image_button_tag03)
+    ImageButton imageButtonTag03;
 
 
     private String articleId;
@@ -91,13 +104,6 @@ public class ArticleDetailsActivity extends BaseActivity implements ArticleDetai
         commentsPresenter = new ArticleCommentsPresenterImpl(this);
         commentsPresenter.loadDatas(articleId);
 
-        new Handler() {
-            @Override
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
-                refreshLayout.autoRefresh();
-            }
-        }.sendEmptyMessageDelayed(0, 500);
     }
 
     @Override
@@ -136,13 +142,33 @@ public class ArticleDetailsActivity extends BaseActivity implements ArticleDetai
         ArticleRelatedAdapter adapter = new ArticleRelatedAdapter(this, relatedNewsBeen);
         articelDetailsRelated.setAdapter(adapter);
     }
+    private boolean isLoad ;
+    public boolean flowlayoutBoolen(){
+        return isLoad = true;
+    }
+    @Override
+    public void showTags(String dateBean) {
+        refreshLayout.finishRefresh();
+        TextView tv = null;
+        String[] ss = StringGetString(dateBean);
+        FlowLayout flowLayout = (FlowLayout) findViewById(R.id.flowLayout);
+       if(!isLoad) {
+           for (int i = 0; i < ss.length; i++) {
+               tv = (TextView) LayoutInflater.from(this).inflate(R.layout.flowlayout_children, flowLayout, false);
+               tv.setText(ss[i]);
+               flowLayout.addView(tv);
+           }
+           flowlayoutBoolen();
+       }
+    }
+
     @Override
     public void showArticelComments(List<ResponseArticleComments.DataBean1.DataBean> dataBeens) {
         LayoutInflater inflater = LayoutInflater.from(this);
         articelDetailsComments.setVisibility(View.VISIBLE);
         articelDetailsComments.removeAllViews();
-        for(ResponseArticleComments.DataBean1.DataBean dataBean : dataBeens){
-            View view = inflater.inflate(R.layout.article_comments,articelDetailsComments,false);
+        for (ResponseArticleComments.DataBean1.DataBean dataBean : dataBeens) {
+            View view = inflater.inflate(R.layout.article_comments, articelDetailsComments, false);
             CommentsViewHolder holder = new CommentsViewHolder(view);
             holder.imageviewAuthorAvaterComments.setImageURI(dataBean.getUserheadimage());
             holder.commentAuthor.setText(dataBean.getComment_user_name());
@@ -182,6 +208,7 @@ public class ArticleDetailsActivity extends BaseActivity implements ArticleDetai
             ButterKnife.bind(this, view);
         }
     }
+
     static class CommentsViewHolder {
         @BindView(R.id.imageview_author_avater_comments)
         SimpleDraweeView imageviewAuthorAvaterComments;
@@ -196,10 +223,64 @@ public class ArticleDetailsActivity extends BaseActivity implements ArticleDetai
             ButterKnife.bind(this, view);
         }
     }
-    public void footer(){
+
+    public void footer() {
         LayoutInflater inflater = LayoutInflater.from(this);
         commentFooter.setVisibility(View.VISIBLE);
         View view = inflater.inflate(R.layout.comments_nomore_data, commentFooter, false);
         commentFooter.addView(view);
+    }
+
+
+    public String[] StringGetString(String response){
+        String str = response.substring(response.indexOf("\"tags\":{"), response.indexOf(",\"relatedNews\":"));
+        String s1 = str.replace("\"tags\":{", "{\"tags\":{");
+        String s2 = s1.replace("\"}}", "\"}}}");
+        Log.i("www", "s2:"+s2);
+
+        Map<String, String> map = new HashMap<>();
+        JSONObject jsonObject = JSON.parseObject(s2);
+        Set<String> keys = jsonObject.keySet();
+        Iterator iterator = keys.iterator();
+        while (iterator.hasNext()){
+            String key = (String) iterator.next();
+            map.put(key, jsonObject.getString(key));
+        }
+        Log.d("www", "map:" + map);
+        String ss = map.toString();
+
+        String des = ",\"create_time\"";
+        int cunt = 0;
+        int offset = 0;
+        while ((offset = ss.indexOf(des,offset))!= -1){
+            offset = offset + des.length();
+            cunt ++;
+        }
+        Log.d("www", "cunt:" + cunt);
+        List<String> ll = new ArrayList<>();
+        for (int i = 0; i < cunt; i++) {
+            int aa = ss.indexOf("ate_time\"");
+            String s3 = ss.substring(ss.indexOf("\"name\":"), ss.indexOf(",\"create_time\""));
+            String s4 = ss.substring(aa+1+i);
+            ss = s4;
+            ll.add(s3);
+            Log.d("www", "ss:" + ss.toString());
+            Log.d("www", "s3:"+s3);
+        }
+        Log.d("www", "ll:"+ll.toString());
+        List<String> sll = new ArrayList<>();
+        for (int i = 0; i < ll.size(); i++) {
+            String[] sl1 = ll.get(i).split("\"");
+            sll.add(sl1[3]);
+        }
+        Log.d("www", "sll:"+sll.toString());
+        String[] data = new String[sll.size()];
+        for (int i = 0; i < sll.size(); i++) {
+            data[i] = sll.get(i);
+        }
+        for (int i = 0; i < data.length; i++) {
+            Log.d("www", "data:"+data[i]);
+        }
+        return data;
     }
 }

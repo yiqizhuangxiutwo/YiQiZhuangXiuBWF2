@@ -1,6 +1,7 @@
 package aiyiqi.bwf.com.yiqizhuangxiu.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,6 +57,11 @@ public class PopuAdapter extends BaseAdapter {
         }
 
         holder.popuChildren.setText(str.get(position));
+
+        if(holder.popuChildren.isSelected()){
+            holder.popuChildren.setBackgroundColor(Color.GREEN);
+            holder.popuChildren.setTextColor(Color.WHITE);
+        }
         return convertView;
     }
 
