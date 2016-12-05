@@ -108,7 +108,7 @@ public class FirstInActivity extends BaseActivity {
                 break;
             case R.id.text_btn:
                 startActivity(new Intent(this, MainActivity.class));
-                Toast.makeText(this, sexStr.toString() + zxStr.toString(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, sexStr.toString() + zxStr.toString(), Toast.LENGTH_SHORT).show();
                 finish();
                 break;
 

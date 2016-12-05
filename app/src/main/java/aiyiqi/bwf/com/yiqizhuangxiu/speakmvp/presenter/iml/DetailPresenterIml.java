@@ -1,5 +1,6 @@
 package aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.presenter.iml;
 
+import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_CommitArticle;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_Detail;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_zan;
 import aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.model.DetailModel;
@@ -30,6 +31,11 @@ public class DetailPresenterIml implements DetailPresenter {
             @Override
             public void loadZan(Response_zan response_zan) {
                 detailView.showZan(response_zan);
+            }
+
+            @Override
+            public void loadCommit(Response_CommitArticle commitArticle) {
+                detailView.showCommit(commitArticle);
             }
         });
     }

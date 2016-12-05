@@ -47,4 +47,13 @@
     <item name="article_button" type="id" />
     <item name="iamgeView_zan" type="id" />
     <item name="article_zan" type="id" />
+    <item name="textView_comments" type="id" />
+    <item name="imageView_commmit" type="id" />
+    <item name="textView_commit" type="id" />
+    <item name="article_commit" type="id" />
+    <item name="commit_auname" type="id" />
+    <item name="commit_hui" type="id" />
+    <item name="layout_comments" type="id" />
+    <item name="article_nei" type="id" />
+    <item name="linearcommit" type="id" />
 </resources>

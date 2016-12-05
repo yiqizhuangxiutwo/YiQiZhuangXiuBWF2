@@ -8,12 +8,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.drawee.generic.GenericDraweeHierarchy;
 import com.facebook.drawee.generic.RoundingParams;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
 import aiyiqi.bwf.com.yiqizhuangxiu.activity.BaseActivity;
+import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_CommitArticle;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_Detail;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_zan;
 import aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.presenter.DetailPresenter;
@@ -46,9 +46,12 @@ public class ArticleActivity extends BaseActivity implements DetailView {
     FlowLayout articleTag;
     @BindView(R.id.article_zan)
     LinearLayout articlezan;
+    @BindView(R.id.articl_cemmit)
+    LinearLayout articlcemmit;
     private DetailPresenter detailPresenter;
     String articleId;
     int zanShu;
+
     @Override
     public int getContentViewResID() {
         return R.layout.articleactivity;
@@ -63,7 +66,7 @@ public class ArticleActivity extends BaseActivity implements DetailView {
     protected void initDatas() {
         detailPresenter = new DetailPresenterIml(this);
         articleId = getIntent().getStringExtra("articleId");
-        zanShu = getIntent().getIntExtra("zan",0);
+        zanShu = getIntent().getIntExtra("zan", 0);
         Toast.makeText(this, "articleId:" + articleId, Toast.LENGTH_SHORT).show();
         detailPresenter.loadDetails(articleId);
     }
@@ -79,19 +82,25 @@ public class ArticleActivity extends BaseActivity implements DetailView {
         for (int i = 0; i < detail.getData().getMessage().size(); i++) {
             View view = null;
             if (detail.getData().getMessage().get(i).getImgType() == 0) {
-                view = inflater.inflate(R.layout.textviewitem, articleDetail, false);
+                view = View.inflate(this, R.layout.textviewitem, null);
                 TextView textviewdetail = (TextView) view.findViewById(R.id.textviewdetail);
                 textviewdetail.setText(detail.getData().getMessage().get(i).getMsg());
+                articleDetail.addView(view);
             } else if (detail.getData().getMessage().get(i).getImgType() == 1) {
-                view = inflater.inflate(R.layout.simpledraweeview, articleDetail, false);
-                SimpleDraweeView simple = (SimpleDraweeView) view.findViewById(R.id.iamgeView_subview_main_slide_page);
+                SimpleDraweeView simple = new SimpleDraweeView(ArticleActivity.this);
                 simple.setImageURI(detail.getData().getMessage().get(i).getMsg());
+                simple.setMinimumHeight(247);
+                simple.setMinimumWidth(330);
+                simple.setPadding(5, 5, 5, 5);
+                articleDetail.addView(simple);
             } else {
-                view = inflater.inflate(R.layout.simpledraweei, articleDetail, false);
-                SimpleDraweeView simple = (SimpleDraweeView) view.findViewById(R.id.iamgeView_subview_page);
+                SimpleDraweeView simple = new SimpleDraweeView(ArticleActivity.this);
                 simple.setImageURI(detail.getData().getMessage().get(i).getMsg());
+                simple.setMinimumHeight(59);
+                simple.setMinimumWidth(48);
+                simple.setPadding(5, 5, 5, 5);
+                articleDetail.addView(simple);
             }
-            articleDetail.addView(view);
         }
         for (int i = 0; i < detail.getData().getTags().size(); i++) {
             View view = inflater.inflate(R.layout.articletag, articleTag, false);
@@ -100,24 +109,57 @@ public class ArticleActivity extends BaseActivity implements DetailView {
             articleTag.addView(view);
         }
     }
+
     @Override
-    public void showZan(Response_zan zan) {
-        if(zan.getData()!=null){
+    public void showZan(final Response_zan zan) {
+
+        if (zan.getData() != null) {
             articlezan.setVisibility(View.VISIBLE);
-            TextView textView = new TextView(this);
-            textView.setText("赞" +"("+zanShu+")");
+            TextView textView = new TextView(ArticleActivity.this);
+            textView.setText("赞" + "(" + zanShu + ")");
             articlezan.addView(textView);
             for (int i = 0; i < zan.getData().size(); i++) {
-                SimpleDraweeView simpleDraweeView = new SimpleDraweeView(this);
+                SimpleDraweeView simpleDraweeView = new SimpleDraweeView(ArticleActivity.this);
                 RoundingParams roundingParams = RoundingParams.fromCornersRadius(5f);
                 roundingParams.setRoundAsCircle(true);
                 simpleDraweeView.getHierarchy().setRoundingParams(roundingParams);
                 simpleDraweeView.setImageURI(zan.getData().get(i).getAvtUrl());
-                simpleDraweeView.setMinimumHeight(100);
-                simpleDraweeView.setMinimumWidth(100);
-                simpleDraweeView.setPadding(5,5,5,5);
+                simpleDraweeView.setMinimumHeight(80);
+                simpleDraweeView.setMinimumWidth(80);
+                simpleDraweeView.setPadding(5, 5, 5, 5);
                 articlezan.addView(simpleDraweeView);
             }
+        }
+    }
+
+    @Override
+    public void showCommit(Response_CommitArticle commitArticle) {
+        articlcemmit.setVisibility(View.VISIBLE);
+        articlcemmit.removeAllViews();
+//        holder.commitCount.setText("回帖（"+commitArticle.getTotalCount()+")");
+        for (int i = 0; i <commitArticle.getTotalCount(); i++) {
+            LayoutInflater inflater = LayoutInflater.from(this);
+            View view = inflater.inflate(R.layout.commitarticle, articlcemmit, false);
+            CommitViewHolder holder = new CommitViewHolder(view);
+            holder.commitName.setText(commitArticle.getData().get(i).getAuthor());
+            holder.imageViewcommit.setImageURI(commitArticle.getData().get(i).getAvtUrl());
+            holder.committime.setText(commitArticle.getData().get(i).getDateline());
+            for (int j = 0; j <commitArticle.getData().get(i).getMessage().size() ; j++) {
+                LinearLayout linear = (LinearLayout) view.findViewById(R.id.linearcommit);
+                if(commitArticle.getData().get(i).getMessage().get(j).getMsgType()==0){
+                    TextView textView = new TextView(ArticleActivity.this);
+                    textView.setText(commitArticle.getData().get(i).getMessage().get(j).getMsg());
+                    linear.addView(textView);
+                }else {
+                    SimpleDraweeView simpleDraweeView = new SimpleDraweeView(ArticleActivity.this);
+                    simpleDraweeView.setImageURI(commitArticle.getData().get(i).getMessage().get(j).getMsg());
+                    simpleDraweeView.setMinimumHeight(59);
+                    simpleDraweeView.setMinimumWidth(48);
+                    simpleDraweeView.setPadding(5, 5, 5, 5);
+                    linear.addView(simpleDraweeView);
+                }
+            }
+            articlcemmit.addView(view);
         }
     }
 
@@ -126,5 +168,20 @@ public class ArticleActivity extends BaseActivity implements DetailView {
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
+    }
+
+    static class CommitViewHolder {
+        @BindView(R.id.commit_count)
+        TextView commitCount;
+        @BindView(R.id.imageViewcommit)
+        SimpleDraweeView imageViewcommit;
+        @BindView(R.id.commit_name)
+        TextView commitName;
+        @BindView(R.id.committime)
+        TextView committime;
+
+        CommitViewHolder(View view) {
+            ButterKnife.bind(this, view);
+        }
     }
 }

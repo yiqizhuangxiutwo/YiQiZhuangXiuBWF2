@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSON;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
+import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_CommitArticle;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_Detail;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_zan;
 import aiyiqi.bwf.com.yiqizhuangxiu.speakmvp.model.DetailModel;
@@ -24,6 +25,7 @@ public class DetailModelIml implements DetailModel{
         this.detailCallback = detailCallback;
         loadDetail();
         loadNextZan();
+        loadNexyCommit();
     }
 
     @Override
@@ -56,6 +58,24 @@ public class DetailModelIml implements DetailModel{
                     public void onResponse(String response, int id) {
                         Response_zan zan = JSON.parseObject(response,Response_zan.class);
                         detailCallback.loadZan(zan);
+                    }
+                });
+    }
+
+    @Override
+    public void loadNexyCommit() {
+        String url = "http://bbs.17house.com/motnt/index.php?a=viewThread&c=forumThread&imgwidth=270&uuid=86305803367590&pageSize=10&" +
+                "tid="+articleId+"&uid=1633055&m=forum&type=post&page=1&haspermission=yes&model=android&sessionToken=6U49kCYKE260RqvPqEdFsBGskNQStKhm&app_version=android_com.aiyiqi.galaxy_1.1";
+        OkHttpUtils.get().url(url).build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        Response_CommitArticle commitArticle = JSON.parseObject(response,Response_CommitArticle.class);
+                        detailCallback.loadCommit(commitArticle);
                     }
                 });
     }
