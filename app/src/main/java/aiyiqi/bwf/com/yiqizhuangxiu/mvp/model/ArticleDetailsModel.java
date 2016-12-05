@@ -12,9 +12,11 @@ public interface ArticleDetailsModel {
 
     void loadDatas(String url, Callback callback);
     void loadRelatedDatas();
+    void loadTagsDatas();
     public interface Callback{
         void loadArticleDatas(ResponseArticleDetails.DataBean.CurrentNewsBean currentNewsBean);
         void loadRelatedDatas(List<ResponseArticleDetails.DataBean.RelatedNewsBean> relatedNewsBeen);
+        void loadTagsDatas(String dateBean);
         void loadFailed();
     }
 }
