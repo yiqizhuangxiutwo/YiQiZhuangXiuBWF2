@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -23,9 +25,9 @@ import butterknife.OnClick;
  */
 public class ZhuangXiuXueTangActivity extends BaseActivity {
 
-    private String[] tags_up = new String[]{"验房收房","装修公司","量房设计","辅材选购","主材选购",
-            "家具选购", "装修合同","主体拆迁","水电改造","防水处理","土木工程","瓦工工程","油工工程",
-            "主材安装","竣工验收","软装配饰","居家生活"};
+    private String[] tags_up = new String[]{"验房收房", "装修公司", "量房设计", "辅材选购", "主材选购",
+            "家具选购", "装修合同", "主体拆迁", "水电改造", "防水处理", "土木工程", "瓦工工程", "油工工程",
+            "主材安装", "竣工验收", "软装配饰", "居家生活"};
     private List<Fragment> fragments = new ArrayList<>();
 
     @BindView(R.id.btn_back)
@@ -36,6 +38,8 @@ public class ZhuangXiuXueTangActivity extends BaseActivity {
     ImageButton schoolTab;
     @BindView(R.id.zxxt_viewpager)
     ViewPager zxxtViewpager;
+    @BindView(R.id.drawerlayout)
+    DrawerLayout drawerlayout;
 
     @Override
     public int getContentViewResID() {
@@ -46,7 +50,7 @@ public class ZhuangXiuXueTangActivity extends BaseActivity {
     protected void initViews() {
         getFragments();
         zxxtViewpager.setOffscreenPageLimit(0);
-        WebViewFragmentPagerAdapter adapter = new WebViewFragmentPagerAdapter(fragments,tags_up,getSupportFragmentManager());
+        WebViewFragmentPagerAdapter adapter = new WebViewFragmentPagerAdapter(fragments, tags_up, getSupportFragmentManager());
         zxxtViewpager.setAdapter(adapter);
         zxxtTablayout.setupWithViewPager(zxxtViewpager);
     }
@@ -56,7 +60,7 @@ public class ZhuangXiuXueTangActivity extends BaseActivity {
      */
     private void getFragments() {
         for (int i = 0; i < tags_up.length; i++) {
-            fragments.add(new ZXXT_Fragment(i+1));
+            fragments.add(new ZXXT_Fragment(i + 1));
         }
     }
 
@@ -80,7 +84,7 @@ public class ZhuangXiuXueTangActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.school_tab:
-                //TODO
+                drawerlayout.openDrawer(Gravity.RIGHT);
                 break;
         }
     }

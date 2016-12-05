@@ -71,6 +71,7 @@ public class ZXXT_Fragment extends BaseFragment {
 
 
     private List<String> list_tags = new ArrayList<>();
+    private static List<String> ints = new ArrayList<>();
 
     /**
      * 获得上部TAG的数据星信息
@@ -92,12 +93,15 @@ public class ZXXT_Fragment extends BaseFragment {
                 LinearLayoutManager manager2 = new LinearLayoutManager(getActivity());
                 manager2.setOrientation(LinearLayoutManager.VERTICAL);
                 recyclerviewdown.setLayoutManager(manager2);
-                zzxt_down_recelerViewAdapter = new ZZXT_Receler_Down_ViewAdapter(getActivity());
+                zzxt_down_recelerViewAdapter = new ZZXT_Receler_Down_ViewAdapter(getActivity(),ZXXT_Fragment.this);
                 recyclerviewdown.setAdapter(zzxt_down_recelerViewAdapter);
 
                 tags = new String[stringMap.size()];
                 String inner_map = stringMap.get("data");
                 String[] strs = inner_map.split("\"");
+                for (int i = 1; i < strs.length; i+=4) {
+                    ints.add(strs[i]);
+                }
                 for (int i = 3; i < strs.length; i = i + 4) {
                     list_tags.add(strs[i]);
                 }
@@ -120,26 +124,65 @@ public class ZXXT_Fragment extends BaseFragment {
     }
 
 
-    private int oldState = -1;
-    public void setDownNews(int state, final int position) {
-        if (oldState == state){
+    private int oldPosition = -1;
+    private List<String> strs = new ArrayList<>();
+    private List<String> intids = new ArrayList<>();
+    private List<Response_ZXXT_DownNews.DataBean.ListBean> lists = new ArrayList<>();
+    private int page = 1;
+
+    public void setDownNews(final int state, final int position, final boolean isLoadPage) {
+        if (oldPosition == position && isLoadPage==false){
             return;
         }
-        oldState = state;
+        oldPosition = position;
+        lists.clear();
         Http_ZXXT_DownNews http_zxxt_downNews = new Http_ZXXT_DownNews();
-        http_zxxt_downNews.getHttp(state, 1);
+        if (isLoadPage){
+            page++;
+        }
+        Log.d("qqq", "page:" + page);
+        http_zxxt_downNews.getHttp(state, page);
         http_zxxt_downNews.setCallback(new Http_ZXXT_DownNews.Callback() {
 
             @Override
             public void ZXXTTagCallback(Response_ZXXT_DownNews response_zxxt_downNews, String str) {
+                for (int i = 0; i < str.length(); i++) {
+                    int x = str.indexOf("tag");
+                    int y = str.indexOf("isJump");
+                    if (x==-1 || y==-1){
+                        break;
+                    }
+                    String str2 = str.substring(x,y);
+                    strs.add(str2);
+                    str = str.substring(y+9,str.length());
+                }
+                for (int i = 0; i < strs.size(); i++) {
+                     String[] strsid = strs.get(i).split("\"");
+                    intids.add(strsid[2]);
+                }
+                Log.d("qqq", response_zxxt_downNews.getData().getList().get(0).getTitle());
                 if (position == 0) {
-                    zzxt_down_recelerViewAdapter.addDatas(response_zxxt_downNews.getData().getList());
+                    if (!isLoadPage){
+                        zzxt_down_recelerViewAdapter.clearDatas();
+                    }
+                    Log.d("qqq", "进入这里0");
+                    zzxt_down_recelerViewAdapter.addDatas(response_zxxt_downNews.getData().getList(),state,position);
+                }else{
+                    Log.d("qqq", "进入这里fei 0");
+                    for (int i = 0; i < response_zxxt_downNews.getData().getList().size(); i++) {
+                        if (ints.get(position-1).equals(intids.get(i))){
+                            lists.add(response_zxxt_downNews.getData().getList().get(i));
+                        }
+                    }if (!isLoadPage){
+                        zzxt_down_recelerViewAdapter.clearDatas();
+                    }
+                    zzxt_down_recelerViewAdapter.addDatas(lists,state,position);
                 }
             }
 
             @Override
             public void HttpFailded(Exception e) {
-
+                Log.d("qqq", "网络错误");
             }
         });
     }
