@@ -12,5 +12,6 @@ public interface ArticleDetailsView {
 
     void showArticel(ResponseArticleDetails.DataBean.CurrentNewsBean currentNewsBeen);
     void showRelated(List<ResponseArticleDetails.DataBean.RelatedNewsBean> relatedNewsBeen);
+    void showTags(String dateBean);
     void showError();
 }
