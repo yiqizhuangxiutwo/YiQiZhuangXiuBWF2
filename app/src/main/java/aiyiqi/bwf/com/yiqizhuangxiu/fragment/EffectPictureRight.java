@@ -16,14 +16,17 @@ import android.widget.Toast;
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
 import aiyiqi.bwf.com.yiqizhuangxiu.adapter.EffectPictureRightAdapter;
+import aiyiqi.bwf.com.yiqizhuangxiu.adapter.PopuAdapter;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.ResponseEffectPictureRight;
 import aiyiqi.bwf.com.yiqizhuangxiu.mvp.presenter.EffectPictureRightPresenter;
 import aiyiqi.bwf.com.yiqizhuangxiu.mvp.presenter.impl.EffectPictureRightPresenterImpl;
 import aiyiqi.bwf.com.yiqizhuangxiu.mvp.view.EffectPictureRightView;
+import aiyiqi.bwf.com.yiqizhuangxiu.widget.NestingGridView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -151,6 +154,9 @@ public class EffectPictureRight extends BaseFragment implements EffectPictureRig
         });
         popupWindow.setBackgroundDrawable(getResources().getDrawable(R.color.white));
 
+        PopuViewHolder holder = new PopuViewHolder(contentView);
+        PopuAdapter popuAdapter = new PopuAdapter(getContext(), stringList());
+        holder.popuwindowSelectedChild.setAdapter(popuAdapter);
         popupWindow.showAsDropDown(view);
 
     }
@@ -165,6 +171,24 @@ public class EffectPictureRight extends BaseFragment implements EffectPictureRig
                 Toast.makeText(getContext(), "弹出PopupWindow", Toast.LENGTH_SHORT).show();
                 showPopuWindow(view);
                 break;
+        }
+    }
+
+    public List<String> stringList() {
+        List<String> str = new ArrayList<>();
+        for (int i = 0; i <= 15; i++) {
+            String s = "Popu " + i;
+            str.add(s);
+        }
+        return str;
+    }
+
+    static class PopuViewHolder {
+        @BindView(R.id.jiancaijiaju_child1)
+        NestingGridView popuwindowSelectedChild;
+
+        PopuViewHolder(View view) {
+            ButterKnife.bind(this, view);
         }
     }
 }

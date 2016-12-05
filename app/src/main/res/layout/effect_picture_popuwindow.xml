@@ -4,11 +4,13 @@
     android:layout_height="wrap_content"
     android:padding="10dp">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="match_parent"
+    <aiyiqi.bwf.com.yiqizhuangxiu.widget.NestingGridView
+        android:id="@+id/jiancaijiaju_child1"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="I'm TanChuang"
-        android:background="@color/white"/>
+        android:horizontalSpacing="14.0dip"
+        android:numColumns="4"
+        android:scrollbars="none"
+        android:verticalSpacing="10.0dip"/>
 
 </LinearLayout>
