@@ -33,7 +33,6 @@ public class TongchengPresenterImpl implements TongchengPresenter {
             public void loadError() {
 
             }
-
         });
 
     }

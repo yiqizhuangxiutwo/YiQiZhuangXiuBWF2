@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
+import aiyiqi.bwf.com.yiqizhuangxiu.adapter.teamtogether_adapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -21,6 +22,9 @@ public class TeamTogether extends BaseActivity {
     @BindView(R.id.tabLayout_teamtogether)
     TabLayout tabLayoutTeamtogether;
 
+    private teamtogether_adapter teamtogetheradapter;
+
+
     @Override
     public int getContentViewResID() {
         return R.layout.team_together;
@@ -29,6 +33,8 @@ public class TeamTogether extends BaseActivity {
     @Override
     protected void initViews() {
         textTitleSubviewTitle.setText("一起团队");
+
+
         imageViewBackSubviewTitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
