@@ -100,7 +100,6 @@ public class HomeFragment extends BaseFragment {
         homeRecyclerview.setLayoutManager(manager);
         homeRecyclerview.setAdapter(homerecyvlerviewadapter);
 
-<<<<<<< HEAD
         mainTitleZxing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,8 +107,6 @@ public class HomeFragment extends BaseFragment {
                 getActivity().startActivityForResult(intent,1000);
             }
         });
-=======
->>>>>>> eaf9974f2676506293b855560b68d027b81a1291
     }
 
     @Override
@@ -158,11 +155,7 @@ public class HomeFragment extends BaseFragment {
                     @Override
                     public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                         super.onScrolled(recyclerView, dx, dy);
-<<<<<<< HEAD
                         if (!isrefresh && !isload && manager.findLastVisibleItemPosition() == manager.getItemCount() - 1) {
-=======
-                        if (!isrefresh && !isload && manager.findLastVisibleItemPosition() == manager.getItemCount()) {
->>>>>>> eaf9974f2676506293b855560b68d027b81a1291
                             isload = true;
                             int type = responseRecycleViewList.getData().get(responseRecycleViewList.getData().size() - 1).getType();
                             String id = responseRecycleViewList.getData().get(responseRecycleViewList.getData().size() - 1).getId();
@@ -235,11 +228,7 @@ public class HomeFragment extends BaseFragment {
         return rootView;
     }
 
-<<<<<<< HEAD
-    @OnClick({R.id.main_title_zxing, R.id.main_title_search,R.id.main_title_place})
-=======
     @OnClick({R.id.main_title_zxing, R.id.main_title_search, R.id.main_title_place})
->>>>>>> eaf9974f2676506293b855560b68d027b81a1291
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.main_title_zxing:
