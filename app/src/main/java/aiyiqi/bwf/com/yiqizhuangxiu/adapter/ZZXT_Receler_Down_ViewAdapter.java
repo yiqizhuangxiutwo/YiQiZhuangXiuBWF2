@@ -93,6 +93,8 @@ public class ZZXT_Receler_Down_ViewAdapter extends RecyclerView.Adapter {
             newsHolder.image.setImageURI(list.get(position).getImage());
             newsHolder.title.setText(list.get(position).getTitle());
             newsHolder.star.setText((int) (Math.random() * 100 + 30) + "");
+        }else{
+            newsHolder.ll.setVisibility(View.GONE);
         }
     }
 

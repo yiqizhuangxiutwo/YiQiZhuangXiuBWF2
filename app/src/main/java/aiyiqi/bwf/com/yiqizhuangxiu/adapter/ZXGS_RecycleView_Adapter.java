@@ -164,6 +164,11 @@ public class ZXGS_RecycleView_Adapter extends RecyclerView.Adapter implements Vi
             case R.id.team_together:
                 context.startActivity(new Intent(context, TeamTogether.class));
                 break;
+            case R.id.site_live:
+                Intent intent = new Intent(new Intent(context,GongDiZhiBoActivity.class));
+                intent.putExtra("id",dataBeanList.get(0).getBuildingSite().getBuildingId());
+                context.startActivity(intent);
+                break;
         }
     }
 

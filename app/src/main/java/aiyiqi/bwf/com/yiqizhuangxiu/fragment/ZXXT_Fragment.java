@@ -3,7 +3,6 @@ package aiyiqi.bwf.com.yiqizhuangxiu.fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -140,7 +139,6 @@ public class ZXXT_Fragment extends BaseFragment {
         if (isLoadPage){
             page++;
         }
-        Log.d("qqq", "page:" + page);
         http_zxxt_downNews.getHttp(state, page);
         http_zxxt_downNews.setCallback(new Http_ZXXT_DownNews.Callback() {
 
@@ -160,15 +158,12 @@ public class ZXXT_Fragment extends BaseFragment {
                      String[] strsid = strs.get(i).split("\"");
                     intids.add(strsid[2]);
                 }
-                Log.d("qqq", response_zxxt_downNews.getData().getList().get(0).getTitle());
                 if (position == 0) {
                     if (!isLoadPage){
                         zzxt_down_recelerViewAdapter.clearDatas();
                     }
-                    Log.d("qqq", "进入这里0");
                     zzxt_down_recelerViewAdapter.addDatas(response_zxxt_downNews.getData().getList(),state,position);
                 }else{
-                    Log.d("qqq", "进入这里fei 0");
                     for (int i = 0; i < response_zxxt_downNews.getData().getList().size(); i++) {
                         if (ints.get(position-1).equals(intids.get(i))){
                             lists.add(response_zxxt_downNews.getData().getList().get(i));
@@ -182,7 +177,6 @@ public class ZXXT_Fragment extends BaseFragment {
 
             @Override
             public void HttpFailded(Exception e) {
-                Log.d("qqq", "网络错误");
             }
         });
     }

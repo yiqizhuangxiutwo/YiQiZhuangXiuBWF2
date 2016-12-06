@@ -1,11 +1,11 @@
 package aiyiqi.bwf.com.yiqizhuangxiu.activity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -116,8 +116,15 @@ public class ZhuangXiuXueTangActivity extends BaseActivity {
     }
 
 
+
     @OnClick({R.id.btn_back, R.id.school_tab,R.id.close, R.id.button1, R.id.button2, R.id.button3, R.id.button4, R.id.button5, R.id.button6, R.id.button7, R.id.button8, R.id.button9, R.id.button10, R.id.button11, R.id.button12, R.id.button13, R.id.button14, R.id.button15, R.id.button16, R.id.button17})
     public void onClick(View view) {
+        Button buttons[] = new Button[]{button1, button2,button3,button4,button5,button6,button7,button8,button9,button10,button11,button12,button13,button14,button15,button16,button17};
+        int now = zxxtViewpager.getCurrentItem();
+        for (int i = 0; i < buttons.length; i++) {
+            buttons[i].setTextColor(Color.BLACK);
+        }
+        buttons[now].setTextColor(Color.GREEN);
         switch (view.getId()) {
             case R.id.btn_back:
                 finish();
@@ -129,72 +136,89 @@ public class ZhuangXiuXueTangActivity extends BaseActivity {
                 drawerlayout.closeDrawer(Gravity.RIGHT);
                 break;
             case R.id.button1:
+                button1.setTextColor(Color.GREEN);
                 drawerlayout.closeDrawer(Gravity.RIGHT);
-                zxxtTablayout.setTag(1);
+                zxxtViewpager.setCurrentItem(0);
                 break;
             case R.id.button2:
+                button2.setTextColor(Color.GREEN);
                 drawerlayout.closeDrawer(Gravity.RIGHT);
-                zxxtTablayout.setTag(2);
+                zxxtViewpager.setCurrentItem(1);
                 break;
             case R.id.button3:
+                button3.setTextColor(Color.GREEN);
                 drawerlayout.closeDrawer(Gravity.RIGHT);
-                zxxtTablayout.setTag(3);
+                zxxtViewpager.setCurrentItem(2);
                 break;
             case R.id.button4:
+                button4.setTextColor(Color.GREEN);
                 drawerlayout.closeDrawer(Gravity.RIGHT);
-                zxxtTablayout.setTag(4);
+                zxxtViewpager.setCurrentItem(3);
                 break;
             case R.id.button5:
+                button5.setTextColor(Color.GREEN);
                 drawerlayout.closeDrawer(Gravity.RIGHT);
-                zxxtTablayout.setTag(5);
+                zxxtViewpager.setCurrentItem(4);
                 break;
             case R.id.button6:
+                button6.setTextColor(Color.GREEN);
                 drawerlayout.closeDrawer(Gravity.RIGHT);
-                zxxtTablayout.setTag(6);
+                zxxtViewpager.setCurrentItem(5);
                 break;
             case R.id.button7:
+                button7.setTextColor(Color.GREEN);
                 drawerlayout.closeDrawer(Gravity.RIGHT);
-                zxxtTablayout.setTag(7);
+                zxxtViewpager.setCurrentItem(6);
                 break;
             case R.id.button8:
+                button8.setTextColor(Color.GREEN);
                 drawerlayout.closeDrawer(Gravity.RIGHT);
-                zxxtTablayout.setTag(8);
+                zxxtViewpager.setCurrentItem(7);
                 break;
             case R.id.button9:
+                button9.setTextColor(Color.GREEN);
                 drawerlayout.closeDrawer(Gravity.RIGHT);
-                zxxtTablayout.setTag(9);
+                zxxtViewpager.setCurrentItem(8);
                 break;
             case R.id.button10:
+                button10.setTextColor(Color.GREEN);
                 drawerlayout.closeDrawer(Gravity.RIGHT);
-                zxxtTablayout.setTag(10);
+                zxxtViewpager.setCurrentItem(9);
                 break;
             case R.id.button11:
+                button11.setTextColor(Color.GREEN);
                 drawerlayout.closeDrawer(Gravity.RIGHT);
-                zxxtTablayout.setTag(11);
+                zxxtViewpager.setCurrentItem(10);
                 break;
             case R.id.button12:
+                button12.setTextColor(Color.GREEN);
                 drawerlayout.closeDrawer(Gravity.RIGHT);
-                zxxtTablayout.setTag(12);
+                zxxtViewpager.setCurrentItem(11);
                 break;
             case R.id.button13:
+                button13.setTextColor(Color.GREEN);
                 drawerlayout.closeDrawer(Gravity.RIGHT);
-                zxxtTablayout.setTag(13);
+                zxxtViewpager.setCurrentItem(12);
                 break;
             case R.id.button14:
+                button14.setTextColor(Color.GREEN);
                 drawerlayout.closeDrawer(Gravity.RIGHT);
-                zxxtTablayout.setTag(14);
+                zxxtViewpager.setCurrentItem(13);
                 break;
             case R.id.button15:
+                button15.setTextColor(Color.GREEN);
                 drawerlayout.closeDrawer(Gravity.RIGHT);
-                zxxtTablayout.setTag(15);
+                zxxtViewpager.setCurrentItem(14);
                 break;
             case R.id.button16:
+                button16.setTextColor(Color.GREEN);
                 drawerlayout.closeDrawer(Gravity.RIGHT);
-                zxxtTablayout.setTag(16);
+                zxxtViewpager.setCurrentItem(15);
                 break;
             case R.id.button17:
+                button17.setTextColor(Color.GREEN);
                 drawerlayout.closeDrawer(Gravity.RIGHT);
-                zxxtTablayout.setTag(17);
+                zxxtViewpager.setCurrentItem(16);
                 break;
         }
     }
