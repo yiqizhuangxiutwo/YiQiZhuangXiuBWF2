@@ -34,4 +34,6 @@
     <color name="scan_corner_color">#0effc2</color>
     <color name="text_12">#cf7272</color>
     <color name="green_02">#056e10</color>
+    <color name="gray_02">#e4dfdf</color>
+    <color name="gray03">#f9f3f3</color>
 </resources>
