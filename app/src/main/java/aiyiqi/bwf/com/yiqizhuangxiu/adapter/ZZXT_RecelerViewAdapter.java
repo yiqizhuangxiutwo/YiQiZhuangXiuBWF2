@@ -25,6 +25,7 @@ public class ZZXT_RecelerViewAdapter extends RecyclerView.Adapter {
     private LayoutInflater inflater;
     private ZXXT_Fragment zzxt_fragment;
     private int state;
+    private boolean isfirst = true;
 
     public ZZXT_RecelerViewAdapter(Context context, int state) {
         this.context = context;
@@ -50,22 +51,30 @@ public class ZZXT_RecelerViewAdapter extends RecyclerView.Adapter {
         return new HeadTag(inflater.inflate(R.layout.headtag, parent, false));
     }
 
+    private HeadTag currentHeadTag;
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         final HeadTag headTag = (HeadTag) holder;
         if (position == 0){
             headTag.textView2.setText("全部");
-
         }else if (position != 0 && list_tags.size()!=0){
             headTag.textView2.setText(list_tags.get(position-1));
         }
-        zzxt_fragment.setDownNews(state,0);
+        if (isfirst == true){
+            zzxt_fragment.setDownNews(state,0,false);
+            isfirst = false;
+        }
         headTag.textView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (currentHeadTag!=null && currentHeadTag!=headTag){
+                    currentHeadTag.textView2.setBackgroundResource(R.color.white);
+                    currentHeadTag.textView2.setTextColor(Color.rgb(156,156,156));
+                }
                 headTag.textView2.setBackgroundResource(R.color.green);
                 headTag.textView2.setTextColor(Color.WHITE);
-                zzxt_fragment.setDownNews(state,position);
+                zzxt_fragment.setDownNews(state,position,false);
+                currentHeadTag = headTag;
             }
         });
     }

@@ -21,4 +21,39 @@
     <item name="comment_count" type="id" />
     <item name="author_name" type="id" />
     <item name="subject_name" type="id" />
+    <item name="linear1" type="id" />
+    <item name="explain_text" type="id" />
+    <item name="newrecycler" type="id" />
+    <item name="lookedtext" type="id" />
+    <item name="times" type="id" />
+    <item name="tipname" type="id" />
+    <item name="tipcount" type="id" />
+    <item name="gridview" type="id" />
+    <item name="gridview1" type="id" />
+    <item name="attention" type="id" />
+    <item name="attention_topic" type="id" />
+    <item name="maintitle" type="id" />
+    <item name="article_date" type="id" />
+    <item name="article_detail" type="id" />
+    <item name="authorname" type="id" />
+    <item name="subjectname" type="id" />
+    <item name="textView_main_title" type="id" />
+    <item name="textView_subtitle" type="id" />
+    <item name="iamgeView_subview_main_slide_page" type="id" />
+    <item name="textviewdetail" type="id" />
+    <item name="article_tag" type="id" />
+    <item name="btntag" type="id" />
+    <item name="iamgeView_subview_page" type="id" />
+    <item name="article_button" type="id" />
+    <item name="iamgeView_zan" type="id" />
+    <item name="article_zan" type="id" />
+    <item name="textView_comments" type="id" />
+    <item name="imageView_commmit" type="id" />
+    <item name="textView_commit" type="id" />
+    <item name="article_commit" type="id" />
+    <item name="commit_auname" type="id" />
+    <item name="commit_hui" type="id" />
+    <item name="layout_comments" type="id" />
+    <item name="article_nei" type="id" />
+    <item name="linearcommit" type="id" />
 </resources>
