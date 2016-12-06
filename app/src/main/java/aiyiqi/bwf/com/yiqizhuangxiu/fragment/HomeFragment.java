@@ -7,21 +7,29 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
 import aiyiqi.bwf.com.yiqizhuangxiu.activity.MyZxingActivity;
 import aiyiqi.bwf.com.yiqizhuangxiu.activity.SearchActivity;
 import aiyiqi.bwf.com.yiqizhuangxiu.adapter.HomeRecyvlerViewAdapter;
 import aiyiqi.bwf.com.yiqizhuangxiu.adapter.MainViewPagerAdapter;
+import aiyiqi.bwf.com.yiqizhuangxiu.adapter.PlaceAdapter;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.ResponseRecycleViewList;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_home_viewpager;
 import aiyiqi.bwf.com.yiqizhuangxiu.http.Http_Home_RecyclerView;
@@ -59,6 +67,7 @@ public class HomeFragment extends BaseFragment {
     CustomRefreshLayout refreshLayout;
     @BindView(R.id.home_recyclerview)
     RecyclerView homeRecyclerview;
+
     /**
      * 管理指示器的对象
      **/
@@ -91,6 +100,7 @@ public class HomeFragment extends BaseFragment {
         homeRecyclerview.setLayoutManager(manager);
         homeRecyclerview.setAdapter(homerecyvlerviewadapter);
 
+<<<<<<< HEAD
         mainTitleZxing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,6 +108,8 @@ public class HomeFragment extends BaseFragment {
                 getActivity().startActivityForResult(intent,1000);
             }
         });
+=======
+>>>>>>> eaf9974f2676506293b855560b68d027b81a1291
     }
 
     @Override
@@ -117,6 +129,7 @@ public class HomeFragment extends BaseFragment {
                 if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
                     String result = bundle.getString(CodeUtils.RESULT_STRING);
                     Toast.makeText(getContext(), "解析结果:" + result, Toast.LENGTH_LONG).show();
+
                 } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
                     Toast.makeText(getContext(), "解析二维码失败", Toast.LENGTH_LONG).show();
                 }
@@ -145,7 +158,11 @@ public class HomeFragment extends BaseFragment {
                     @Override
                     public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                         super.onScrolled(recyclerView, dx, dy);
+<<<<<<< HEAD
                         if (!isrefresh && !isload && manager.findLastVisibleItemPosition() == manager.getItemCount() - 1) {
+=======
+                        if (!isrefresh && !isload && manager.findLastVisibleItemPosition() == manager.getItemCount()) {
+>>>>>>> eaf9974f2676506293b855560b68d027b81a1291
                             isload = true;
                             int type = responseRecycleViewList.getData().get(responseRecycleViewList.getData().size() - 1).getType();
                             String id = responseRecycleViewList.getData().get(responseRecycleViewList.getData().size() - 1).getId();
@@ -218,14 +235,76 @@ public class HomeFragment extends BaseFragment {
         return rootView;
     }
 
+<<<<<<< HEAD
     @OnClick({R.id.main_title_zxing, R.id.main_title_search,R.id.main_title_place})
+=======
+    @OnClick({R.id.main_title_zxing, R.id.main_title_search, R.id.main_title_place})
+>>>>>>> eaf9974f2676506293b855560b68d027b81a1291
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.main_title_zxing:
+                Intent intent = new Intent(getActivity(), MyZxingActivity.class);
+                getActivity().startActivityForResult(intent, 1000);
                 break;
             case R.id.main_title_search:
                 startActivity(new Intent(getActivity(), SearchActivity.class));
                 break;
+            case R.id.main_title_place:
+                showPopuWindow(view);
+                break;
+        }
+    }
+
+    public List<String> stringList() {
+        List<String> str = new ArrayList<>();
+        for (int i = 0; i <= 34; i++) {
+            String s = "成都0 " + i;
+            str.add(s);
+        }
+        return str;
+    }
+
+    private void showPopuWindow(View view) {
+
+        View contentView = LayoutInflater.from(getContext()).inflate(R.layout.main_title_place, null);
+
+        final PopupWindow popupWindow = new PopupWindow(contentView, ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT, true);
+        popupWindow.setTouchable(true);
+        popupWindow.setFocusable(true);
+        popupWindow.setTouchInterceptor(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                // 这里如果返回true的话，touch事件将被拦截
+                // 拦截后 PopupWindow的onTouchEvent不被调用，这样点击外部区域无法dismiss
+                return false;
+            }
+        });
+        popupWindow.setBackgroundDrawable(getResources().getDrawable(R.color.white));
+
+        ViewHolder holder = new ViewHolder(contentView);
+        PlaceAdapter placeAdapter = new PlaceAdapter(getContext(), stringList());
+        holder.textPlaceGps.setText("成都");
+        holder.listview.setAdapter(placeAdapter);
+        if (!popupWindow.isShowing()) {
+            popupWindow.showAsDropDown(view);
+        }
+        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+
+            }
+        });
+    }
+
+    static class ViewHolder {
+        @BindView(R.id.text_place_gps)
+        TextView textPlaceGps;
+        @BindView(R.id.listview)
+        ListView listview;
+
+        ViewHolder(View view) {
+            ButterKnife.bind(this, view);
         }
     }
 }

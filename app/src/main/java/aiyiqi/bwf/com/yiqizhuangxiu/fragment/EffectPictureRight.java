@@ -163,7 +163,7 @@ public class EffectPictureRight extends BaseFragment implements EffectPictureRig
         final PopupWindow popupWindow = new PopupWindow(contentView, ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT, true);
         popupWindow.setTouchable(true);
-
+        popupWindow.setFocusable(true);
         popupWindow.setTouchInterceptor(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -172,13 +172,27 @@ public class EffectPictureRight extends BaseFragment implements EffectPictureRig
                 return false;
             }
         });
+
         popupWindow.setBackgroundDrawable(getResources().getDrawable(R.color.white));
 
         PopuViewHolder holder = new PopuViewHolder(contentView);
         PopuAdapter popuAdapter = new PopuAdapter(getContext(), stringList());
         holder.popuwindowSelectedChild.setAdapter(popuAdapter);
-        popupWindow.showAsDropDown(view);
-
+        if(!popupWindow.isShowing()) {
+            popupWindow.showAsDropDown(view);
+        }
+        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                LinearLayout[] ll = new LinearLayout[]{effectPictureTag01, effectPictureTag02, effectPictureTag03, effectPictureTag04};
+                TextView[] tv = new TextView[]{textviewTag01, textviewTag02, textviewTag03, textviewTag04};
+                ImageView[] iv = new ImageView[]{imageviewTag01, imageviewTag02, imageviewTag03, imageviewTag04};
+                for (int i = 0; i < 4; i++) {
+                        tv[i].setTextColor(Color.DKGRAY);
+                        iv[i].setImageResource(R.drawable.arrow_pic_tab_down);
+                }
+            }
+        });
     }
 
     @OnClick({R.id.effect_picture_tag01, R.id.effect_picture_tag02, R.id.effect_picture_tag03, R.id.effect_picture_tag04})
