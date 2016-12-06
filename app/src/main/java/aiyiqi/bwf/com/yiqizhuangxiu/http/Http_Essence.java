@@ -18,9 +18,8 @@ import okhttp3.Call;
  */
 
 public class Http_Essence {
-    public void getHttp() {
-
-        OkHttpUtils.get().url(Apis.ESSENCE_RECYCLERVIEW).build().execute(new StringCallback() {
+    public void getHttp(String url) {
+        OkHttpUtils.get().url(url).build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
 
@@ -30,7 +29,9 @@ public class Http_Essence {
             public void onResponse(String response, int id) {
                 Log.d("Http_Essence", response);
                 Response_Essence response_essence = JSON.parseObject(response,Response_Essence.class);
-                callback.ViewPagerCallback(response_essence.getData());
+                if(response_essence.getData()!=null){
+                    callback.ViewPagerCallback(response_essence.getData());
+                }
             }
         });
     }

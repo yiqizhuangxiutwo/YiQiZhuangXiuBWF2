@@ -137,6 +137,10 @@ public class HomeFragment extends BaseFragment {
         http.setCallback(new Http_Home_RecyclerView.Callback() {
             @Override
             public void RecyclerViewCallback(final ResponseRecycleViewList responseRecycleViewList) {
+                final LinearLayoutManager manager = new LinearLayoutManager(getActivity());
+                manager.setOrientation(LinearLayoutManager.VERTICAL);
+                homeRecyclerview.setLayoutManager(manager);
+                HomeRecyvlerViewAdapter homerecyvlerviewadapter = new HomeRecyvlerViewAdapter(getActivity());
                 isload = false;
                 isrefresh = false;
                 homerecyvlerviewadapter.addDatas(responseRecycleViewList.getData());
@@ -145,10 +149,10 @@ public class HomeFragment extends BaseFragment {
                     @Override
                     public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                         super.onScrolled(recyclerView, dx, dy);
-                        if (!isrefresh && !isload && manager.findLastVisibleItemPosition() == manager.getItemCount() - 1) {
+                        if (!isrefresh && !isload && manager.findLastVisibleItemPosition() == manager.getItemCount() ) {
                             isload = true;
-                            int type = responseRecycleViewList.getData().get(responseRecycleViewList.getData().size() - 1).getType();
-                            String id = responseRecycleViewList.getData().get(responseRecycleViewList.getData().size() - 1).getId();
+                            int type = responseRecycleViewList.getData().get(responseRecycleViewList.getData().size()).getType();
+                            String id = responseRecycleViewList.getData().get(responseRecycleViewList.getData().size()).getId();
                             int nexpage = pager + 1;
                             home_RecyclerViewHttp(id, type, nexpage);
                         }

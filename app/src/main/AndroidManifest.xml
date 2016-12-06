@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="aiyiqi.bwf.com.yiqizhuangxiu">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
 
@@ -53,6 +56,7 @@
         <activity android:name=".activity.ArticleDetailsActivity"/>
         <activity android:name=".activity.SearchActivity"/>
         <activity android:name=".activity.PersonalNewsActivity"/>
+        <activity android:name=".activity.speakactivity.ArticleActivity"/>
         <activity android:name=".activity.TieActivity"/>
         <activity android:name=".activity.TongchengWeb_Activity"/>
         <activity android:name=".activity.GongDiZhiBoActivity"/>

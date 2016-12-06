@@ -65,6 +65,7 @@ public class GongDiZhiBoActivity extends BaseActivity{
     LinearLayout siteLiveLinearlayout;
     @BindView(R.id.refreshLayout)
     CustomRefreshLayout refreshLayout;
+
     @BindView(R.id.recycleView)
     RecyclerView recycleView;
     @BindView(R.id.linearlayout_yuye)
