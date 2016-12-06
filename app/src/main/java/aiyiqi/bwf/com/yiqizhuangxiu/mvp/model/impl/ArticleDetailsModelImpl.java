@@ -29,6 +29,9 @@ public class ArticleDetailsModelImpl implements ArticleDetailsModel {
                         callback.loadArticleDatas(articleDetails.getData().getCurrentNews());
 
                         callback.loadRelatedDatas(articleDetails.getData().getRelatedNews());
+
+                        callback.loadTagsDatas(response);
+
                     }
                 });
     }
@@ -37,4 +40,10 @@ public class ArticleDetailsModelImpl implements ArticleDetailsModel {
     public void loadRelatedDatas() {
 
     }
+
+    @Override
+    public void loadTagsDatas() {
+
+    }
+
 }

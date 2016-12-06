@@ -37,5 +37,8 @@
     <string name="text_07">相关文章推荐</string>
     <string name="text_08">评论列表</string>
     <string name="text_10">让我们花10分钟了解你</string>
-    <string name="text_11">——以便发现你最需要的装修内容——</string>>
+    <string name="text_11">——以便发现你最需要的装修内容——</string>
+    <string name="effect_tag4">颜色</string>
+    <string name="effect_tag3">局部</string>
+    <string name="effect_tag2">风格</string>>
 </resources>

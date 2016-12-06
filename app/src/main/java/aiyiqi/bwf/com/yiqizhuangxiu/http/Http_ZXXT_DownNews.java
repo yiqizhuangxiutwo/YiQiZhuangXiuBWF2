@@ -45,13 +45,6 @@ public class Http_ZXXT_DownNews {
                     stringMap.put(key,jsonObject.getString(key));
                 }
                 String str = stringMap.get("data");
-//                Log.d("Http_ZXXT_DownNews", str);
-//                int x = str.indexOf("tag");
-//                Log.d("Http_ZXXT_DownNews", "x:" + x);
-//                int y = str.indexOf("isJump");
-//                Log.d("Http_ZXXT_DownNews", "y:" + y);
-//                String str2 = str.substring(x,y);
-//                Log.d("Http_ZXXT_DownNews", str2);
                 Response_ZXXT_DownNews response_zxxt_downNews = JSON.parseObject(response,Response_ZXXT_DownNews.class);
                 callback.ZXXTTagCallback(response_zxxt_downNews,str);
             }
