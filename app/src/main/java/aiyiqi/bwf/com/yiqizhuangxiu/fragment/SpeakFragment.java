@@ -5,9 +5,11 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageButton;
@@ -87,7 +89,7 @@ public class SpeakFragment extends BaseFragment {
 
     private Handler handler = new Handler(){
         @Override
-        public void handleMessage(Message msg) {
+        public void handleMessage(final Message msg) {
             //更新界面
             final ImageButton[] buttons = new ImageButton[]{viewHolder.button1,viewHolder.button2,viewHolder.button3,viewHolder.button4};
             AnimationSet set = new AnimationSet(true);
@@ -95,17 +97,51 @@ public class SpeakFragment extends BaseFragment {
             translate.setDuration(600);
             set.addAnimation(translate);
             set.setFillAfter(true);
-            buttons[msg.what].startAnimation(set);
 
-//            buttons[msg.what].clearAnimation();
-//            AnimationSet set2 = new AnimationSet(true);
-//            TranslateAnimation translate2 = new TranslateAnimation(0, 0, 0, 100);
-//            translate.setDuration(300);
-//            set.addAnimation(translate2);
-//            set.setFillAfter(true);
-//            buttons[msg.what].startAnimation(set2);
+            switch (msg.what){
+                case 0:
+                    buttons[0].startAnimation(set);
+                    setAnimationListen(set,buttons[0]);
+                    break;
+                case 1:
+                    buttons[1].startAnimation(set);
+                    setAnimationListen(set,buttons[1]);
+                    break;
+                case 2:
+                    buttons[2].startAnimation(set);
+                    setAnimationListen(set,buttons[2]);
+                    break;
+                case 3:
+                    buttons[3].startAnimation(set);
+                    setAnimationListen(set,buttons[3]);
+                    break;
+            }
         }
     };
+
+    private void setAnimationListen(AnimationSet set, final ImageButton button) {
+        set.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                AnimationSet set2 = new AnimationSet(true);
+                TranslateAnimation translate2 = new TranslateAnimation(0, 0, -1000, -900);
+                translate2.setDuration(100);
+                set2.addAnimation(translate2);
+                set2.setFillAfter(true);
+                button.startAnimation(set2);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+    }
 
 
     @OnClick(R.id.imgbtn2)
