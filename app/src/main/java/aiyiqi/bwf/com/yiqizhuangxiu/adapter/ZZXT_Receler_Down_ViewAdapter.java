@@ -52,7 +52,11 @@ public class ZZXT_Receler_Down_ViewAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         NewsHolder newsHolder = (NewsHolder) holder;
-        newsHolder.image.setImageURI(list.get(position).getImage());
+        if (list.get(position) !=null){
+            newsHolder.image.setImageURI(list.get(position).getImage());
+            newsHolder.title.setText(list.get(position).getTitle());
+            newsHolder.star.setText((int) (Math.random()*100+30)+"");
+        }
     }
 
     @Override

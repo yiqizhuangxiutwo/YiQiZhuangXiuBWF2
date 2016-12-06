@@ -11,10 +11,10 @@
             android:id="@+id/recyclerview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-        <aiyiqi.bwf.com.yiqizhuangxiu.view.MyRecyclerView
+        <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerviewdown"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        </aiyiqi.bwf.com.yiqizhuangxiu.view.MyRecyclerView>
+        </android.support.v7.widget.RecyclerView>
     </LinearLayout>
 </ScrollView>

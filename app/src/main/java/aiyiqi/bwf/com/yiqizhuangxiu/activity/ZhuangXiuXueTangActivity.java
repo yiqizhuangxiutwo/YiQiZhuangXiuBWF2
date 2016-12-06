@@ -45,7 +45,7 @@ public class ZhuangXiuXueTangActivity extends BaseActivity {
     @Override
     protected void initViews() {
         getFragments();
-        zxxtViewpager.setOffscreenPageLimit(1);
+        zxxtViewpager.setOffscreenPageLimit(0);
         WebViewFragmentPagerAdapter adapter = new WebViewFragmentPagerAdapter(fragments,tags_up,getSupportFragmentManager());
         zxxtViewpager.setAdapter(adapter);
         zxxtTablayout.setupWithViewPager(zxxtViewpager);

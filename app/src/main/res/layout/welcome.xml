@@ -60,28 +60,21 @@
                     android:id="@+id/radiobutton_nan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="20dp"
                     android:button="@null"
-                    android:background="@drawable/checked_seledted"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/checked_seledted"
                     android:text="男"
-                    android:textSize="15dp"
-                    android:layout_marginLeft="5dp"/>
+                    android:textSize="15dp"/>
+
                 <RadioButton
                     android:id="@+id/radiobutton_nv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:button="@null"
-                    android:background="@drawable/checked_seledted"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="女"
-                    android:textSize="15dp"
-                    android:layout_marginLeft="5dp"/>
+                    android:drawableLeft="@drawable/checked_seledted"
+                    android:text="女"/>
+
             </RadioGroup>
         </LinearLayout>
 
@@ -118,7 +111,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="装修阶段："
-                android:textSize="15dp"/>
+                android:textSize="15dp"
+                android:layout_marginTop="5dp"/>
             <RadioGroup
                 android:id="@+id/zhuangxiu"
                 android:layout_width="match_parent"
@@ -135,7 +129,7 @@
                     android:layout_marginLeft="10dp"
                     android:padding="3dp"
                     android:textSize="20dp"
-                    android:button="@null"/>
+                    android:button="@null" />
                 <RadioButton
                     android:id="@+id/radiobutton_tag_02"
                     android:layout_width="wrap_content"

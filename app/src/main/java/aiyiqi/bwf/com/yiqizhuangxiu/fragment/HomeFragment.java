@@ -15,8 +15,10 @@ import android.widget.Toast;
 
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
+import com.uuzuche.lib_zxing.activity.CodeUtils;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
+import aiyiqi.bwf.com.yiqizhuangxiu.activity.MyZxingActivity;
 import aiyiqi.bwf.com.yiqizhuangxiu.activity.SearchActivity;
 import aiyiqi.bwf.com.yiqizhuangxiu.adapter.HomeRecyvlerViewAdapter;
 import aiyiqi.bwf.com.yiqizhuangxiu.adapter.MainViewPagerAdapter;
@@ -26,6 +28,8 @@ import aiyiqi.bwf.com.yiqizhuangxiu.http.Http_Home_RecyclerView;
 import aiyiqi.bwf.com.yiqizhuangxiu.http.Http_Home_Viewpager;
 import aiyiqi.bwf.com.yiqizhuangxiu.view.AutoScrollViewPager;
 import aiyiqi.bwf.com.yiqizhuangxiu.view.CustomRefreshLayout;
+import aiyiqi.bwf.com.yiqizhuangxiu.widget.CustomLinearLayoutManager;
+import aiyiqi.bwf.com.yiqizhuangxiu.widget.MyRecycleView;
 import aiyiqi.bwf.com.yiqizhuangxiu.widget.PagerDotIndicator;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -52,10 +56,11 @@ public class HomeFragment extends BaseFragment {
     Toolbar toolbar;
     @BindView(R.id.appbar)
     AppBarLayout appbar;
-    @BindView(R.id.home_recyclerview)
-    RecyclerView homeRecyclerview;
+
     @BindView(R.id.refreshLayout)
     CustomRefreshLayout refreshLayout;
+    @BindView(R.id.home_recyclerview)
+    MyRecycleView homeRecyclerview;
     /**
      * 管理指示器的对象
      **/
@@ -66,7 +71,7 @@ public class HomeFragment extends BaseFragment {
     public static final int STATE_NO_MORE_DATA = 2;
     public static final int STATE_LOAD_FAILED = 3;
 
-    private LinearLayoutManager manager; //recycler
+    private CustomLinearLayoutManager manager; //recycler
     private Http_Home_RecyclerView http;
     private int pager;
     private HomeRecyvlerViewAdapter homerecyvlerviewadapter;
@@ -83,12 +88,43 @@ public class HomeFragment extends BaseFragment {
         pager = 1;
         home_RecyclerViewHttp("1218226", 3, pager);
         homerecyvlerviewadapter = new HomeRecyvlerViewAdapter(getActivity());
-        manager = new LinearLayoutManager(getActivity());
-        manager.setOrientation(LinearLayoutManager.VERTICAL);
+        manager = new CustomLinearLayoutManager(getActivity());
+        manager.setScrollEnabled(false);
         homeRecyclerview.setLayoutManager(manager);
         homeRecyclerview.setAdapter(homerecyvlerviewadapter);
+
+        mainTitleZxing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MyZxingActivity.class);
+                getActivity().startActivity(intent);
+            }
+        });
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        /**
+         * 处理二维码扫描结果
+         */
+        if (requestCode == 1000) {
+            //处理扫描结果（在界面上显示）
+            if (null != data) {
+                Bundle bundle = data.getExtras();
+                if (bundle == null) {
+                    return;
+                }
+                if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
+                    String result = bundle.getString(CodeUtils.RESULT_STRING);
+                    Toast.makeText(getContext(), "解析结果:" + result, Toast.LENGTH_LONG).show();
+                } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
+                    Toast.makeText(getContext(), "解析二维码失败", Toast.LENGTH_LONG).show();
+                }
+            }
+        }
+    }
 
     private boolean isload;
     private boolean isrefresh;

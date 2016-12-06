@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -72,7 +73,7 @@ public class MyRecyclecviewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 myViewHolder.explaintext.setText(dataBean.getTags().get(i).getTagname());
             }
         }
-        myViewHolder.imageViewFrontTopImage.setOnClickListener(new View.OnClickListener() {
+        myViewHolder.linear1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context,ArticleActivity.class);
@@ -111,6 +112,8 @@ public class MyRecyclecviewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         TextView subjectname;
         @BindView(R.id.explain_text)
         TextView explaintext;
+        @BindView(R.id.linear1)
+        LinearLayout linear1;
         public MyViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);

@@ -1,5 +1,6 @@
 package aiyiqi.bwf.com.yiqizhuangxiu.activity.speakactivity;
 
+import android.graphics.LinearGradient;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -143,7 +144,6 @@ public class ArticleActivity extends BaseActivity implements DetailView {
             CommitViewHolder holder = new CommitViewHolder(view);
             holder.commitName.setText(commitArticle.getData().get(i).getAuthor());
             holder.imageViewcommit.setImageURI(commitArticle.getData().get(i).getAvtUrl());
-            holder.committime.setText(commitArticle.getData().get(i).getDateline());
             for (int j = 0; j <commitArticle.getData().get(i).getMessage().size() ; j++) {
                 LinearLayout linear = (LinearLayout) view.findViewById(R.id.linearcommit);
                 if(commitArticle.getData().get(i).getMessage().get(j).getMsgType()==0){
@@ -158,7 +158,15 @@ public class ArticleActivity extends BaseActivity implements DetailView {
                     simpleDraweeView.setPadding(5, 5, 5, 5);
                     linear.addView(simpleDraweeView);
                 }
+                if(commitArticle.getData().get(i).getBlock()!=null){
+                    LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.huitie);
+                    linearLayout.setVisibility(View.VISIBLE);
+                    TextView textView = new TextView(ArticleActivity.this);
+                    textView.setText(commitArticle.getData().get(i).getBlock().toString());
+                    linearLayout.addView(textView);
+                }
             }
+            holder.committime.setText(commitArticle.getData().get(i).getDateline());
             articlcemmit.addView(view);
         }
     }

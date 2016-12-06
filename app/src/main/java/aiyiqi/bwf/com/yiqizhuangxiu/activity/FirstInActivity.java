@@ -1,6 +1,7 @@
 package aiyiqi.bwf.com.yiqizhuangxiu.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
@@ -55,20 +56,30 @@ public class FirstInActivity extends BaseActivity {
     public int getContentViewResID() {
         return R.layout.welcome;
     }
-
     @Override
     protected void initViews() {
         datepicker.setCalendarViewShown(false);
         Calendar calendar = Calendar.getInstance();
         datepicker.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
                 calendar.get(Calendar.DAY_OF_MONTH), null);
-
+        radiobuttonNan.setTextColor(Color.rgb(170,160,160));
+        radiobuttonNv.setTextColor(Color.rgb(170,160,160));
+        textBtn.getBackground().setAlpha(50);
+        radiobuttonTag01.setTextColor(Color.rgb(170,160,160));
+        radiobuttonTag02.setTextColor(Color.rgb(170,160,160));
+        radiobuttonTag03.setTextColor(Color.rgb(170,160,160));
+        radiobuttonTag04.setTextColor(Color.rgb(170,160,160));
         sex.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 int radioId = group.getCheckedRadioButtonId();
                 RadioButton radioButton = (RadioButton) FirstInActivity.this.findViewById(radioId);
-                sexStr = (String) radioButton.getText();
+                radiobuttonNan.setTextColor(Color.rgb(170,160,160));
+                radiobuttonNv.setTextColor(Color.rgb(170,160,160));
+                if (radioButton.isChecked()){
+                    radioButton.setTextColor(Color.rgb(40,200,160));
+                    sexStr = radioButton.getText().toString();
+                }
             }
         });
         zhuangxiu.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -76,15 +87,22 @@ public class FirstInActivity extends BaseActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 int radioId = group.getCheckedRadioButtonId();
                 RadioButton radioButton = (RadioButton) FirstInActivity.this.findViewById(radioId);
-                zxStr = (String) radioButton.getText();
+                radiobuttonTag01.setTextColor(Color.rgb(170,160,160));
+                radiobuttonTag02.setTextColor(Color.rgb(170,160,160));
+                radiobuttonTag03.setTextColor(Color.rgb(170,160,160));
+                radiobuttonTag04.setTextColor(Color.rgb(170,160,160));
+                if (radioButton.isChecked()){
+                    radioButton.setTextColor(Color.rgb(40,200,160));
+                    zxStr = radioButton.getText().toString();
+                }
             }
         });
         if ("".equals(sexStr) || "".equals(zxStr)) {
-            textBtn.getBackground().setAlpha(50);
+            Toast.makeText(this, "请把信息补充完整", Toast.LENGTH_SHORT).show();
+            return;
         } else {
             textBtn.getBackground().setAlpha(255);
         }
-
     }
 
     @Override
@@ -109,6 +127,8 @@ public class FirstInActivity extends BaseActivity {
             case R.id.text_btn:
                 startActivity(new Intent(this, MainActivity.class));
 //                Toast.makeText(this, sexStr.toString() + zxStr.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, sexStr.toString() + zxStr.toString(), Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, MainActivity.class));
                 finish();
                 break;
 

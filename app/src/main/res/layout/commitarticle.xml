@@ -37,6 +37,14 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/huitie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#7b7676"
+        android:visibility="gone">
+    </LinearLayout>
     <RelativeLayout
         android:id="@id/linear_bottom_count"
         android:layout_width="match_parent"
