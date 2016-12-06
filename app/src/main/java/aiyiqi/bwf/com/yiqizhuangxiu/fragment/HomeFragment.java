@@ -128,7 +128,7 @@ public class HomeFragment extends BaseFragment {
     private boolean isrefresh;
 
     /**
-     * Home下部的ViewPager的网络数据访问
+     * Home下部的网络数据访问
      */
     private void home_RecyclerViewHttp(String id, int type, final int pager) {
         refreshLayout.finishRefresh();
