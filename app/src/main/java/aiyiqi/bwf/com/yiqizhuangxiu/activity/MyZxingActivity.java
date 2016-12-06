@@ -39,7 +39,6 @@ TextView zxingXiangce;
         CaptureFragment captureFragment = (CaptureFragment) getSupportFragmentManager().findFragmentById(R.id.fram_zxing);
         captureFragment.setAnalyzeCallback(this);//添加解析回调
         zxingTopBack.getBackground().setAlpha(80);
-
     }
 
     @Override

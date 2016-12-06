@@ -69,7 +69,6 @@ public class HomeRecyvlerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
      */
     public void addDatas(List<ResponseRecycleViewList.DataBean> data) {
         this.dataBeens.addAll(data);
-        Log.d("HomeRecyvlerViewAdapter", "dataBeens.size():" + dataBeens.size());
         notifyDataSetChanged();
     }
 
@@ -117,7 +116,6 @@ public class HomeRecyvlerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-        Log.d("HomeRecyvlerViewAdapter", "222222222222222222222222dataBeens.size():" + dataBeens.size());
         if (getItemViewType(position) == ITEM_TYPE_HEADER){
             MyHeader myHeader = (MyHeader) holder;
             myHeader.zhuangxiugonsi.setOnClickListener(this);
@@ -141,6 +139,7 @@ public class HomeRecyvlerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
                 public void onClick(View v) {
                     Intent intent = new Intent(context, ArticleDetailsActivity.class);
                     intent.putExtra("articleId", dataBeens.get(position - 1).getId());
+                    Log.d("hahaha", dataBeens.get(position - 1).getId());
                     context.startActivity(intent);
 
                 }
@@ -163,7 +162,7 @@ public class HomeRecyvlerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(context, TieActivity.class);
-                    intent.putExtra("tieId", dataBeens.get(position).getId());
+                    intent.putExtra("tieId", dataBeens.get(position-1).getId());
                     context.startActivity(intent);
                 }
             });
@@ -172,10 +171,8 @@ public class HomeRecyvlerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
         }
         return;
     }
-
     @Override
     public int getItemCount() {
-        Log.d("1231564", "11111111111111111dataBeens.size():" + dataBeens.size());
         return dataBeens.size()+2;
     }
 
@@ -315,6 +312,7 @@ public class HomeRecyvlerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
     public void updateFooterState(int state) {
         this.state = state;
         notifyItemChanged(getItemCount() - 1);
+        Log.d("BaseMainRecycleViewAdap", "Adapter更新第" + (getItemCount() - 1) + "个View");
     }
 
     /**

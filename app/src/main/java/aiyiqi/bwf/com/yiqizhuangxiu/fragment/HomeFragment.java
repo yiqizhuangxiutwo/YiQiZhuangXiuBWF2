@@ -95,7 +95,7 @@ public class HomeFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), MyZxingActivity.class);
-                getActivity().startActivity(intent);
+                getActivity().startActivityForResult(intent,1000);
             }
         });
     }
@@ -137,10 +137,6 @@ public class HomeFragment extends BaseFragment {
         http.setCallback(new Http_Home_RecyclerView.Callback() {
             @Override
             public void RecyclerViewCallback(final ResponseRecycleViewList responseRecycleViewList) {
-                final LinearLayoutManager manager = new LinearLayoutManager(getActivity());
-                manager.setOrientation(LinearLayoutManager.VERTICAL);
-                homeRecyclerview.setLayoutManager(manager);
-                HomeRecyvlerViewAdapter homerecyvlerviewadapter = new HomeRecyvlerViewAdapter(getActivity());
                 isload = false;
                 isrefresh = false;
                 homerecyvlerviewadapter.addDatas(responseRecycleViewList.getData());
@@ -149,10 +145,10 @@ public class HomeFragment extends BaseFragment {
                     @Override
                     public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                         super.onScrolled(recyclerView, dx, dy);
-                        if (!isrefresh && !isload && manager.findLastVisibleItemPosition() == manager.getItemCount() ) {
+                        if (!isrefresh && !isload && manager.findLastVisibleItemPosition() == manager.getItemCount() - 1) {
                             isload = true;
-                            int type = responseRecycleViewList.getData().get(responseRecycleViewList.getData().size()).getType();
-                            String id = responseRecycleViewList.getData().get(responseRecycleViewList.getData().size()).getId();
+                            int type = responseRecycleViewList.getData().get(responseRecycleViewList.getData().size() - 1).getType();
+                            String id = responseRecycleViewList.getData().get(responseRecycleViewList.getData().size() - 1).getId();
                             int nexpage = pager + 1;
                             home_RecyclerViewHttp(id, type, nexpage);
                         }
@@ -222,7 +218,7 @@ public class HomeFragment extends BaseFragment {
         return rootView;
     }
 
-    @OnClick({R.id.main_title_zxing, R.id.main_title_search})
+    @OnClick({R.id.main_title_zxing, R.id.main_title_search,R.id.main_title_place})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.main_title_zxing:

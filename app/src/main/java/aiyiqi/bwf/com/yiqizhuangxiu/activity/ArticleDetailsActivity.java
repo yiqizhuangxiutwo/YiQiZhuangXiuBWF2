@@ -85,6 +85,7 @@ public class ArticleDetailsActivity extends BaseActivity implements ArticleDetai
 
     @Override
     protected void initViews() {
+        title.setText("文章详情");
 
         refreshLayout.setMaterialRefreshListener(new MaterialRefreshListener() {
             @Override
