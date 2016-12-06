@@ -64,5 +64,4 @@
         <activity android:name=".activity.FirstInActivity"/>
         <activity android:name=".activity.MyZxingActivity"/>
     </application>
-
 </manifest>
