@@ -2,33 +2,27 @@ package aiyiqi.bwf.com.yiqizhuangxiu.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.cjj.MaterialRefreshLayout;
+import com.cjj.MaterialRefreshListener;
 import com.facebook.drawee.view.SimpleDraweeView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
 import aiyiqi.bwf.com.yiqizhuangxiu.adapter.GDZB_Recycler_Adapter;
+import aiyiqi.bwf.com.yiqizhuangxiu.adapter.RecycDownAdapter;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_GDZB;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_GDZB_ST;
-import aiyiqi.bwf.com.yiqizhuangxiu.fragment.Inner_Fragment;
 import aiyiqi.bwf.com.yiqizhuangxiu.http.Http_GDZB;
 import aiyiqi.bwf.com.yiqizhuangxiu.http.Http_GDZB_ST;
-import aiyiqi.bwf.com.yiqizhuangxiu.utlis.TimeChange;
 import aiyiqi.bwf.com.yiqizhuangxiu.view.CustomRefreshLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,7 +31,7 @@ import butterknife.OnClick;
 /**
  * Created by Yishi on 2016/11/29.
  */
-public class GongDiZhiBoActivity extends BaseActivity {
+public class GongDiZhiBoActivity extends BaseActivity{
 
     @BindView(R.id.text_title_subview_title)
     TextView textTitleSubviewTitle;
@@ -71,8 +65,19 @@ public class GongDiZhiBoActivity extends BaseActivity {
     LinearLayout siteLiveLinearlayout;
     @BindView(R.id.refreshLayout)
     CustomRefreshLayout refreshLayout;
+
     @BindView(R.id.recycleView)
     RecyclerView recycleView;
+    @BindView(R.id.linearlayout_yuye)
+    LinearLayout linearlayoutYuye;
+    @BindView(R.id.linearlayout_zixun)
+    LinearLayout linearlayoutZixun;
+    @BindView(R.id.decoration_bottom)
+    LinearLayout decorationBottom;
+    @BindView(R.id.scroll)
+    ScrollView scroll;
+    @BindView(R.id.recycdown)
+    RecyclerView recycdown;
 
     @Override
     public int getContentViewResID() {
@@ -80,11 +85,26 @@ public class GongDiZhiBoActivity extends BaseActivity {
     }
 
     private static String id;
+    private static GDZB_Recycler_Adapter adapter;
+    private static RecycDownAdapter downAdapteradapte;
 
     @Override
     protected void initViews() {
-        ll = (LinearLayout) findViewById(R.id.ll);
         textTitleSubviewTitle.setText("工地直播");
+        decorationBottom.setVisibility(View.VISIBLE);
+
+        LinearLayoutManager manager = new LinearLayoutManager(GongDiZhiBoActivity.this);
+        manager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recycleView.setLayoutManager(manager);
+        adapter = new GDZB_Recycler_Adapter(GongDiZhiBoActivity.this);
+        recycleView.setAdapter(adapter);
+
+        LinearLayoutManager manager2 = new LinearLayoutManager(GongDiZhiBoActivity.this);
+        manager2.setOrientation(LinearLayoutManager.VERTICAL);
+        recycdown.setLayoutManager(manager2);
+        downAdapteradapte = new RecycDownAdapter(GongDiZhiBoActivity.this);
+        recycdown.setAdapter(downAdapteradapte);
+
         Intent intent = this.getIntent();
         id = intent.getStringExtra("id");
         getHttp_GDZB();
@@ -94,6 +114,7 @@ public class GongDiZhiBoActivity extends BaseActivity {
      * 工地直播基本信息获取
      */
     private void getHttp_GDZB() {
+        refreshLayout.finishRefresh();
         //基本信息的获取
         Http_GDZB http_gdzb = new Http_GDZB();
         http_gdzb.getHttp(id);
@@ -114,21 +135,37 @@ public class GongDiZhiBoActivity extends BaseActivity {
                 siteLiveTitleForemanText.setText(response_gdzb.getData().getMembers().get(2).getVendorName());
                 siteLiveTitleAdviserText.setText(response_gdzb.getData().getMembers().get(3).getVendorName());
 
-                LinearLayoutManager manager = new LinearLayoutManager(GongDiZhiBoActivity.this);
-                manager.setOrientation(LinearLayoutManager.HORIZONTAL);
-                recycleView.setLayoutManager(manager);
-                GDZB_Recycler_Adapter adapter = new GDZB_Recycler_Adapter(GongDiZhiBoActivity.this, response_gdzb.getData().getProgress());
-                recycleView.setAdapter(adapter);
-
+                adapter.addDatas(response_gdzb.getData().getProgress());
             }
         });
-
     }
 
-    private  static LayoutInflater inflater;
-    @Override
     protected void initDatas() {
-        inflater = LayoutInflater.from(this);
+        //设置何时可以刷新
+        scroll.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_MOVE:
+                        if (v.getScrollY() == 0){
+                            refreshLayout.setCanPull(true);
+                        }else{
+                            refreshLayout.setCanPull(false);
+                        }
+                }
+                return false;
+            }
+        });
+        //刷新的监听
+        refreshLayout.setMaterialRefreshListener(new MaterialRefreshListener() {
+            @Override
+            public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
+
+                adapter.clearDatas();
+                downAdapteradapte.clearDatas();
+                getHttp_GDZB();
+            }
+        });
     }
 
     @Override
@@ -144,54 +181,21 @@ public class GongDiZhiBoActivity extends BaseActivity {
     }
 
 
-    private static LinearLayout ll;
     private static int currentProgressId = -1;
 
+
     public void setPosition(int progressId) {
-        if (currentProgressId == progressId){
+        if (currentProgressId == progressId) {
             return;
         }
-        Log.d("GongDiZhiBoActivity", "进来了");
         currentProgressId = progressId;
-        ll.removeAllViews();
         Http_GDZB_ST http_gdzb_st = new Http_GDZB_ST();
         http_gdzb_st.getHttp(progressId, id);
         http_gdzb_st.setCallback(new Http_GDZB_ST.Callback() {
             @Override
             public void RecyclerViewCallback(Response_GDZB_ST response_gdzb_st) {
-
-                for (int i = 0; i < response_gdzb_st.getData().size(); i++) {
-                    View inner_view = inflater.inflate(R.layout.innerview,null);
-                    Inner_ViewHolder holder = new Inner_ViewHolder(inner_view);
-                    holder.name.setText(response_gdzb_st.getData().get(i).getCreatorName()+"("
-                        +response_gdzb_st.getData().get(i).getCreatorRole()+")");
-                    holder.message.setText(response_gdzb_st.getData().get(i).getMessage());
-                    holder.simple.setImageURI(response_gdzb_st.getData().get(i).getAvatar());
-                    String time = new TimeChange().formatDuring(response_gdzb_st.getData().get(i).getCreateTime());
-                    holder.time.setText(time);
-                    ll.addView(inner_view);
-                }
+                downAdapteradapte.addDatas(response_gdzb_st.getData());
             }
         });
-    }
-
-    static class Inner_ViewHolder {
-        @BindView(R.id.simple)
-        SimpleDraweeView simple;
-        @BindView(R.id.name)
-        TextView name;
-        @BindView(R.id.message)
-        TextView message;
-        @BindView(R.id.innergrid)
-        GridView innergrid;
-        @BindView(R.id.time)
-        TextView time;
-        @BindView(R.id.share)
-        ImageView share;
-
-
-        Inner_ViewHolder(View view) {
-            ButterKnife.bind(this, view);
-        }
     }
 }

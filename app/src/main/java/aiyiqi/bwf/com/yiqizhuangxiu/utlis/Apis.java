@@ -23,8 +23,7 @@ public interface Apis {
     String ZXYS_WEBVIEW = "http://m.beijing.17house.com/baojia/?sem=android&model=android";
 
     //装修学堂上部TAG数据接口
-
-    String ZZXT_TAG = " http://appapi.17house.com/StageApi.php?version=1&action=getTagsByStage&stage=1&model=android";
+    String ZZXT_TAG = " http://appapi.17house.com/StageApi.php?version=1&action=getTagsByStage&stage={0}&model=android";
 
     //同城活动数据接口
     String HTTP_TONGCHENG = "http://bbs.17house.com/motnt/index.php?a=activityThreadlist&c=forumThreadList&uuid=a444d1b2af4f&pageSize=10&uid=1633055&cityName=%E6%88%90%E9%83%BD&m=forum&page=1&model=android&sessionToken=6U49kCYKE260RqvPqEdFsBGskNQStKhm&app_version=android_com.aiyiqi.galaxy_1.1";
@@ -53,10 +52,17 @@ public interface Apis {
     //装修公司的装修直播
     String HTTP_BUILD_COMPANY_LISTVIEW = "http://hui.17house.com/svc/payment-facade/housekeep/listLatestLiveBuildingSites";
 
-    String SEARCH_POSTD_EATAILS ="http://bbs.17house.com/motnt/index.php?a=viewThread&c=forumThread&imgwidth=330&uuid=86305803367590&tid=1216903&m=forum&haspermission=yes&model=android&app_version=android_com.aiyiqi.galaxy_1.1";
+    //帖子接口
+    String TIE = "http://bbs.17house.com/motnt/index.php?a=viewThread&c=forumThread&imgwidth=330&uuid=86305803367590&tid={0}&m=forum&haspermission=yes&model=android&app_version=android_com.aiyiqi.galaxy_1.1";
+
+    //文章接口
+
 
     String HTTP_BUILD_COMPANY_TEAMTOGETHER = "http://hui.17house.com/svc/payment-facade/housekeep/listBuildingSiteVendors";
 
+
+
+    String ARTICLE = " http://appapi.17house.com/NewsApi.php?version=1&newsId={0}&page={1}&action=newsDetail&relatedNum=3&model=android";
 
     //工地直播基本信息获取
     String HTTP_GDZB = "http://hui.17house.com/svc/payment-facade/housekeep/getLiveBuildingSite";
@@ -64,5 +70,13 @@ public interface Apis {
 
     //工地晒图信息获取
     String HTTP_GDZB_ST = "http://hui.17house.com/svc/payment-facade/housekeep/listBuildingSiteTrackByProgress";
+
+
+
+    //文章评论
+    String ARTICLE_COMMENTS = "http://appapi.17house.com/newsApi.php?version=1&page={0}&dataId={1}&action=commentList&limit=10&model=android";
+
+    //装修学堂下部新闻数据接口
+    String ZZXT_DOWNNEWS = " http://appapi.17house.com/NewsApi.php?version=1&action=getNewsByStage&stage={0}&page={1}&pagesize=10&model=android";
 
 }

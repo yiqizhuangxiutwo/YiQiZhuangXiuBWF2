@@ -1,11 +1,17 @@
 package aiyiqi.bwf.com.yiqizhuangxiu.http;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
-import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_ZXXT_Up_Tag;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
 import aiyiqi.bwf.com.yiqizhuangxiu.utlis.Apis;
+import aiyiqi.bwf.com.yiqizhuangxiu.utlis.UrlHandler;
 import okhttp3.Call;
 
 /**
@@ -19,20 +25,27 @@ public class Http_ZXXT_Tag {
      * @param
      * @return
      */
-    public void getHttp() {
-
-        OkHttpUtils.get().url(Apis.ZZXT_TAG).build().execute(new StringCallback() {
+    public void getHttp(int state) {
+        String url = UrlHandler.handlUrl(Apis.ZZXT_TAG,state);
+        OkHttpUtils.get().url(url).build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
-                if (e!=null){
+                if (e != null) {
                     callback.HttpFailded(e);
                 }
             }
 
             @Override
             public void onResponse(String response, int id) {
-                Response_ZXXT_Up_Tag response_zxxt_up_tag = JSON.parseObject(response,Response_ZXXT_Up_Tag.class);
-                callback.ZXXTTagCallback(response_zxxt_up_tag);
+                Map<String, String> stringMap = new HashMap<>();
+                JSONObject jsonObject = JSON.parseObject(response);
+                Set<String> keys = jsonObject.keySet();
+                Iterator iterator = keys.iterator();
+                while (iterator.hasNext()) {
+                    String key = (String) iterator.next();
+                    stringMap.put(key,jsonObject.getString(key));
+                }
+                callback.ZXXTTagCallback(stringMap);
             }
         });
     }
@@ -42,7 +55,7 @@ public class Http_ZXXT_Tag {
         this.callback = callback;
     }
     public interface Callback{
-        void ZXXTTagCallback(Response_ZXXT_Up_Tag response_zxxt_up_tag);
+        void ZXXTTagCallback(Map<String, String> stringMap);
         void HttpFailded(Exception e);
     }
 

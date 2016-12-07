@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
@@ -46,11 +47,14 @@ public class SearchActivity extends BaseActivity implements SearchView {
     MaterialRefreshLayout refreshLayoutSearch;
     @BindView(R.id.search_linearlayout_view)
     LinearLayout searchLinearlayoutView;
+    @BindView(R.id.search_null)
+    TextView searchNull;
 
     private SearchPresenter presenter;
     private SearchAdapter adapter;
     private LinearLayoutManager manager;
     private String content;
+
     @Override
     public int getContentViewResID() {
         return R.layout.search_activity;
@@ -95,11 +99,32 @@ public class SearchActivity extends BaseActivity implements SearchView {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(TextUtils.isEmpty(s)){
+                if (TextUtils.isEmpty(s)) {
                     searchCancleImage.setVisibility(View.GONE);
-                }else{
+                } else {
                     searchCancleImage.setVisibility(View.VISIBLE);
+                    searchCancleImage.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            searchTextview.setText("");
+                        }
+                    });
                 }
+
+                content = searchTextview.getText().toString();
+                if (content.equals("")) {
+                    searchLinearlayoutView.setVisibility(View.VISIBLE);
+                    refreshLayoutSearch.setVisibility(View.GONE);
+                    searchNull.setVisibility(View.GONE);
+                    return;
+                } else {
+                    searchLinearlayoutView.setVisibility(View.GONE);
+                    refreshLayoutSearch.setVisibility(View.VISIBLE);
+                    searchNull.setVisibility(View.GONE);
+                    presenter = new SearchPresenterImpl(SearchActivity.this);
+                    presenter.loadDatas(content);
+                }
+                searchRecycleview.setAdapter(adapter);
             }
 
             @Override
@@ -118,36 +143,32 @@ public class SearchActivity extends BaseActivity implements SearchView {
 
     @Override
     protected void initDatas() {
-//        content = searchTextview.getText().toString();
-        content = "aa";
-//        if (content.equals("")) {
-//            searchLinearlayoutView.setVisibility(View.VISIBLE);
-//            refreshLayoutSearch.setVisibility(View.GONE);
-//
-//            return;
-//        }else {
-//            searchLinearlayoutView.setVisibility(View.GONE);
-//            refreshLayoutSearch.setVisibility(View.VISIBLE);
-//            presenter = new SearchPresenterImpl(this, content);
-            presenter = new SearchPresenterImpl(this);
-            presenter.loadDatas(content);
-//        }
 
     }
 
     @Override
-    public void showPictureSuccess(List<ResponseSearch.DataBean> dataBeen) {
-        Log.d("SearchActivity", "jinglaile");
-        Log.d("SearchActivity", "dataBeen:" + dataBeen);
+    public void showPictureSuccess(int page, List<ResponseSearch.DataBean> dataBeen) {
+
+        if(dataBeen == null){
+            searchNull.setVisibility(View.VISIBLE);
+            searchLinearlayoutView.setVisibility(View.GONE);
+            refreshLayoutSearch.setVisibility(View.GONE);
+            return;
+        }
+        Log.d("SearchActivity", "dataBeen:" + dataBeen.toString());
         refreshLayoutSearch.finishRefresh();
-        adapter.addDatas(dataBeen);
+        if(page == 1){
+            adapter.setDatas(dataBeen);
+            isNoMoreData = false;
+        }else{
+            adapter.addDatas(dataBeen);
+        }
     }
 
     @Override
     public void showNoMoreData() {
 
     }
-
     @Override
     public void showFailed() {
 

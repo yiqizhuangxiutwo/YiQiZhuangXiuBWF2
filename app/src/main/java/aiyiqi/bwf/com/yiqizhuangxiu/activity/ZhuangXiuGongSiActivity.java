@@ -102,9 +102,22 @@ public class ZhuangXiuGongSiActivity extends BaseActivity {
         });
     }
 
-
+    private int offSetY = 0;
     @Override
     protected void initDatas() {
+        //监听什么时候可以刷新
+        zxgsRecyclerview.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                offSetY+=dy;
+                if (offSetY == 0){
+                    refreshLayout.setCanPull(true);
+                }else{
+                    refreshLayout.setCanPull(false);
+                }
+            }
+        });
         //刷新的监听
         refreshLayout.setMaterialRefreshListener(new MaterialRefreshListener() {
             @Override

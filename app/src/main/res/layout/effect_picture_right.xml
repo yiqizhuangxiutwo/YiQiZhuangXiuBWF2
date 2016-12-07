@@ -16,11 +16,13 @@
             android:orientation="horizontal"
             android:gravity="center">
             <TextView
+                android:id="@+id/textview_tag_01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/effect_tag1"
                 android:textSize="15dp" />
             <ImageView
+                android:id="@+id/imageview_tag_01"
                 android:layout_width="10dp"
                 android:layout_height="10dp"
                 android:layout_marginLeft="5dp"
@@ -34,11 +36,13 @@
             android:orientation="horizontal"
             android:gravity="center">
             <TextView
+                android:id="@+id/textview_tag_02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/effect_tag1"
+                android:text="@string/effect_tag2"
                 android:textSize="15dp" />
             <ImageView
+                android:id="@+id/imageview_tag_02"
                 android:layout_width="10dp"
                 android:layout_height="10dp"
                 android:layout_marginLeft="5dp"
@@ -52,16 +56,22 @@
             android:orientation="horizontal"
             android:gravity="center">
             <TextView
+                android:id="@+id/textview_tag_03"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/effect_tag1"
+                android:text="@string/effect_tag3"
                 android:textSize="15dp" />
             <ImageView
+                android:id="@+id/imageview_tag_03"
                 android:layout_width="10dp"
                 android:layout_height="10dp"
                 android:layout_marginLeft="5dp"
                 android:src="@drawable/arrow_pic_tab_down"/>
         </LinearLayout>
+        <View
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:background="@color/gray"/>
         <LinearLayout
             android:id="@+id/effect_picture_tag04"
             android:layout_width="0dp"
@@ -70,11 +80,13 @@
             android:orientation="horizontal"
             android:gravity="center">
             <TextView
+                android:id="@+id/textview_tag_04"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/effect_tag1"
+                android:text="@string/effect_tag4"
                 android:textSize="15dp" />
             <ImageView
+                android:id="@+id/imageview_tag_04"
                 android:layout_width="10dp"
                 android:layout_height="10dp"
                 android:layout_marginLeft="5dp"

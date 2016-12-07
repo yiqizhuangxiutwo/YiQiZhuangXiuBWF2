@@ -17,8 +17,6 @@ import okhttp3.Call;
 public class SearchModelImpl implements SearchModel {
     @Override
     public void loadDatasSearch(String url, final Callback callback) {
-        Log.d("test", url);
-        // TODO: 网址存在  未进入方法
         OkHttpUtils.get().url(url).build()
                 .execute(new StringCallback() {
                     @Override
@@ -28,8 +26,9 @@ public class SearchModelImpl implements SearchModel {
 
                     @Override
                     public void onResponse(String response, int id) {
-                        Log.d("test", "jinlaile");
-                        Log.d("SearchModelImpl", response.toString());
+                        if(response == null){
+                            return;
+                        }
                         ResponseSearch search = JSON.parseObject(response, ResponseSearch.class);
                         callback.loadSuccess(search.getData());
                     }

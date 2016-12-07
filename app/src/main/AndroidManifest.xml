@@ -3,7 +3,21 @@
     package="aiyiqi.bwf.com.yiqizhuangxiu">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
+        android:name=".utlis.MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -16,6 +30,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <activity
+            android:configChanges="orientation|keyboardHidden"
+            android:name="com.uuzuche.lib_zxing.activity.CaptureActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:label="扫描二维码"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+
         <activity android:name=".activity.MainActivity"/>
         <activity android:name=".activity.ZhuangXiuGongSiActivity"/>
         <activity android:name=".activity.TongChengHuoDongActivity"/>
@@ -39,6 +63,10 @@
         <activity android:name=".activity.TeamTogether"/>
         <activity android:name=".activity.TeamTogetherGridViewPage"></activity>
 
-    </application>
+        <activity android:name=".activity.speakactivity.ArticleActivity"/>
+        <activity android:name=".activity.TieActivity"/>
+        <activity android:name=".activity.FirstInActivity"/>
+        <activity android:name=".activity.MyZxingActivity"/>
 
+    </application>
 </manifest>

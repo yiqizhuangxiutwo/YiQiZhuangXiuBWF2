@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
@@ -26,13 +27,26 @@ public class GDZB_Recycler_Adapter extends RecyclerView.Adapter {
     private Context context;
     private List<Response_GDZB.DataBean.ProgressBean> progress;
     private LayoutInflater inflater;
+    private GongDiZhiBoActivity activity;
 
 
-    public GDZB_Recycler_Adapter(Context context, List<Response_GDZB.DataBean.ProgressBean> progress) {
+    public GDZB_Recycler_Adapter(Context context) {
         this.context = context;
-        this.progress = progress;
         inflater = LayoutInflater.from(context);
+        progress = new ArrayList<>();
+        activity = new GongDiZhiBoActivity();
     }
+
+    public void addDatas(List<Response_GDZB.DataBean.ProgressBean> progress){
+        this.progress.addAll(progress);
+        notifyDataSetChanged();
+    }
+
+    public void clearDatas(){
+        this.progress.clear();
+        notifyDataSetChanged();
+    }
+
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -48,6 +62,7 @@ public class GDZB_Recycler_Adapter extends RecyclerView.Adapter {
             recViewHolder.upText.setBackgroundResource(R.color.green);
             recViewHolder.upText.setTextColor(Color.WHITE);
             recViewHolder.image.setBackgroundResource(R.drawable.working_icon);
+            activity.setPosition(progress.get(position).getProgressId());
         } else if (progress.get(position).getProgressStatus() == 2) {
             recViewHolder.upText.setText("已完成");
             recViewHolder.upText.setBackgroundResource(R.color.greens);
@@ -57,13 +72,11 @@ public class GDZB_Recycler_Adapter extends RecyclerView.Adapter {
         if (position == progress.size() - 1) {
             recViewHolder.view.setVisibility(View.GONE);
         }
-
         //点击监听
         recViewHolder.sitHeardtwoRecycler.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GongDiZhiBoActivity activity = new GongDiZhiBoActivity();
-                activity.setPosition(progress.get(position).getProgressStatus());
+                activity.setPosition(progress.get(position).getProgressId());
             }
         });
     }

@@ -11,6 +11,8 @@
         android:text="Children"
         android:textSize="20dp"
         android:textColor="@color/dark"
-        android:background="@color/white"/>
+        android:padding="10dp"
+        android:background="@color/white"
+        />
 
 </LinearLayout>

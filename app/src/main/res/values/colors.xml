@@ -30,4 +30,16 @@
 
     <color name="green_light">#abe4b2</color>
 
+
+    <color name="dark_green">#00a051</color>
+    <color name="textcolor">#2fab79</color>
+    <color name="grey_01">#d4d4d4</color>
+    <color name="green_01">#28cfa0</color>
+    <color name="scan_corner_color">#0effc2</color>
+    <color name="text_12">#cf7272</color>
+    <color name="green_02">#056e10</color>
+    <color name="gray_02">#e4dfdf</color>
+    <color name="gray03">#f9f3f3</color>
+    <color name="bg">#fafafa</color>
+
 </resources>
