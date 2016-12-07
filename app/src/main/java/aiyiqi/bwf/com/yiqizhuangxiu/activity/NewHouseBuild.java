@@ -9,6 +9,7 @@ import android.widget.TextView;
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by lenovo on 2016-11-24.
@@ -45,5 +46,10 @@ public class NewHouseBuild extends BaseActivity {
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
+    }
+
+    @OnClick(R.id.back)
+    public void onClick() {
+        finish();
     }
 }

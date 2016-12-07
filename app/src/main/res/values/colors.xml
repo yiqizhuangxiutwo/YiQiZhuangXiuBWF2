@@ -37,4 +37,5 @@
     <color name="gray_02">#e4dfdf</color>
     <color name="gray03">#f9f3f3</color>
     <color name="bg">#fafafa</color>
+    <color name="gray_text">#9c9c9c</color>
 </resources>

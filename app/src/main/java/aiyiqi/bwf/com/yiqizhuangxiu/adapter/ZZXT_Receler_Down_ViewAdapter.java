@@ -1,6 +1,7 @@
 package aiyiqi.bwf.com.yiqizhuangxiu.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
+import aiyiqi.bwf.com.yiqizhuangxiu.activity.ArticleDetailsActivity;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.Response_ZXXT_DownNews;
 import aiyiqi.bwf.com.yiqizhuangxiu.fragment.ZXXT_Fragment;
 import butterknife.BindView;
@@ -93,6 +95,14 @@ public class ZZXT_Receler_Down_ViewAdapter extends RecyclerView.Adapter {
             newsHolder.image.setImageURI(list.get(position).getImage());
             newsHolder.title.setText(list.get(position).getTitle());
             newsHolder.star.setText((int) (Math.random() * 100 + 30) + "");
+            newsHolder.ll.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, ArticleDetailsActivity.class);
+                    intent.putExtra("articleId",list.get(position).getNewsId()+"");
+                    context.startActivity(intent);
+                }
+            });
         }else{
             newsHolder.ll.setVisibility(View.GONE);
         }

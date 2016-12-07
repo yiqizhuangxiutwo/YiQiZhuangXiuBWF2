@@ -116,10 +116,9 @@ public class ZhuangXiuXueTangActivity extends BaseActivity {
     }
 
 
-
-    @OnClick({R.id.btn_back, R.id.school_tab,R.id.close, R.id.button1, R.id.button2, R.id.button3, R.id.button4, R.id.button5, R.id.button6, R.id.button7, R.id.button8, R.id.button9, R.id.button10, R.id.button11, R.id.button12, R.id.button13, R.id.button14, R.id.button15, R.id.button16, R.id.button17})
+    @OnClick({R.id.btn_back, R.id.school_tab, R.id.close, R.id.button1, R.id.button2, R.id.button3, R.id.button4, R.id.button5, R.id.button6, R.id.button7, R.id.button8, R.id.button9, R.id.button10, R.id.button11, R.id.button12, R.id.button13, R.id.button14, R.id.button15, R.id.button16, R.id.button17})
     public void onClick(View view) {
-        Button buttons[] = new Button[]{button1, button2,button3,button4,button5,button6,button7,button8,button9,button10,button11,button12,button13,button14,button15,button16,button17};
+        Button buttons[] = new Button[]{button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11, button12, button13, button14, button15, button16, button17};
         int now = zxxtViewpager.getCurrentItem();
         for (int i = 0; i < buttons.length; i++) {
             buttons[i].setTextColor(Color.BLACK);

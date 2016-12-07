@@ -17,6 +17,7 @@ import aiyiqi.bwf.com.yiqizhuangxiu.mvp.presenter.impl.BuildingHomePresenterImpl
 import aiyiqi.bwf.com.yiqizhuangxiu.mvp.view.BuildingHomeView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Lee Vane.
@@ -59,11 +60,14 @@ public class JianCaiJiaJuActivity extends BaseActivity implements BuildingHomeVi
             }
         });
     }
-    private boolean isload ;
-    public void loadDatas(){
+
+    private boolean isload;
+
+    public void loadDatas() {
         isload = true;
         presenter.loadBuildingHomeDatas();
     }
+
     @Override
     public void showBuildingHomeViewSuccess(ResponseBuidingHome buidingHome) {
         Log.d("JianCaiJiaJuActivity", "buidingHome.getData().size():" + buidingHome.getData().size());
@@ -82,5 +86,10 @@ public class JianCaiJiaJuActivity extends BaseActivity implements BuildingHomeVi
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
 
+    }
+
+    @OnClick(R.id.back)
+    public void onClick() {
+        finish();
     }
 }

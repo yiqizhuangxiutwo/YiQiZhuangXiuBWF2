@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -55,7 +54,6 @@ public class IndependentAllAdapter_RecyclerView extends RecyclerView.Adapter {
         viewholder.independentOrderViewpagerItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "点击了"+names.get(position), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, ZiZhuXiaDan_Inner_Activity.class);
                 intent.putExtra("image",strings.get(position));
                 intent.putExtra("name",names.get(position));

@@ -1,14 +1,15 @@
 package aiyiqi.bwf.com.yiqizhuangxiu.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.TranslateAnimation;
@@ -68,6 +69,9 @@ public class SpeakFragment extends BaseFragment {
         datas.add("板块");
         tabAdapter = new TabAdapter(getFragmentManager(), datas);
         viewPager.setAdapter(tabAdapter);
+
+        WindowManager windowManager = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+
     }
 
     @Override
@@ -94,7 +98,7 @@ public class SpeakFragment extends BaseFragment {
             final ImageButton[] buttons = new ImageButton[]{viewHolder.button1,viewHolder.button2,viewHolder.button3,viewHolder.button4};
             AnimationSet set = new AnimationSet(true);
             TranslateAnimation translate = new TranslateAnimation(0, 0, 0, -1000);
-            translate.setDuration(600);
+            translate.setDuration(300);
             set.addAnimation(translate);
             set.setFillAfter(true);
 

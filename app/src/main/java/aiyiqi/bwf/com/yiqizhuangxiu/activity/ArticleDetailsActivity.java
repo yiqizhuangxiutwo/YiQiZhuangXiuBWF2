@@ -122,7 +122,6 @@ public class ArticleDetailsActivity extends BaseActivity implements ArticleDetai
         LayoutInflater inflater = LayoutInflater.from(this);
         articleDetailsTextImage.setVisibility(View.VISIBLE);
         for (int i = 0; i < currentNewsBeen.getContent().size(); i++) {
-            Log.d("ArticleDetailsActivity", "currentNewsBeen.getContent().size():" + currentNewsBeen.getContent().size());
             View view = null;
             if (currentNewsBeen.getContent().get(i).startsWith("http")) {
                 view = inflater.inflate(R.layout.article_image, articleDetailsTextImage, false);
