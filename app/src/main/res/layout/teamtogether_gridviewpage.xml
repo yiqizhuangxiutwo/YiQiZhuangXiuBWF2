@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include
+        layout="@layout/subview_title"></include>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.facebook.drawee.view.SimpleDraweeView
+            xmlns:fresco="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/teamtogether_head"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="16dip"
+            android:layout_marginTop="16dip"
+            android:scaleType="centerCrop"
+            fresco:placeholderImage="@drawable/loading_placeholder"
+            fresco:placeholderImageScaleType="fitXY"
+            fresco:fadeDuration="1000" />
+        <TextView
+            android:id="@+id/teamtogether_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/teamtogether_head"
+            android:layout_marginLeft="7.0dip"
+            android:layout_marginTop="5.0dip"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="姓名"
+            android:textColor="@color/dark"
+            android:textSize="16.0sp" />
+        <TextView
+            android:id="@+id/teamtogether_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7.0dip"
+            android:layout_marginTop="5.0dip"
+            android:layout_toRightOf="@id/teamtogether_head"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:layout_below="@id/teamtogether_name"
+            android:text="装修案例：18"
+            android:textColor="@color/dark"
+            android:textSize="14.0sp"
+            />
+        <RatingBar
+            android:id="@+id/ratingbar"
+            style="@style/fiveStarRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_toRightOf="@id/teamtogether_head"
+            android:layout_below="@id/teamtogether_num"
+            android:layout_marginLeft="7.0dip"
+            android:layout_marginTop="5.0dip"
+            android:rating="5"
+            >
+        </RatingBar>
+    </RelativeLayout>
+
+
+
+
+</LinearLayout>

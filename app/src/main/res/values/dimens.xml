@@ -5,4 +5,5 @@
     <dimen name="main_navigation_bar_height">60dp</dimen>
     <dimen name="main_tab_height">25dp</dimen>
     <dimen name="actionBarSize">40dp</dimen>
+    <dimen name="setting_padding">8dp</dimen>
 </resources>

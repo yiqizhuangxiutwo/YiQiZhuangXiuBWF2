@@ -1,6 +1,7 @@
 package aiyiqi.bwf.com.yiqizhuangxiu.activity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -23,12 +24,17 @@ public class LoginActivity extends BaseActivity {
     TextView textView;
     @BindView(R.id.imageView)
     ImageView imageView;
-    @BindView(R.id.editText)
-    EditText editText;
     @BindView(R.id.login_imagebtn_hintpwd)
     Button loginImagebtnHintpwd;
     @BindView(R.id.msg_login)
     Button msgLogin;
+    @BindView(R.id.editText_01)
+    EditText editText01;
+    @BindView(R.id.editText_02)
+    EditText editText02;
+
+    private String phone;
+    private String password;
 
     @Override
     public int getContentViewResID() {
@@ -42,7 +48,8 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void initDatas() {
-
+        phone = editText01.getText().toString();
+        password = editText02.getText().toString();
     }
 
     @Override
@@ -54,5 +61,20 @@ public class LoginActivity extends BaseActivity {
 
     @OnClick(R.id.login_btn_cancel)
     public void onClick() {
+    }
+
+    @OnClick({R.id.login_imagebtn_hintpwd, R.id.msg_login})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.login_imagebtn_hintpwd:
+                break;
+            case R.id.msg_login:
+                if(!phone.equals("") && !password.equals("")){
+                    msgLogin.getBackground().setAlpha(255);
+                } else {
+                    msgLogin.getBackground().setAlpha(50);
+                }
+                break;
+        }
     }
 }

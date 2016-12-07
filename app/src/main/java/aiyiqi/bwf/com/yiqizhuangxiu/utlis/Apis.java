@@ -57,16 +57,26 @@ public interface Apis {
 
     //文章接口
 
+
+    String HTTP_BUILD_COMPANY_TEAMTOGETHER = "http://hui.17house.com/svc/payment-facade/housekeep/listBuildingSiteVendors";
+
+
+
     String ARTICLE = " http://appapi.17house.com/NewsApi.php?version=1&newsId={0}&page={1}&action=newsDetail&relatedNum=3&model=android";
+
     //工地直播基本信息获取
     String HTTP_GDZB = "http://hui.17house.com/svc/payment-facade/housekeep/getLiveBuildingSite";
+    
 
     //工地晒图信息获取
     String HTTP_GDZB_ST = "http://hui.17house.com/svc/payment-facade/housekeep/listBuildingSiteTrackByProgress";
+
+
 
     //文章评论
     String ARTICLE_COMMENTS = "http://appapi.17house.com/newsApi.php?version=1&page={0}&dataId={1}&action=commentList&limit=10&model=android";
 
     //装修学堂下部新闻数据接口
     String ZZXT_DOWNNEWS = " http://appapi.17house.com/NewsApi.php?version=1&action=getNewsByStage&stage={0}&page={1}&pagesize=10&model=android";
+
 }
