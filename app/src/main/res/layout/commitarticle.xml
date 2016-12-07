@@ -26,6 +26,7 @@
             fresco:fadeDuration="1000" />
         <TextView
             android:id="@+id/commit_name"
+            android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -33,16 +34,19 @@
     </LinearLayout>
     <LinearLayout
         android:id="@id/linearcommit"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginLeft="40dp">
     </LinearLayout>
     <LinearLayout
         android:id="@+id/huitie"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="#7b7676"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="40dp"
         android:visibility="gone">
     </LinearLayout>
     <RelativeLayout

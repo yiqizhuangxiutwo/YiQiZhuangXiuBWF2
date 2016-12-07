@@ -27,6 +27,7 @@ import aiyiqi.bwf.com.yiqizhuangxiu.mvp.presenter.impl.SearchPresenterImpl;
 import aiyiqi.bwf.com.yiqizhuangxiu.mvp.view.SearchView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Lee Vane.
@@ -149,7 +150,7 @@ public class SearchActivity extends BaseActivity implements SearchView {
     @Override
     public void showPictureSuccess(int page, List<ResponseSearch.DataBean> dataBeen) {
 
-        if(dataBeen == null){
+        if (dataBeen == null) {
             searchNull.setVisibility(View.VISIBLE);
             searchLinearlayoutView.setVisibility(View.GONE);
             refreshLayoutSearch.setVisibility(View.GONE);
@@ -157,10 +158,10 @@ public class SearchActivity extends BaseActivity implements SearchView {
         }
         Log.d("SearchActivity", "dataBeen:" + dataBeen.toString());
         refreshLayoutSearch.finishRefresh();
-        if(page == 1){
+        if (page == 1) {
             adapter.setDatas(dataBeen);
             isNoMoreData = false;
-        }else{
+        } else {
             adapter.addDatas(dataBeen);
         }
     }
@@ -169,6 +170,7 @@ public class SearchActivity extends BaseActivity implements SearchView {
     public void showNoMoreData() {
 
     }
+
     @Override
     public void showFailed() {
 
@@ -179,5 +181,10 @@ public class SearchActivity extends BaseActivity implements SearchView {
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
+    }
+
+    @OnClick(R.id.search_cancle)
+    public void onClick() {
+        finish();
     }
 }

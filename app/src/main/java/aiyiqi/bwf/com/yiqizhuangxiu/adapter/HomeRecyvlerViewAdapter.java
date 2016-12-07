@@ -21,13 +21,13 @@ import aiyiqi.bwf.com.yiqizhuangxiu.R;
 import aiyiqi.bwf.com.yiqizhuangxiu.activity.ArticleDetailsActivity;
 import aiyiqi.bwf.com.yiqizhuangxiu.activity.JianCaiJiaJuActivity;
 import aiyiqi.bwf.com.yiqizhuangxiu.activity.SheJiLiangFangActivity;
-import aiyiqi.bwf.com.yiqizhuangxiu.activity.TieActivity;
 import aiyiqi.bwf.com.yiqizhuangxiu.activity.TongChengHuoDongActivity;
 import aiyiqi.bwf.com.yiqizhuangxiu.activity.XiaoGuoTuActivity;
 import aiyiqi.bwf.com.yiqizhuangxiu.activity.ZhuangXiuGongSiActivity;
 import aiyiqi.bwf.com.yiqizhuangxiu.activity.ZhuangXiuXueTangActivity;
 import aiyiqi.bwf.com.yiqizhuangxiu.activity.ZhuangXiuYuSuanActivity;
 import aiyiqi.bwf.com.yiqizhuangxiu.activity.ZiZhuXiaDanActivity;
+import aiyiqi.bwf.com.yiqizhuangxiu.activity.speakactivity.ArticleActivity;
 import aiyiqi.bwf.com.yiqizhuangxiu.entity.ResponseRecycleViewList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -161,8 +161,8 @@ public class HomeRecyvlerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
             myTeiZiHolder.mainRecycleviewItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(context, TieActivity.class);
-                    intent.putExtra("tieId", dataBeens.get(position-1).getId());
+                    Intent intent = new Intent(context, ArticleActivity.class);
+                    intent.putExtra("articleId", dataBeens.get(position-1).getId());
                     context.startActivity(intent);
                 }
             });

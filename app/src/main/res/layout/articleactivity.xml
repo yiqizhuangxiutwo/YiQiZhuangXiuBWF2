@@ -9,7 +9,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="1">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -18,19 +19,19 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="#ff898989" />
+                android:background="@color/gray" />
             <include layout="@layout/sublayout"/>
 
             <TextView
                 android:id="@id/textView_main_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10.0dip"
+                android:padding="10dp"
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:text="This is main title."
                 android:textColor="#ff434343"
-                android:textSize="22.0sp" />
+                android:textSize="20.0sp" />
 
             <include layout="@layout/articletime" />
 
@@ -38,23 +39,34 @@
                 android:id="@id/article_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" />
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"/>
 
             <cn.lankton.flowlayout.FlowLayout
                 android:id="@id/article_tag"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginTop="15dp"/>
             <LinearLayout
                 android:id="@+id/article_zan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:visibility="gone" />
+                android:visibility="gone"
+                android:padding="10dp"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray"
+                android:layout_marginTop="10dp"/>
             <LinearLayout
                 android:id="@+id/articl_cemmit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"/>
+                android:orientation="vertical"
+                android:padding="10dp"/>
         </LinearLayout>
     </ScrollView>
+    <include layout="@layout/comments_reply"/>
 </LinearLayout>

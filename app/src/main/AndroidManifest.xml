@@ -30,8 +30,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
         <activity
             android:configChanges="orientation|keyboardHidden"
             android:name="com.uuzuche.lib_zxing.activity.CaptureActivity"
@@ -39,7 +37,6 @@
             android:windowSoftInputMode="stateAlwaysHidden"
             android:label="扫描二维码"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-
         <activity android:name=".activity.MainActivity"/>
         <activity android:name=".activity.ZhuangXiuGongSiActivity"/>
         <activity android:name=".activity.TongChengHuoDongActivity"/>
@@ -56,15 +53,11 @@
         <activity android:name=".activity.ArticleDetailsActivity"/>
         <activity android:name=".activity.SearchActivity"/>
         <activity android:name=".activity.PersonalNewsActivity"/>
-
-
         <activity android:name=".activity.TongchengWeb_Activity"/>
         <activity android:name=".activity.GongDiZhiBoActivity"/>
         <activity android:name=".activity.TeamTogether"/>
         <activity android:name=".activity.TeamTogetherGridViewPage"></activity>
-
         <activity android:name=".activity.speakactivity.ArticleActivity"/>
-        <activity android:name=".activity.TieActivity"/>
         <activity android:name=".activity.FirstInActivity"/>
         <activity android:name=".activity.MyZxingActivity"/>
         <activity android:name=".activity.ForgetPasswordActivity"/>
