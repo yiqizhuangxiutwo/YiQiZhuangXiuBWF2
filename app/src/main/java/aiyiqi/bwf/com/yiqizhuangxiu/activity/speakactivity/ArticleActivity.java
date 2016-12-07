@@ -1,10 +1,8 @@
 package aiyiqi.bwf.com.yiqizhuangxiu.activity.speakactivity;
 
-import android.graphics.LinearGradient;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -86,26 +84,27 @@ public class ArticleActivity extends BaseActivity implements DetailView {
                 view = View.inflate(this, R.layout.textviewitem, null);
                 TextView textviewdetail = (TextView) view.findViewById(R.id.textviewdetail);
                 textviewdetail.setText(detail.getData().getMessage().get(i).getMsg());
+                textviewdetail.setPadding(10,10,10,10);
                 articleDetail.addView(view);
             } else if (detail.getData().getMessage().get(i).getImgType() == 1) {
                 SimpleDraweeView simple = new SimpleDraweeView(ArticleActivity.this);
                 simple.setImageURI(detail.getData().getMessage().get(i).getMsg());
-                simple.setMinimumHeight(247);
+                simple.setMinimumHeight(300);
                 simple.setMinimumWidth(330);
-                simple.setPadding(5, 5, 5, 5);
+                simple.setPadding(0,10,0,10);
                 articleDetail.addView(simple);
             } else {
                 SimpleDraweeView simple = new SimpleDraweeView(ArticleActivity.this);
                 simple.setImageURI(detail.getData().getMessage().get(i).getMsg());
                 simple.setMinimumHeight(59);
                 simple.setMinimumWidth(48);
-                simple.setPadding(5, 5, 5, 5);
+                simple.setPadding(0,10,0,10);
                 articleDetail.addView(simple);
             }
         }
         for (int i = 0; i < detail.getData().getTags().size(); i++) {
             View view = inflater.inflate(R.layout.articletag, articleTag, false);
-            Button button = (Button) view.findViewById(R.id.btntag);
+            TextView button = (TextView) view.findViewById(R.id.btntag);
             button.setText(detail.getData().getTags().get(i).getTagname());
             articleTag.addView(view);
         }
@@ -125,8 +124,8 @@ public class ArticleActivity extends BaseActivity implements DetailView {
                 roundingParams.setRoundAsCircle(true);
                 simpleDraweeView.getHierarchy().setRoundingParams(roundingParams);
                 simpleDraweeView.setImageURI(zan.getData().get(i).getAvtUrl());
-                simpleDraweeView.setMinimumHeight(80);
-                simpleDraweeView.setMinimumWidth(80);
+                simpleDraweeView.setMinimumHeight(40);
+                simpleDraweeView.setMinimumWidth(40);
                 simpleDraweeView.setPadding(5, 5, 5, 5);
                 articlezan.addView(simpleDraweeView);
             }
@@ -153,8 +152,8 @@ public class ArticleActivity extends BaseActivity implements DetailView {
                 }else {
                     SimpleDraweeView simpleDraweeView = new SimpleDraweeView(ArticleActivity.this);
                     simpleDraweeView.setImageURI(commitArticle.getData().get(i).getMessage().get(j).getMsg());
-                    simpleDraweeView.setMinimumHeight(59);
-                    simpleDraweeView.setMinimumWidth(48);
+                    simpleDraweeView.setMinimumHeight(70);
+                    simpleDraweeView.setMinimumWidth(60);
                     simpleDraweeView.setPadding(5, 5, 5, 5);
                     linear.addView(simpleDraweeView);
                 }

@@ -67,11 +67,7 @@
         <activity android:name=".activity.TieActivity"/>
         <activity android:name=".activity.FirstInActivity"/>
         <activity android:name=".activity.MyZxingActivity"/>
-<<<<<<< HEAD
         <activity android:name=".activity.ForgetPasswordActivity"/>
-    </application>
-=======
->>>>>>> 973b7e978b799b017dfe5a7a2b2514090530d160
 
     </application>
 </manifest>

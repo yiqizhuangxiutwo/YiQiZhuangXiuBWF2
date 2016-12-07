@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/YiQiZhuangXiu.iml" filepath="$PROJECT_DIR$/YiQiZhuangXiu.iml" />
-<<<<<<< HEAD
-=======
-      <module fileurl="file://$PROJECT_DIR$/YiQiZhuangXiuBWF1.iml" filepath="$PROJECT_DIR$/YiQiZhuangXiuBWF1.iml" />
->>>>>>> 973b7e978b799b017dfe5a7a2b2514090530d160
       <module fileurl="file://$PROJECT_DIR$/YiQiZhuangXiuBWF2.iml" filepath="$PROJECT_DIR$/YiQiZhuangXiuBWF2.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/lib-zxing/lib-zxing.iml" filepath="$PROJECT_DIR$/lib-zxing/lib-zxing.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib-zxing/lib-zxing.iml" filepath="$PROJECT_DIR$/lib-zxing/lib-zxing.iml" />
     </modules>
   </component>
