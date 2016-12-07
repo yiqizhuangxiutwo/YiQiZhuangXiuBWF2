@@ -35,15 +35,9 @@
 
 
         <activity android:name=".activity.TongchengWeb_Activity"/>
-
-
         <activity android:name=".activity.GongDiZhiBoActivity"/>
         <activity android:name=".activity.TeamTogether"/>
-
-
-        <activity android:name=".activity.TongchengWeb_Activity"/>
-        <activity android:name=".activity.GongDiZhiBoActivity"/>
-        <activity android:name=".activity.TeamTogether"/>
+        <activity android:name=".activity.TeamTogetherGridViewPage"></activity>
 
     </application>
 

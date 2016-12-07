@@ -1,5 +1,7 @@
 package aiyiqi.bwf.com.yiqizhuangxiu.mvp.model.impl;
 
+import android.util.Log;
+
 import com.alibaba.fastjson.JSON;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -21,7 +23,7 @@ public class TeamTogetherModelImpl implements TeamTogetherModel {
                 .addParams("app_version ","android_com.aiyiqi.galaxy_1.1")
                 .addParams("haspermission","yes")
                 .addParams("bossId",bossId+"")
-                .addParams("pageNo ",pageNo+"")
+                .addParams("pageNo ","pageNo")
                 .addParams("pageSize","10")
                 .url(Apis.HTTP_BUILD_COMPANY_TEAMTOGETHER)
                 .build().execute(new StringCallback() {
@@ -32,9 +34,9 @@ public class TeamTogetherModelImpl implements TeamTogetherModel {
 
             @Override
             public void onResponse(String response, int id) {
+                Log.d("TeamTogetherModelImpl", response);
                 ResponseTeamtogether responseTeamtogether = JSON.parseObject(response,ResponseTeamtogether.class);
                 callback.loadDatasSuccess(responseTeamtogether);
-
             }
         });
     }

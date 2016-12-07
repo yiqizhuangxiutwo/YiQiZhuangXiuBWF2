@@ -8,7 +8,7 @@ import aiyiqi.bwf.com.yiqizhuangxiu.entity.ResponseTeamtogether;
 
 public interface TeamTogetherModel {
 
-    void showTeamTogetherDatas(int bossId, int pageNo, Callback callback);
+    void showTeamTogetherDatas(int bossId,int pageNo,Callback callback);
 
     public interface Callback{
         void loadDatasSuccess(ResponseTeamtogether teamtogether);

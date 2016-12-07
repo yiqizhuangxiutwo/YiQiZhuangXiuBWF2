@@ -57,8 +57,10 @@ public class TongchengWeb_Activity extends BaseActivity{
         urls = intent.getStringExtra("urls");
         tongchengWebview.getSettings().setJavaScriptEnabled(true);
         if (web == null){
+            refreshLayout.finishRefresh();
             tongchengWebview.loadUrl(urls);
         }else{
+            refreshLayout.finishRefresh();
             tongchengWebview.loadUrl(web);
         }
         tongchengWebview.setWebViewClient(new WebViewClient() {

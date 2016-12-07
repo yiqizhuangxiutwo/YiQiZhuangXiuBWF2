@@ -8,6 +8,7 @@ import java.util.List;
 
 public class ResponseTeamtogether {
 
+
     /**
      * code : 0
      * message : success
@@ -17,7 +18,7 @@ public class ResponseTeamtogether {
     /**
      * pageNo : 0
      * pageSize : 10
-     * pageTotalNum : 102
+     * pageTotalNum : 112
      */
 
     private PageInfoBean pageInfo;
@@ -125,7 +126,7 @@ public class ResponseTeamtogether {
     }
 
     public static class DataBean {
-        private int vendorId;
+        private String vendorId;
         private String vendorName;
         private String realName;
         private String nickName;
@@ -149,11 +150,11 @@ public class ResponseTeamtogether {
         private long registerTime;
         private int commentCount;
 
-        public int getVendorId() {
+        public String getVendorId() {
             return vendorId;
         }
 
-        public void setVendorId(int vendorId) {
+        public void setVendorId(String vendorId) {
             this.vendorId = vendorId;
         }
 

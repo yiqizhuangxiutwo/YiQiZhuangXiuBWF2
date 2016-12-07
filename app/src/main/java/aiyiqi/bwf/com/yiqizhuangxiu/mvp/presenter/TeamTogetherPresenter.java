@@ -5,5 +5,5 @@ package aiyiqi.bwf.com.yiqizhuangxiu.mvp.presenter;
  */
 
 public interface TeamTogetherPresenter {
-    void TeamTogetherDatas();
+    void TeamTogetherDatas(int bossId);
 }

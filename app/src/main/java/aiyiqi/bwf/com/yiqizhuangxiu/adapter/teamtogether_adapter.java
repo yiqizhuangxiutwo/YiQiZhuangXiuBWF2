@@ -13,17 +13,20 @@ import aiyiqi.bwf.com.yiqizhuangxiu.fragment.teamtgether_fragment;
  * Created by Administrator on 2016/11/30.
  */
 
-public class teamtogether_adapter extends FragmentPagerAdapter{
+public class teamtogether_adapter extends FragmentPagerAdapter {
 
     private List<Fragment> fragments;
-    private List<String> datas;
+    private List<String> title;
+    private int[] type = {1701, 1702, 1703};
 
-    public teamtogether_adapter(FragmentManager fm, List<String> datas) {
+    public teamtogether_adapter(FragmentManager fm, List<String> title) {
         super(fm);
         fragments = new ArrayList<>();
-        this.datas = datas;
-        for (int i = 0; i < datas.size(); i++) {
-            fragments.add(new teamtgether_fragment());
+        this.title = title;
+        for (int i = 0; i < title.size(); i++) {
+            teamtgether_fragment teamtgether_fragment = new teamtgether_fragment();
+            teamtgether_fragment.setType(type[i]);
+            fragments.add(teamtgether_fragment);
         }
     }
 
@@ -38,6 +41,6 @@ public class teamtogether_adapter extends FragmentPagerAdapter{
     }
 
     public CharSequence getPageTitle(int position) {
-        return datas.get(position);
+        return title.get(position);
     }
 }

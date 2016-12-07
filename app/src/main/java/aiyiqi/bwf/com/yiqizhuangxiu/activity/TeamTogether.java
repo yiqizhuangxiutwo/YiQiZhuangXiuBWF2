@@ -2,9 +2,13 @@ package aiyiqi.bwf.com.yiqizhuangxiu.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import aiyiqi.bwf.com.yiqizhuangxiu.R;
 import aiyiqi.bwf.com.yiqizhuangxiu.adapter.teamtogether_adapter;
@@ -21,9 +25,10 @@ public class TeamTogether extends BaseActivity {
     ImageView imageViewBackSubviewTitle;
     @BindView(R.id.tabLayout_teamtogether)
     TabLayout tabLayoutTeamtogether;
+    @BindView(R.id.teamtogether_viewpager)
+    ViewPager teamtogetherViewpager;
 
     private teamtogether_adapter teamtogetheradapter;
-
 
     @Override
     public int getContentViewResID() {
@@ -32,8 +37,8 @@ public class TeamTogether extends BaseActivity {
 
     @Override
     protected void initViews() {
-        textTitleSubviewTitle.setText("一起团队");
 
+        textTitleSubviewTitle.setText("一起团队");
 
         imageViewBackSubviewTitle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,7 +46,16 @@ public class TeamTogether extends BaseActivity {
                 finish();
             }
         });
+        tabLayoutTeamtogether.setupWithViewPager(teamtogetherViewpager);
+        List<String> list = new ArrayList<>();
+        list.add("设计师");
+        list.add("工长");
+        list.add("监理");
+        teamtogetheradapter = new teamtogether_adapter(getSupportFragmentManager(),list);
+        teamtogetherViewpager.setAdapter(teamtogetheradapter);
+
     }
+
 
     @Override
     protected void initDatas() {
