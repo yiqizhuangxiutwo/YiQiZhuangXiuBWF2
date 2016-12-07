@@ -719,7 +719,7 @@ public class Response_GDZB {
         }
 
         public static class MembersBean {
-            private long vendorId;
+            private String vendorId;
             private String vendorName;
             private String realName;
             private String nickName;
@@ -732,11 +732,11 @@ public class Response_GDZB {
             private long updateTime;
             private int bossId;
 
-            public long getVendorId() {
+            public String getVendorId() {
                 return vendorId;
             }
 
-            public void setVendorId(long vendorId) {
+            public void setVendorId(String vendorId) {
                 this.vendorId = vendorId;
             }
 

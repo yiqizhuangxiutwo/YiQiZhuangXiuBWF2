@@ -65,7 +65,7 @@ public class GDZB_Recycler_Adapter extends RecyclerView.Adapter {
             activity.setPosition(progress.get(position).getProgressId());
         } else if (progress.get(position).getProgressStatus() == 2) {
             recViewHolder.upText.setText("已完成");
-            recViewHolder.upText.setBackgroundResource(R.color.dark_green);
+            recViewHolder.upText.setBackgroundResource(R.color.greens);
             recViewHolder.upText.setTextColor(Color.WHITE);
             recViewHolder.image.setBackgroundResource(R.drawable.finish_icon);
         }

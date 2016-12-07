@@ -4,10 +4,42 @@
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="dasdas"/>
+    <ImageButton
+        android:id="@+id/button1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/create_feed_normal"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="80dp"
+        android:layout_marginBottom="-100dp"/>
+    <ImageButton
+        android:id="@+id/button2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/show_order_normal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-100dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="80dp"/>
+    <ImageButton
+        android:id="@+id/button3"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/create_note_normal"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="80dp"
+        android:layout_marginBottom="-300dp"/>
+    <ImageButton
+        android:id="@+id/button4"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/create_complain_normal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-300dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="80dp"/>
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/imgbtn_close"
         android:layout_width="60dp"

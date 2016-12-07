@@ -3,12 +3,12 @@ package aiyiqi.bwf.com.yiqizhuangxiu.activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cjj.MaterialRefreshLayout;
+import com.cjj.MaterialRefreshListener;
 
 import java.util.List;
 
@@ -66,21 +66,19 @@ public class TongChengHuoDongActivity extends BaseActivity implements TongchengV
             }
         });
 
-//        refreshLayout.setMaterialRefreshListener(new MaterialRefreshListener() {
-//            @Override
-//            public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
-//                //去重新加载数据
-//                tongchengPresenter.loadTongchengDatas();
-//            }
-//        });
+        refreshLayout.setMaterialRefreshListener(new MaterialRefreshListener() {
+            @Override
+            public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
+                //去重新加载数据
+                tongchengPresenter.loadTongchengDatas();
+            }
+        });
     }
 
     @Override
     public void showTongchengSuccess(List<ResponseTongcheng.DataBean.ForumlistBean> tongcheng) {
-        Log.d("TongChengHuoDongActivit", tongcheng.get(0).getAuthor());
-                tongchengAdapter.addDatas(tongcheng);
-
-
+        refreshLayout.finishRefresh();
+        tongchengAdapter.addDatas(tongcheng);
     }
     @Override
     public void showFailed() {

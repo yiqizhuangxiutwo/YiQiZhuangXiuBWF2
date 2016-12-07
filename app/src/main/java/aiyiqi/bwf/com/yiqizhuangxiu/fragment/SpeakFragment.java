@@ -1,11 +1,18 @@
 package aiyiqi.bwf.com.yiqizhuangxiu.fragment;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
@@ -39,7 +46,6 @@ public class SpeakFragment extends BaseFragment {
     SimpleDraweeView imgbtn2;
     @BindView(R.id.view)
     View view;
-
 
     private ViewPager viewPager;
     private TabLayout tabLayout;
@@ -79,27 +85,107 @@ public class SpeakFragment extends BaseFragment {
 
     private boolean isNormal;
     private View popuview;
+    private ViewHolder viewHolder;
+
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(final Message msg) {
+            //更新界面
+            final ImageButton[] buttons = new ImageButton[]{viewHolder.button1,viewHolder.button2,viewHolder.button3,viewHolder.button4};
+            AnimationSet set = new AnimationSet(true);
+            TranslateAnimation translate = new TranslateAnimation(0, 0, 0, -1000);
+            translate.setDuration(600);
+            set.addAnimation(translate);
+            set.setFillAfter(true);
+
+            switch (msg.what){
+                case 0:
+                    buttons[0].startAnimation(set);
+                    setAnimationListen(set,buttons[0]);
+                    break;
+                case 1:
+                    buttons[1].startAnimation(set);
+                    setAnimationListen(set,buttons[1]);
+                    break;
+                case 2:
+                    buttons[2].startAnimation(set);
+                    setAnimationListen(set,buttons[2]);
+                    break;
+                case 3:
+                    buttons[3].startAnimation(set);
+                    setAnimationListen(set,buttons[3]);
+                    break;
+            }
+        }
+    };
+
+    private void setAnimationListen(AnimationSet set, final ImageButton button) {
+        set.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                AnimationSet set2 = new AnimationSet(true);
+                TranslateAnimation translate2 = new TranslateAnimation(0, 0, -1000, -900);
+                translate2.setDuration(100);
+                set2.addAnimation(translate2);
+                set2.setFillAfter(true);
+                button.startAnimation(set2);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+    }
+
 
     @OnClick(R.id.imgbtn2)
     public void onClick() {
-        imgbtn2.setBackgroundResource(R.drawable.float_layer_menu_close);
         popuview = LayoutInflater.from(getActivity()).inflate(R.layout.anniu, null);
         final PopupWindow popupWindow = new PopupWindow(popuview, ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT, true);
         popupWindow.setBackgroundDrawable(getResources().getDrawable(R.color.white));
         popupWindow.showAsDropDown(view);
-        ViewHolder viewHolder = new ViewHolder(popuview);
+        viewHolder = new ViewHolder(popuview);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i <4; i++) {
+                    try {
+                        Thread.sleep(50);
+                        Message msg = new Message();
+                        msg.what = i;
+                        handler.sendMessage(msg);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
+
         viewHolder.imgbtnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 popupWindow.dismiss();
             }
         });
-        imgbtn2.setBackgroundResource(R.drawable.float_layer_menu_normal);
     }
 
 
     static class ViewHolder {
+        @BindView(R.id.button1)
+        ImageButton button1;
+        @BindView(R.id.button2)
+        ImageButton button2;
+        @BindView(R.id.button3)
+        ImageButton button3;
+        @BindView(R.id.button4)
+        ImageButton button4;
         @BindView(R.id.imgbtn_close)
         SimpleDraweeView imgbtnClose;
 

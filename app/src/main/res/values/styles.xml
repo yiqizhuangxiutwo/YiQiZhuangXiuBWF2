@@ -23,6 +23,17 @@
         <item name="android:textSize">18dp</item>
     </style>
 
+
+    <style name="fiveStarRatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:maxHeight">30.0dip</item>
+        <item name="android:progressDrawable">@drawable/five_rating_bar</item>
+        <item name="android:minHeight">15.0dip</item>
+        <item name="android:numStars">5</item>
+        <item name="android:rating">0.0</item>
+        <item name="android:stepSize">0.1</item>
+        <item name="android:isIndicator">true</item>
+    </style>
+
     <style name="headertwo_up_text">
         <item name="android:text">未完成</item>
         <item name="android:background">@android:color/darker_gray</item>
@@ -34,6 +45,8 @@
         <item name="android:padding">2dp</item>
         <item name="android:textSize">17dp</item>
     </style>
+
+
 
     <style name="SlideRightAnimation" parent="@android:style/Animation.Activity">
         <item name="android:activityOpenEnterAnimation">@anim/activity_right_in</item>
@@ -64,4 +77,5 @@
         <item name="android:windowEnterAnimation">@anim/activity_right_in</item>
         <item name="android:windowExitAnimation">@anim/activity_right_out</item>
     </style>
+
 </resources>
