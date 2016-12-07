@@ -16,7 +16,7 @@
     </style>
 
     <style name="mytextsize">
-        <item name="android:textSize">25sp</item>
+        <item name="android:textSize">15sp</item>
     </style>
 
     <style name="zzxd_inner_message_text">

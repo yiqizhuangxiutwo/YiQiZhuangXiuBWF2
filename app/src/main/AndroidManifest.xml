@@ -63,6 +63,7 @@
         <activity android:name=".activity.TeamTogether"/>
         <activity android:name=".activity.FirstInActivity"/>
         <activity android:name=".activity.MyZxingActivity"/>
+        <activity android:name=".activity.ForgetPasswordActivity"/>
     </application>
 
 </manifest>
